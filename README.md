@@ -1,4 +1,4 @@
-# Final Project 1 - News API
+# Final Project 2 - E-Commerce Front-End
 Project ini telah dibuat oleh:
 
 ## Muhammad Raihan Suryanom
