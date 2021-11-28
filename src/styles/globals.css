@@ -4,7 +4,12 @@
 
 @layer base {
   body {
-    @apply bg-[#F5F7FB];
+    @apply bg-[#F5F7FB] font-roboto text-[#616467];
+  }
+
+  button,
+  button > * {
+    @apply min-h-[48px] min-w-[48px] inline-block;
   }
 
   @font-face {
