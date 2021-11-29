@@ -1,9 +1,9 @@
 import {
   GiBigDiamondRing,
-  GiElectric,
   GiLargeDress,
-  GiLoincloth,
+  GiClothes,
 } from 'react-icons/gi';
+import { RiComputerLine } from 'react-icons/ri';
 import Button from './button';
 
 function Category() {
@@ -15,10 +15,10 @@ function Category() {
           <GiBigDiamondRing />
         </Button>
         <Button className='p-2.5 w-1/4 h-20'>
-          <GiElectric />
+          <RiComputerLine />
         </Button>
         <Button className='p-2.5 w-1/4 h-20'>
-          <GiLoincloth />
+          <GiClothes />
         </Button>
         <Button className='p-2.5 w-1/4 h-20 overflow-hidden'>
           <GiLargeDress />

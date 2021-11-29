@@ -1,18 +1,10 @@
 import Head from 'next/head';
+import Image from 'next/image';
 import { Fragment } from 'react';
 import { useRouter } from 'next/router';
-import Button from '../components/ui/button';
-import Footer from '../components/ui/footer';
-import Category from '../components/ui/category';
-import CardItem from '../components/ui/card-item';
-import CardList from '../components/ui/card-list';
-import {
-  GiPrivate,
-  GiTruck,
-  GiRibbonMedal,
-  GiAlliedStar,
-} from 'react-icons/gi';
-import Image from 'next/image';
+import { FiArrowRight } from 'react-icons/fi';
+import { GiTruck, GiRibbonMedal, GiAlliedStar } from 'react-icons/gi';
+import { Button, Category, CardItem } from '../components/ui';
 
 export default function HomePage() {
   const router = useRouter();
@@ -51,7 +43,7 @@ export default function HomePage() {
           className='px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark'
           text='Semua Produk'
         >
-          <GiPrivate />
+          <FiArrowRight className='!min-w-[1.5em]' />
         </Button>
         <section className='p-10 bg-white'>
           <h2 className='text-4xl font-bold text-center mb-7 '>
@@ -107,7 +99,6 @@ export default function HomePage() {
           </figure>
         </section>
       </main>
-      <Footer />
     </Fragment>
   );
 }

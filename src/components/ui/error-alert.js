@@ -1,9 +1,5 @@
 function ErrorAlert() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }
 
-export default ErrorAlert
+export default ErrorAlert;

@@ -1,9 +1,5 @@
-function Loading() {
-    return (
-        <div>
-            
-        </div>
-    )
+function LoadingSpinner() {
+  return <div></div>;
 }
 
-export default Loading
+export default LoadingSpinner;
