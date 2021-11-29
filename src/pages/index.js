@@ -4,6 +4,15 @@ import { useRouter } from 'next/router';
 import Button from '../components/ui/button';
 import Footer from '../components/ui/footer';
 import Category from '../components/ui/category';
+import CardItem from '../components/ui/card-item';
+import CardList from '../components/ui/card-list';
+import {
+  GiPrivate,
+  GiTruck,
+  GiRibbonMedal,
+  GiAlliedStar,
+} from 'react-icons/gi';
+import Image from 'next/image';
 
 export default function HomePage() {
   const router = useRouter();
@@ -15,18 +24,88 @@ export default function HomePage() {
           name='description'
           content='Created by Muhammad Raihan and Muhammad Rian'
         />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <header className='p-10 my-5 bg-white'>
-        <h1 className='text-lg font-bold leading-8'>Fantech <span className='block text-4xl'>X9 THOR</span></h1>
-        <p className='w-8/12 my-2.5 leading-normal text-gray-400'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste labore,
-          provident minus
+        <h1 className='text-6xl font-bold leading-8 uppercase'>Shoply.</h1>
+        <p className='w-8/12 mt-2.5 mb-10 leading-normal text-gray-500'>
+          Situs Jual Beli Online Terlengkap, Murah & Aman
         </p>
-        <Button className='w-full text-lg border-2 text-dark border-dark' text='Shop Now' eventHandler={() => router.push('/product')} />
+        <Button
+          className='w-full text-lg border-2 rounded-sm text-dark border-dark'
+          text='Belanja Sekarang'
+          eventHandler={() => router.push('/product')}
+        />
       </header>
       <main>
-        <Category/>
+        <Category />
+        <div className='mx-10'>
+          <h2 className='my-5 text-4xl font-bold text-center'>Produk</h2>
+          <section className='grid gap-y-5'>
+            <CardItem />
+            <CardItem />
+            <CardItem />
+          </section>
+        </div>
+        <Button
+          className='px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark'
+          text='Semua Produk'
+        >
+          <GiPrivate />
+        </Button>
+        <section className='p-10 bg-white'>
+          <h2 className='text-4xl font-bold text-center mb-7 '>
+            Manfaat Menggunakan Layanan Kami
+          </h2>
+          <div className='grid divide-y-2 gap-y-10'>
+            <div className='text-center'>
+              <GiAlliedStar className='block m-auto text-6xl' />
+              <h3 className='text-2xl font-medium'>Best Quality</h3>
+              <p className='text-base'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                consectetur, purus id
+              </p>
+            </div>
+            <div className='text-center'>
+              <GiTruck className='block m-auto text-6xl' />
+              <h3 className='text-2xl font-medium'>Free Shipping</h3>
+              <p className='text-base'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                consectetur, purus id
+              </p>
+            </div>
+            <div className='text-center'>
+              <GiRibbonMedal className='block m-auto text-6xl' />
+              <h3 className='text-2xl font-medium'>Warranty</h3>
+              <p className='text-base'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                consectetur, purus id
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className='relative p-10'>
+          <h2 className='text-4xl font-bold text-center mb-7'>
+            Apa Kata Pelanggan Kami
+          </h2>
+          <figure className='text-center'>
+            <Image
+              src='/images/customer.webp'
+              width={100}
+              height={100}
+              objectFit='cover'
+              objectPosition='center'
+              className='rounded-full'
+            />
+            <figcaption className='italic leading-5'>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+              consectetur, purus id tincidunt feugiat, metus orci sagittis elit,
+              quis tempor orci elit id arcu. Proin egestas bibendum efficitur."
+            </figcaption>
+            <h3 className='text-lg font-bold'>Adriana Lopez</h3>
+            <p className='text-base'>Client</p>
+          </figure>
+        </section>
       </main>
       <Footer />
     </Fragment>
