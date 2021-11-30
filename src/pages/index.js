@@ -26,7 +26,7 @@ export default function HomePage() {
         <Button
           className='w-full text-lg border-2 rounded-sm text-dark border-dark'
           text='Belanja Sekarang'
-          eventHandler={() => router.push('/product')}
+          eventHandler={() => router.push('/about')}
         />
       </header>
       <main>
@@ -76,7 +76,40 @@ export default function HomePage() {
             </div>
           </div>
         </section>
-        <section className='relative p-10'>
+        <section className='p-10'>
+          <h2 className='mb-10 text-4xl font-bold text-center'>Partner Kami</h2>
+          <div className='grid grid-cols-2 gap-8 '>
+            <div className='relative h-7'>
+              <Image
+                src='/images/jp-morgan.png'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='relative h-6'>
+              <Image
+                src='/images/oysho.png'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='relative h-5'>
+              <Image
+                src='/images/pull-bear.png'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+            <div className='relative h-8'>
+              <Image
+                src='/images/rosewood.png'
+                layout='fill'
+                objectFit='contain'
+              />
+            </div>
+          </div>
+        </section>
+        <section className='relative p-10 bg-white'>
           <h2 className='text-4xl font-bold text-center mb-7'>
             Apa Kata Pelanggan Kami
           </h2>
@@ -88,6 +121,7 @@ export default function HomePage() {
               objectFit='cover'
               objectPosition='center'
               className='rounded-full'
+              priority
             />
             <figcaption className='italic leading-5'>
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc

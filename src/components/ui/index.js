@@ -1,4 +1,4 @@
-import BreadCrumb from './BreadCrumb';
+import Breadcrumb from './breadcrumb';
 import Button from './button';
 import CardItem from './card-item';
 import CardList from './card-list';
@@ -6,11 +6,11 @@ import Category from './category';
 import ErrorAlert from './error-alert';
 import Footer from './footer';
 import LoadingSpinner from './loading';
-import Navbar from './Navbar';
+import Navbar from './navbar';
 import Sidebar from './sidebar';
 
 export {
-  BreadCrumb,
+  Breadcrumb,
   Button,
   CardItem,
   CardList,

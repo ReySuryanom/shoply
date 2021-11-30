@@ -1,20 +1,37 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Button from './button';
 import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
+import { Button } from '.';
 
 function Navbar() {
   return (
     <nav className='flex items-center justify-between shadow-md bg-dark'>
       <Link href='/'>
         <a className='relative ml-5 scale-125 top-5'>
-          <Image src='/images/logo-Rey.webp' alt='Shoply Icon' width={50} height={50} />
+          <Image
+            src='/images/logo-Rey.webp'
+            alt='Shoply Icon'
+            width={50}
+            height={50}
+          />
         </a>
       </Link>
       <ul className='hidden text-base md:flex md:items-center md:justify-between space-x-9'>
-        <li className='font-bold'>Home</li>
-        <li>Products</li>
-        <li>About</li>
+        <li>
+          <Link href='/'>
+            <a className='font-bold'>Home</a>
+          </Link>
+        </li>
+        <li>
+          <Link href='/products'>
+            <a>Products</a>
+          </Link>
+        </li>
+        <li>
+          <Link href='/about'>
+            <a>About</a>
+          </Link>
+        </li>
       </ul>
       <div className='flex items-center justify-between min-h-full p-1.5 space-x-0 md:space-x-9 bg-dark md:bg-transparent'>
         <Button>
