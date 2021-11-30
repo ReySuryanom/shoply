@@ -1,10 +1,11 @@
 import '../styles/globals.css';
 import { Fragment } from 'react';
-import { Footer, Navbar } from '../components/ui';
+import { Footer, GlobalStyles, Navbar } from '../components/layout';
 
 function MyApp({ Component, pageProps }) {
   return (
     <Fragment>
+      <GlobalStyles />
       <Navbar />
       <Component {...pageProps} />
       <Footer />
