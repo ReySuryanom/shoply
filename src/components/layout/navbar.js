@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
-import { Button } from '.';
+import { Button } from '../ui';
 
 function Navbar() {
   return (

@@ -4,7 +4,7 @@ import {
   GiClothes,
 } from 'react-icons/gi';
 import { RiComputerLine } from 'react-icons/ri';
-import Button from './button';
+import { Button } from '../../components/ui';
 
 function Category() {
   return (
