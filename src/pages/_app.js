@@ -1,6 +1,7 @@
 import '../styles/globals.css';
 import { Fragment } from 'react';
-import { Footer, GlobalStyles, Navbar } from '../components/layout';
+import { GlobalStyles } from 'twin.macro';
+import { Footer, Navbar } from '../components/layout';
 
 function MyApp({ Component, pageProps }) {
   return (
