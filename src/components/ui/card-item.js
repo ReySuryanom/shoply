@@ -1,11 +1,12 @@
+import tw from 'twin.macro';
 import Image from 'next/image';
 import { GiRoundStar } from 'react-icons/gi';
 
 function CardItem() {
   return (
-    <article className='w-full overflow-hidden shadow-md rounded-xl'>
-      <div className='relative w-full pt-6 bg-white' />
-      <div className='relative w-auto h-64 bg-white'>
+    <CardWrapper>
+      <PaddingTop />
+      <CardHeader>
         <Image
           alt='gambar'
           src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
@@ -13,21 +14,30 @@ function CardItem() {
           objectFit='contain'
           priority
         />
-      </div>
-      <div className='relative w-full text-center bg-white py-3.5 space-y-1.5'>
-        <h3 className='text-lg font-bold'>Solid Gold Petite Micropave</h3>
-        <span className='flex justify-center space-x-1.5 text-yellow-400'>
+      </CardHeader>
+      <CardBody>
+        <ItemName>Solid Gold Petite Micropave</ItemName>
+        <RatingContainer>
           <GiRoundStar />
           <GiRoundStar />
           <GiRoundStar />
           <GiRoundStar />
           <GiRoundStar />
-        </span>
-        <p className='text-gray-500 text-md'>18 reviews</p>
-        <h4 className='text-lg font-bold lining-nums tabular-nums'>168$</h4>
-      </div>
-    </article>
+        </RatingContainer>
+        <TotalReviews>18 reviews</TotalReviews>
+        <ItemPrice>168$</ItemPrice>
+      </CardBody>
+    </CardWrapper>
   );
 }
+
+const CardWrapper = tw.article`w-full overflow-hidden shadow-md rounded-xl`;
+const CardHeader = tw.div`relative w-auto h-64 bg-white`;
+const PaddingTop = tw.div`relative w-full pt-6 bg-white`;
+const CardBody = tw.div`relative w-full text-center bg-white py-3.5 space-y-1.5`;
+const ItemName = tw.h3`text-lg font-bold`;
+const RatingContainer = tw.span`flex justify-center space-x-1.5 text-yellow-400`;
+const TotalReviews = tw.p`text-gray-500 text-base`;
+const ItemPrice = tw.h4`text-lg font-bold lining-nums tabular-nums`;
 
 export default CardItem;

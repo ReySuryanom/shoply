@@ -1,8 +1,8 @@
+import tw from 'twin.macro';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { GiRoundStar, GiShoppingCart } from 'react-icons/gi';
-import tw from 'twin.macro';
 import { Breadcrumb, Button } from '../../components/ui';
 
 function DetailProductPage() {
@@ -66,15 +66,15 @@ function DetailProductPage() {
           <PriceText>Harga:</PriceText>
           <ItemPrice>75$</ItemPrice>
           <ToggleContainer>
-            <Button className='w-1/3 text-3xl text-white bg-dark' text='-' />
+            <Button tw='w-1/3 text-3xl text-white bg-dark' text='-' />
             <TotalItems value={0} type='number' readOnly />
-            <Button className='w-1/3 text-3xl text-white bg-dark' text='+' />
+            <Button tw='w-1/3 text-3xl text-white bg-dark' text='+' />
           </ToggleContainer>
           <Button
-            className='w-full py-1 mt-3 text-xl text-white rounded-sm bg-dark'
+            tw='w-full py-1 mt-3 text-xl text-white rounded-sm bg-dark'
             text='Masukan ke Keranjang'
           >
-            <GiShoppingCart className='!min-w-[30px]' />
+            <GiShoppingCart tw='!min-w-[30px]' />
           </Button>
         </DetailProductSection>
       </MainContent>

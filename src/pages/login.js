@@ -1,6 +1,6 @@
-import { Fragment } from 'react';
-import Head from 'next/head';
 import tw from 'twin.macro';
+import Head from 'next/head';
+import { Fragment } from 'react';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import { Button } from '../components/ui';
 
@@ -22,15 +22,15 @@ function LoginPage() {
           <InputWrapper>
             <InputContainer>
               <InputComponent placeholder='Username' type='text' />
-              <AiOutlineUser className='relative text-2xl left-3 top-2' />
+              <AiOutlineUser tw='relative text-2xl left-3 top-2' />
             </InputContainer>
             <InputContainer>
               <InputComponent placeholder='Password' type='password' />
-              <AiOutlineLock className='relative text-2xl left-3 top-2' />
+              <AiOutlineLock tw='relative text-2xl left-3 top-2' />
             </InputContainer>
           </InputWrapper>
           <Button
-            className='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark'
+            tw='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark'
             text='Masuk'
             eventHandler={submitHandler}
           />
