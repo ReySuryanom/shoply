@@ -8,7 +8,7 @@ module.exports = {
         dark: '#393D45',
       },
       fontFamily: {
-        'josefin-sans': 'Josefin Sans, sans-serif',
+        lato: 'Lato, sans-serif',
         roboto: 'Roboto, sans-serif',
       },
     },
