@@ -8,7 +8,7 @@ function Partner() {
       <PartnerHeading>Partner Kami</PartnerHeading>
       <LogoContainer>
         {partnerlogos.map(({ style, src }) => (
-          <div className={`relative ${style}`}>
+          <div key={src} className={`relative ${style}`}>
             <Image src={src} layout='fill' objectFit='contain' />
           </div>
         ))}

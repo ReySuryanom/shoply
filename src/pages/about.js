@@ -1,3 +1,4 @@
+import tw from 'twin.macro';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
@@ -11,23 +12,21 @@ function AboutPage() {
         <meta name='description' content='About Page' />
         <link rel='icon' href='/images/favicon.ico' />
       </Head>
-      <main className='p-10'>
+      <MainContent>
         <Breadcrumb />
-        <div className='relative h-72'>
+        <ImageContainer>
           <Image
             src='/images/about.png'
             className='rounded-md'
             layout='fill'
             objectFit='contain'
           />
-        </div>
-        <section className='relative'>
-          <div className='relative my-5'>
-            <h2 className='text-xl font-bold uppercase after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6 '>
-              Tentang Kami
-            </h2>
-          </div>
-          <p className='text-justify'>
+        </ImageContainer>
+        <AboutSection>
+          <AboutContainer>
+            <AboutHeading>Tentang Kami</AboutHeading>
+          </AboutContainer>
+          <AboutParagraf>
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
             Voluptatibus, laborum similique dicta aliquam libero, cumque iusto
             quod temporibus dolorum sequi nisi exercitationem nam adipisci
@@ -35,11 +34,18 @@ function AboutPage() {
             consectetur dolores! Blanditiis, exercitationem voluptatem, expedita
             velit veniam odio laudantium, non magnam est minima corporis magni
             enim assumenda.
-          </p>
-        </section>
-      </main>
+          </AboutParagraf>
+        </AboutSection>
+      </MainContent>
     </Fragment>
   );
 }
+
+const MainContent = tw.main`p-10`;
+const ImageContainer = tw.div`relative h-72`;
+const AboutSection = tw.section`relative`;
+const AboutContainer = tw.div`relative my-5`;
+const AboutHeading = tw.h2`text-xl font-bold uppercase after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6`;
+const AboutParagraf = tw.h2`text-justify`;
 
 export default AboutPage;
