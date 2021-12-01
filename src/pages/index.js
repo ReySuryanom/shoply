@@ -9,7 +9,7 @@ import {
   Partner,
   Product,
   Service,
-} from '../containers/home';
+} from '../components/home';
 
 export default function HomePage() {
   const router = useRouter();

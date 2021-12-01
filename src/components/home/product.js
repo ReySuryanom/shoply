@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import { Fragment } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
-import { Button, CardItem } from '../../components/ui';
+import { Button, CardItem } from '../ui';
 
 function Product() {
   return (
@@ -15,10 +15,10 @@ function Product() {
         </CartList>
       </ProductWrapper>
       <Button
-        className='px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark'
+        tw='px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark'
         text='Semua Produk'
       >
-        <FiArrowRight className='!min-w-[1.5em]' />
+        <FiArrowRight tw='!min-w-[1.5em]' />
       </Button>
     </Fragment>
   );
