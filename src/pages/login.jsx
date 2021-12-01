@@ -14,7 +14,6 @@ function LoginPage() {
       <Head>
         <title>Login | Shoply.</title>
         <meta name='description' content='Login Page' />
-        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <MainContent>
         <MainHeading>SHOPLY.</MainHeading>

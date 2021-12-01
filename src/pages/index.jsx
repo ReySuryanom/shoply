@@ -22,7 +22,6 @@ export default function HomePage() {
           name='description'
           content='Created by Muhammad Raihan and Muhammad Rian'
         />
-        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <MainHeader>
         <MainHeading>Shoply.</MainHeading>

@@ -10,7 +10,6 @@ function AboutPage() {
       <Head>
         <title>About Us | Shoply.</title>
         <meta name='description' content='About Page' />
-        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <MainContent>
         <Breadcrumb />

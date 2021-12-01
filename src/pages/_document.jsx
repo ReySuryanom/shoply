@@ -29,6 +29,7 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Roboto:wght@400;500;700&display=swap'
             rel='stylesheet'
           />
+          <link rel='icon' href='/images/favicon.ico' />
           <style
             data-emotion-css={this.props.ids?.join(' ')}
             dangerouslySetInnerHTML={{ __html: this.props.css }}

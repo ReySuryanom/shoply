@@ -7,6 +7,15 @@
     @apply bg-[#F5F7FB] font-roboto text-[#616467];
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-lato;
+  }
+
   button,
   button > svg {
     @apply min-h-[48px] min-w-[48px] inline-block;

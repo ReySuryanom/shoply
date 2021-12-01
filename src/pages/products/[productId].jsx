@@ -11,7 +11,6 @@ function DetailProductPage() {
       <Head>
         <title>Product | Shoply.</title>
         <meta name='description' content='Login Page' />
-        <link rel='icon' href='/images/favicon.ico' />
       </Head>
       <MainContent>
         <Breadcrumb />
