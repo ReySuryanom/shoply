@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 import { partnerlogos } from '../../utils/constant';
 
-function Partner() {
+function Partners() {
   return (
     <PartnerSection>
       <PartnerHeading>Partner Kami</PartnerHeading>
@@ -26,4 +26,4 @@ const PartnerLogo = styled.section(() => [
   ({ variant }) => partnerlogos[variant].style,
 ]);
 
-export default Partner;
+export default Partners;

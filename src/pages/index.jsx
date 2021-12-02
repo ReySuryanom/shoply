@@ -4,11 +4,11 @@ import { Fragment } from 'react';
 import { useRouter } from 'next/router';
 import { Button } from '../components/ui';
 import {
-  Category,
+  Categories,
   Feedback,
-  Partner,
-  Product,
-  Service,
+  Partners,
+  ProductList,
+  Services,
 } from '../components/home';
 
 export default function HomePage() {
@@ -35,10 +35,10 @@ export default function HomePage() {
         />
       </MainHeader>
       <main>
-        <Category />
-        <Product />
-        <Service />
-        <Partner />
+        <Categories />
+        <ProductList />
+        <Services />
+        <Partners />
         <Feedback />
       </main>
     </Fragment>

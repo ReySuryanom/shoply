@@ -1,8 +1,6 @@
-import Benefit from './benefit';
-import Category from './category';
-import Feedback from './feedback';
-import Partner from './partner';
-import Product from './product';
-import Service from './service';
+import Categories from './categories';
+import Partners from './partners';
+import ProductList from './product-list';
+import Services from './services';
 
-export { Benefit, Category, Feedback, Partner, Product, Service };
+export {  Categories, Partners, ProductList, Services };

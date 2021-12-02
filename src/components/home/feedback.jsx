@@ -28,10 +28,10 @@ function Feedback() {
 }
 
 const FeedbackSection = tw.section`relative p-10 bg-white`;
-const FeedbackHeading = tw.section`text-4xl font-bold text-center mb-7`;
+const FeedbackHeading = tw.h2`text-4xl font-bold text-center mb-7`;
 const FigureContainer = tw.figure`text-center`;
-const FeedbackText = tw.figure`italic leading-5`;
+const FeedbackText = tw.figcaption`italic leading-5`;
 const ClientName = tw.h3`text-lg font-bold`;
-const ClientStatus = tw.h3`text-base`;
+const ClientStatus = tw.p`text-base`;
 
 export default Feedback;

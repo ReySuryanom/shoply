@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 
-function Benefit({ text, Icon }) {
+function Benefits({ text, Icon }) {
   return (
     <BenefitContainer>
       {Icon}
@@ -17,4 +17,4 @@ const BenefitContainer = tw.div`text-center`;
 const BenefitHeading = tw.h3`text-2xl font-medium`;
 const BenefitParagraf = tw.p`text-base`;
 
-export default Benefit;
+export default Benefits;

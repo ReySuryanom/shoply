@@ -53,7 +53,7 @@ function Navbar() {
 const NavbarWrapper = tw.nav`flex items-center justify-between shadow-md bg-dark`;
 const NavbarBrand = tw.a`relative ml-5 scale-125 top-5`;
 const ListContainer = tw.ul`hidden text-base md:flex md:items-center md:justify-between space-x-9`;
-const ListItem = tw.li`font-bold`;
+const ListItem = tw.a`font-bold`;
 const ButtonContainer = tw.div`flex items-center justify-between min-h-full p-1.5 space-x-0 md:space-x-9 bg-dark md:bg-transparent`;
 
 export default Navbar;

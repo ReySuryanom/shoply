@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { Button, CardItem } from '../ui';
 
-function Product() {
+function ProductList() {
   return (
     <Fragment>
       <ProductWrapper>
@@ -27,4 +27,4 @@ const ProductWrapper = tw.div`mx-10`;
 const ProductHeading = tw.h2`my-5 text-4xl font-bold text-center`;
 const CartList = tw.section`grid gap-y-5`;
 
-export default Product;
+export default ProductList;
