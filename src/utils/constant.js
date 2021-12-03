@@ -1,22 +1,30 @@
 import tw from 'twin.macro';
-import { GiTruck, GiRibbonMedal, GiAlliedStar } from 'react-icons/gi';
+import { RiComputerLine } from 'react-icons/ri';
+import {
+  GiTruck,
+  GiRibbonMedal,
+  GiAlliedStar,
+  GiBigDiamondRing,
+  GiLargeDress,
+  GiClothes,
+} from 'react-icons/gi';
 
-export const serviceLists = [
+export const servicesList = [
   {
     text: 'Best Quality',
-    Icon: <GiAlliedStar tw='block m-auto text-6xl' />,
+    Icon: <GiAlliedStar tw='block m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Free Shipping',
-    Icon: <GiTruck tw='block m-auto text-6xl' />,
+    Icon: <GiTruck tw='block m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Warranty',
-    Icon: <GiRibbonMedal tw='block m-auto text-6xl' />,
+    Icon: <GiRibbonMedal tw='block m-auto text-6xl md:text-7xl' />,
   },
 ];
 
-export const partnerlogos = [
+export const partnerLogos = [
   {
     style: tw`h-7`,
     src: '/images/jp-morgan.png',
@@ -33,4 +41,17 @@ export const partnerlogos = [
     style: tw`h-8`,
     src: '/images/rosewood.png',
   },
+];
+
+export const categoriesList = [
+  { icon: <GiBigDiamondRing />, params: 'electronics' },
+  { icon: <RiComputerLine />, params: 'jewelery' },
+  { icon: <GiClothes />, params: "men's clothing" },
+  { icon: <GiLargeDress />, params: "women's clothing" },
+];
+
+export const navbarLinks = [
+  { text: 'Home', link: '/' },
+  { text: 'Products', link: '/products' },
+  { text: 'About', link: '/about' },
 ];

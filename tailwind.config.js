@@ -4,6 +4,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      backgroundImage: (theme) => ({
+        'hero': "url('/images/hero.png')",
+      }),
       colors: {
         dark: '#393D45',
       },
@@ -16,7 +19,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 };

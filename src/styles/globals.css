@@ -16,8 +16,11 @@
     @apply font-lato;
   }
 
-  button,
-  button > svg {
+  button > * {
+    @apply m-auto inline-block;
+  }
+
+  button {
     @apply min-h-[44px] min-w-[44px] inline-block;
   }
 }

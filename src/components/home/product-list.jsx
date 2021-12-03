@@ -14,17 +14,17 @@ function ProductList() {
           <CardItem />
         </CartList>
       </ProductWrapper>
-      <Button
-        tw='px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark'
-        text='Semua Produk'
-      >
-        <FiArrowRight tw='!min-w-[1.5em]' />
-      </Button>
+      <ProductButton text='Semua Produk' to='products'>
+        <FiArrowRight tw='text-2xl' />
+      </ProductButton>
     </Fragment>
   );
 }
 const ProductWrapper = tw.div`mx-10`;
-const ProductHeading = tw.h2`my-5 text-4xl font-bold text-center`;
-const CartList = tw.section`grid gap-y-5`;
+const ProductHeading = tw.h2`my-5 text-4xl font-bold text-center md:text-5xl`;
+const CartList = tw.section`grid gap-y-5 md:grid-cols-2 md:gap-x-5`;
+const ProductButton = tw(
+  Button
+)`px-8 my-12 py-0.5 block mx-auto text-white rounded-sm bg-dark flex items-center`;
 
 export default ProductList;

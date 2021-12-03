@@ -13,8 +13,8 @@ function Benefits({ text, Icon }) {
   );
 }
 
-const BenefitContainer = tw.div`text-center`;
-const BenefitHeading = tw.h3`text-2xl font-medium`;
-const BenefitParagraf = tw.p`text-base`;
+const BenefitContainer = tw.div`text-center md:px-24`;
+const BenefitHeading = tw.h3`text-2xl font-medium md:text-3xl`;
+const BenefitParagraf = tw.p`text-base md:text-lg`;
 
 export default Benefits;

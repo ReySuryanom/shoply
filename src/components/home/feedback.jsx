@@ -11,7 +11,7 @@ function Feedback() {
           width={100}
           height={100}
           objectFit='cover'
-          objectPosition='center'
+          objectPosition='top'
           className='rounded-full'
           priority
         />
@@ -28,10 +28,10 @@ function Feedback() {
 }
 
 const FeedbackSection = tw.section`relative p-10 bg-white`;
-const FeedbackHeading = tw.h2`text-4xl font-bold text-center mb-7`;
+const FeedbackHeading = tw.h2`text-4xl font-bold text-center mb-7 md:text-5xl`;
 const FigureContainer = tw.figure`text-center`;
-const FeedbackText = tw.figcaption`italic leading-5`;
-const ClientName = tw.h3`text-lg font-bold`;
-const ClientStatus = tw.p`text-base`;
+const FeedbackText = tw.figcaption`italic leading-5 md:text-lg md:px-12`;
+const ClientName = tw.h3`text-lg font-bold md:text-xl md:mt-1`;
+const ClientStatus = tw.p`text-base md:text-lg`;
 
 export default Feedback;

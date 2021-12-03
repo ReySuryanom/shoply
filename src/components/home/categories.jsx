@@ -1,32 +1,30 @@
 import tw from 'twin.macro';
-import { GiBigDiamondRing, GiLargeDress, GiClothes } from 'react-icons/gi';
-import { RiComputerLine } from 'react-icons/ri';
 import { Button } from '../ui';
+import { categoriesList } from '../../utils/constant';
+
+const PATH = 'products?category=';
 
 function Categories() {
   return (
-    <CategorySection>
+    <CategoriesSection>
       <CategoryHeading>Kategori</CategoryHeading>
       <CategoryContainer>
-        <Button tw='bg-dark p-2.5 w-1/4 text-white'>
-          <GiBigDiamondRing />
-        </Button>
-        <Button tw='p-2.5 w-1/4 h-20'>
-          <RiComputerLine />
-        </Button>
-        <Button tw='p-2.5 w-1/4 h-20'>
-          <GiClothes />
-        </Button>
-        <Button tw='p-2.5 w-1/4 h-20'>
-          <GiLargeDress />
-        </Button>
+        {categoriesList.map(({ icon, params }) => (
+          <CategoryItem key={params} to={PATH + params}>
+            {icon} <CategoryName>{params}</CategoryName>
+          </CategoryItem>
+        ))}
       </CategoryContainer>
-    </CategorySection>
+    </CategoriesSection>
   );
 }
 
-const CategorySection = tw.section`mx-10`;
-const CategoryHeading = tw.h2`mb-2.5 text-4xl font-bold text-center`;
+const CategoriesSection = tw.section`mx-10`;
+const CategoryHeading = tw.h2`mb-5 text-4xl md:text-5xl font-bold text-center`;
 const CategoryContainer = tw.div`flex justify-between overflow-hidden text-gray-400 bg-white rounded-lg shadow-md`;
+const CategoryName = tw.span`hidden md:block md:text-lg`;
+const CategoryItem = tw(
+  Button
+)`bg-dark p-2.5 w-1/4 text-white text-6xl md:flex md:capitalize md:flex-col md:items-center`;
 
 export default Categories;

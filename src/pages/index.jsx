@@ -28,23 +28,22 @@ export default function HomePage() {
         <MainParagraf>
           Situs Jual Beli Online Terlengkap, Murah & Aman
         </MainParagraf>
-        <Button
-          className='w-full text-lg border-2 rounded-sm text-dark border-dark'
-          text='Belanja Sekarang'
-          eventHandler={() => router.push('/about')}
-        />
+        <ShopButton to='products' text='Belanja Sekarang' />
       </MainHeader>
       <main>
         <Categories />
         <ProductList />
+        <Services />
         <Partners />
-        <Services/>
         <Feedback />
       </main>
     </Fragment>
   );
 }
 
-const MainHeader = tw.header`p-10 my-5 bg-white`;
-const MainHeading = tw.h1`text-6xl font-bold leading-8 uppercase`;
-const MainParagraf = tw.p`w-8/12 mt-2.5 mb-10 leading-normal text-gray-500`;
+const MainHeader = tw.header`px-10 py-16 my-5 bg-white md:bg-hero md:bg-no-repeat md:bg-right-top`;
+const MainHeading = tw.h1`text-6xl md:text-8xl font-bold leading-8 uppercase`;
+const MainParagraf = tw.p`w-8/12 mt-2.5 md:text-xl mb-10 leading-normal text-gray-500`;
+const ShopButton = tw(
+  Button
+)`w-full text-lg border-2 rounded-sm text-dark border-dark md:w-1/4`;

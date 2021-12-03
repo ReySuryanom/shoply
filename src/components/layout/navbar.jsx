@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
 import { Button } from '../ui';
+import { navbarLinks } from '../../utils/constant';
 
 function Navbar() {
   return (
@@ -18,42 +19,34 @@ function Navbar() {
         </NavbarBrand>
       </Link>
       <ListContainer>
-        <li>
-          <Link href='/'>
-            <ListItem>Home</ListItem>
-          </Link>
-        </li>
-        <li>
-          <Link href='/products'>
-            <ListItem>Products</ListItem>
-          </Link>
-        </li>
-        <li>
-          <Link href='/about'>
-            <ListItem>About</ListItem>
-          </Link>
-        </li>
+        {navbarLinks.map(({ text, link }) => (
+          <li key={text}>
+            <Link href={link}>
+              <ListItem>{text}</ListItem>
+            </Link>
+          </li>
+        ))}
       </ListContainer>
       <ButtonContainer>
-        <Button>
-          <GiHamburgerMenu tw='text-white' />
+        <Button tw='md:hidden'>
+          <GiHamburgerMenu tw='text-white md:hidden text-4xl' />
         </Button>
         <Button tw='hidden md:block'>
-          <GiShoppingCart tw='w-6 h-6 ' />
+          <GiShoppingCart tw='hidden md:block text-white text-3xl' />
         </Button>
-        <Button
-          tw='hidden px-2 py-1 text-white md:block bg-dark'
-          text='Login'
-        />
+        <LoginButton text='Login' to='login' />
       </ButtonContainer>
     </NavbarWrapper>
   );
 }
 
-const NavbarWrapper = tw.nav`flex items-center justify-between shadow-md bg-dark`;
-const NavbarBrand = tw.a`relative ml-5 scale-125 top-5`;
-const ListContainer = tw.ul`hidden text-base md:flex md:items-center md:justify-between space-x-9`;
-const ListItem = tw.a`font-bold`;
-const ButtonContainer = tw.div`flex items-center justify-between min-h-full p-1.5 space-x-0 md:space-x-9 bg-dark md:bg-transparent`;
+const NavbarWrapper = tw.nav`flex items-center justify-between shadow-md bg-dark px-8`;
+const NavbarBrand = tw.a`relative ml-5 scale-125 top-5 md:ml-0`;
+const ListContainer = tw.ul`hidden text-base md:flex md:items-center space-x-9`;
+const ListItem = tw.a`font-bold text-white`;
+const ButtonContainer = tw.div`flex items-center bg-dark`;
+const LoginButton = tw(
+  Button
+)`hidden px-5 py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white`;
 
 export default Navbar;

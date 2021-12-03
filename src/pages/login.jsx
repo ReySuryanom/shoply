@@ -28,11 +28,7 @@ function LoginPage() {
               <AiOutlineLock tw='relative text-2xl left-3 top-2' />
             </InputContainer>
           </InputWrapper>
-          <Button
-            tw='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark'
-            text='Masuk'
-            eventHandler={submitHandler}
-          />
+          <LoginButton text='Masuk' eventHandler={submitHandler} />
           <Text>lupa password?</Text>
         </LoginForm>
       </MainContent>
@@ -47,5 +43,8 @@ const InputWrapper = tw.div`space-y-12`;
 const InputContainer = tw.div`relative`;
 const InputComponent = tw.input`absolute w-full px-10 py-2.5 bg-[#F5F7FB] rounded-full`;
 const Text = tw.p`text-center`;
+const LoginButton = tw(
+  Button
+)`text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark`;
 
 export default LoginPage;
