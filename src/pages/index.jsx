@@ -37,8 +37,8 @@ export default function HomePage() {
       <main>
         <Categories />
         <ProductList />
-        <Services />
         <Partners />
+        <Services/>
         <Feedback />
       </main>
     </Fragment>
