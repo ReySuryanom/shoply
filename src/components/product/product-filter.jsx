@@ -5,7 +5,7 @@ import { Button } from '../ui';
 function ProductFilter() {
   return (
     <Fragment>
-      <aside className='space-y-8 flex flex-col fixed top-0 left-0 z-10 w-full h-screen bg-white p-7 text-[#211F1C]'>
+      <aside className='md:hidden space-y-8 flex flex-col fixed top-0 left-0 z-10 w-full h-screen bg-white p-7 text-[#211F1C]'>
         <Button className='absolute z-20 text-black top-5 right-5'>
           <RiCloseCircleFill className='min-h-[30px] min-w-[30px]' />
         </Button>

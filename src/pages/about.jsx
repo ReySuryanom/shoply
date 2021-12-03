@@ -16,7 +16,7 @@ function AboutPage() {
         <ImageContainer>
           <Image
             src='/images/about.png'
-            className='rounded-md'
+            className='rounded-md md:!object-cover md:object-top'
             layout='fill'
             objectFit='contain'
           />
@@ -41,10 +41,10 @@ function AboutPage() {
 }
 
 const MainContent = tw.main`p-10`;
-const ImageContainer = tw.div`relative h-72`;
+const ImageContainer = tw.div`relative h-72 md:h-96`;
 const AboutSection = tw.section`relative`;
 const AboutContainer = tw.div`relative my-5`;
-const AboutHeading = tw.h2`text-xl font-bold uppercase after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6`;
-const AboutParagraf = tw.h2`text-justify`;
+const AboutHeading = tw.h2`text-xl font-bold uppercase md:text-2xl after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6`;
+const AboutParagraf = tw.h2`text-justify md:text-lg`;
 
 export default AboutPage;

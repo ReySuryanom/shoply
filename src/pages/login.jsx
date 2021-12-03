@@ -37,8 +37,8 @@ function LoginPage() {
 }
 
 const MainContent = tw.main`max-h-screen px-10 py-20 bg-white`;
-const MainHeading = tw.h1`mb-5 text-4xl font-bold text-center`;
-const LoginForm = tw.form`flex flex-col w-full text-dark`;
+const MainHeading = tw.h1`mb-5 text-4xl font-bold text-center md:text-5xl`;
+const LoginForm = tw.form`flex flex-col w-full text-dark md:px-28`;
 const InputWrapper = tw.div`space-y-12`;
 const InputContainer = tw.div`relative`;
 const InputComponent = tw.input`absolute w-full px-10 py-2.5 bg-[#F5F7FB] rounded-full`;
