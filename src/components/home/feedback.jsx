@@ -12,7 +12,7 @@ function Feedback() {
           height={100}
           objectFit='cover'
           objectPosition='top'
-          className='rounded-full'
+          tw='rounded-full'
           priority
         />
         <FeedbackText>

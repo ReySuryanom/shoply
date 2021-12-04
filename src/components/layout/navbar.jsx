@@ -31,7 +31,7 @@ function Navbar() {
         <Button tw='md:hidden'>
           <GiHamburgerMenu tw='text-white md:hidden text-4xl' />
         </Button>
-        <Button tw='hidden md:block'>
+        <Button tw='hidden md:block' to='checkout'>
           <GiShoppingCart tw='hidden md:block text-white text-3xl' />
         </Button>
         <LoginButton text='Login' to='login' />

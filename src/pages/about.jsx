@@ -16,9 +16,10 @@ function AboutPage() {
         <ImageContainer>
           <Image
             src='/images/about.png'
-            className='rounded-md md:!object-cover md:object-top'
+            tw='rounded-md md:!object-cover md:object-top'
             layout='fill'
             objectFit='contain'
+            priority
           />
         </ImageContainer>
         <AboutSection>

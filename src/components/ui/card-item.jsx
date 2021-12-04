@@ -11,6 +11,7 @@ function CardItem() {
           alt='gambar'
           src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
           layout='fill'
+          tw='md:scale-75'
           objectFit='contain'
           priority
         />
@@ -33,8 +34,8 @@ function CardItem() {
 
 const CardWrapper = tw.article`w-full overflow-hidden shadow-md rounded-xl`;
 const CardHeader = tw.div`relative w-auto h-64 bg-white`;
-const PaddingTop = tw.div`relative w-full pt-6 bg-white`;
-const CardBody = tw.div`relative w-full text-center bg-white py-3.5 space-y-1.5`;
+const PaddingTop = tw.div`relative w-full pt-6 bg-white md:hidden`;
+const CardBody = tw.div`relative w-full text-center bg-white py-3.5 space-y-1.5 md:pt-0`;
 const ItemName = tw.h3`text-lg font-bold`;
 const RatingContainer = tw.span`flex justify-center space-x-1.5 text-yellow-400`;
 const TotalReviews = tw.p`text-gray-500 text-base`;
