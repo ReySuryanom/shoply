@@ -23,7 +23,7 @@ function CartItem() {
             <p className='text-2xl'>$10</p>
           </div>
           <Button className='!min-h-[20px] !min-w-[20px] self-start'>
-              <FaTrash className='!min-h-[20px] !min-w-[20px] text-red-500'/>
+            <FaTrash className='!min-h-[20px] !min-w-[20px] text-red-500' />
           </Button>
         </div>
         <div className='flex text-dark'>

@@ -1,10 +1,13 @@
 import tw from 'twin.macro';
 
 function Breadcrumb() {
+  const format = '\xa0\xa0/\xa0\xa0';
+
   return (
     <BreadcrumbWrapper>
       <Text>
-        Home &gt; <CurrentPage>About</CurrentPage>
+        Home{format}
+        <CurrentPage>About</CurrentPage>
       </Text>
     </BreadcrumbWrapper>
   );

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
-import { RiLayoutGridFill } from 'react-icons/ri';
+import { GiSettingsKnobs } from 'react-icons/gi';
 import {
   ProductFilter,
   SearchBar,
@@ -17,19 +17,23 @@ function ProductPage() {
       </Head>
       <main className='p-10'>
         <Breadcrumb />
-        <ProductFilter />
-        <SearchBar />
-        <section className='flex items-center justify-between mt-5'>
-          <Button className='min-w-[35px] min-h-[35px]'>
-            <RiLayoutGridFill className='min-w-[35px] min-h-[35px]' />
-          </Button>
-          <SortProduct />
-        </section>
-        <section className='space-y-7 mt-7'>
-          <CardItem />
-          <CardItem />
-          <CardItem />
-        </section>
+        <div className='md:space-x-4 md:flex'>
+          <ProductFilter />
+          <section className='md:w-2/3'>
+            <SearchBar />
+            <div className='flex items-center justify-between !mt-2 md:inline-block md:text-right md:w-6/12'>
+              <Button className='min-w-[35px] min-h-[35px] md:hidden'>
+                <GiSettingsKnobs className='min-w-[35px] min-h-[35px]' />
+              </Button>
+              <SortProduct />
+            </div>
+            <section className='mt-3 space-y-7 md:grid md:grid-cols-2 md:space-y-0 md:gap-2'>
+              <CardItem />
+              <CardItem />
+              <CardItem />
+            </section>
+          </section>
+        </div>
       </main>
     </Fragment>
   );

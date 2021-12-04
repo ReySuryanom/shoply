@@ -44,10 +44,10 @@ export const partnerLogos = [
 ];
 
 export const categoriesList = [
-  { icon: <GiBigDiamondRing />, params: 'electronics' },
-  { icon: <RiComputerLine />, params: 'jewelery' },
-  { icon: <GiClothes />, params: "men's clothing" },
-  { icon: <GiLargeDress />, params: "women's clothing" },
+  { id: 'electronics', icon: <GiBigDiamondRing />, params: 'electronics' },
+  { id: 'jewelery', icon: <RiComputerLine />, params: 'jewelery' },
+  { id: 'mens-clothing', icon: <GiClothes />, params: "men's clothing" },
+  { id: 'womens-clothing', icon: <GiLargeDress />, params: "women's clothing" },
 ];
 
 export const navbarLinks = [
