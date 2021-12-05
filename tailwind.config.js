@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
   mode: 'jit',
   purge: ['./src/pages/**/*.{js,jsx}', './src/components/**/*.{js,jsx}'],
@@ -5,10 +7,10 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        'hero': "url('/images/hero.png')",
+        hero: "url('/images/hero.png')",
       }),
       colors: {
-        dark: '#393D45',
+        dark: '#484543',
       },
       fontFamily: {
         lato: 'Lato, sans-serif',
@@ -19,5 +21,15 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    // add a `first-of-type` variant
+    plugin(function ({ addVariant, e }) {
+      addVariant('first-of-type', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`first-of-type${separator}${className}`)}:first-of-type`;
+        });
+      });
+    }),
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };

@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-roboto bg-[#F5F7FB] text-[#616467];
+    @apply font-roboto bg-[#F5F7FB] text-dark;
   }
 
   h1,

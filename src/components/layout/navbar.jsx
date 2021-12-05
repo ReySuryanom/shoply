@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 function Navbar() {
   const router = useRouter();
   const route = router.pathname;
+  console.log(route);
 
   return (
     <NavbarWrapper>
@@ -54,7 +55,8 @@ const ListContainer = tw.ul`hidden text-base md:flex md:items-center md:space-x-
 const Page = tw.li`cursor-default relative text-center`;
 const ListItem = tw.a`text-white  cursor-pointer`;
 const ButtonContainer = tw.div`flex items-center bg-dark`;
-const ListStyle = 'font-bold after:border-b-2 after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2';
+const ListStyle =
+  'font-bold after:border-b-2 after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2';
 const LoginButton = tw(
   Button
 )`hidden px-5 py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white lg:py-1 px-6`;
