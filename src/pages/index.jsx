@@ -41,9 +41,9 @@ export default function HomePage() {
   );
 }
 
-const MainHeader = tw.header`px-10 py-16 my-5 bg-white md:bg-hero md:bg-no-repeat md:bg-right-top`;
-const MainHeading = tw.h1`text-6xl md:text-8xl font-bold leading-8 uppercase`;
-const MainParagraf = tw.p`w-8/12 mt-2.5 md:text-xl mb-10 leading-normal text-gray-500`;
+const MainHeader = tw.header`px-10 py-16 my-5 bg-white md:bg-hero md:bg-no-repeat md:bg-right-top lg:py-20`;
+const MainHeading = tw.h1`text-6xl md:text-8xl font-bold leading-8 uppercase lg:text-9xl`;
+const MainParagraf = tw.p`w-8/12 mt-2.5 md:text-xl mb-10 leading-normal text-gray-500 lg:text-2xl`;
 const ShopButton = tw(
   Button
-)`w-full text-lg border-2 rounded-sm text-dark border-dark md:w-1/4`;
+)`w-full text-lg border-2 rounded-sm text-dark border-dark md:w-1/4 lg:max-w-lg`;

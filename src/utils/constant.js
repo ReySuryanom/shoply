@@ -44,8 +44,8 @@ export const partnerLogos = [
 ];
 
 export const categoriesList = [
-  { id: 'electronics', icon: <GiBigDiamondRing />, params: 'electronics' },
-  { id: 'jewelery', icon: <RiComputerLine />, params: 'jewelery' },
+  { id: 'jewelery', icon: <GiBigDiamondRing />, params: 'jewelery' },
+  { id: 'electronics', icon: <RiComputerLine />, params: 'electronics' },
   { id: 'mens-clothing', icon: <GiClothes />, params: "men's clothing" },
   { id: 'womens-clothing', icon: <GiLargeDress />, params: "women's clothing" },
 ];
