@@ -34,9 +34,9 @@ function CartItem() {
 }
 
 const CartWrapper = tw.article`flex w-full p-3 shadow-lg bg-dark`;
-const CartHeader = tw.div`w-5/12 bg-white md:w-2/12`;
+const CartHeader = tw.div`w-5/12 bg-white md:w-2/12 lg:w-1/12`;
 const ImageContainer = tw.div`relative bg-white aspect-h-4 aspect-w-4`;
-const CartBody = tw.div`w-2/3 pl-3.5 relative flex flex-col text-white md:flex-row md:items-center md:justify-between md:w-10/12 md:px-4`;
+const CartBody = tw.div`w-2/3 pl-3.5 relative flex flex-col text-white md:flex-row md:items-center md:justify-between md:w-10/12 md:px-4 lg:w-11/12`;
 const ItemName = tw.h3`w-3/12 text-lg font-bold leading-none md:text-base md:w-4/12`;
 const Price = tw.p`text-xl md:text-lg md:w-1/5 md:text-center`;
 const ButtonContainer = tw.div`flex mt-auto text-dark md:mt-0`;

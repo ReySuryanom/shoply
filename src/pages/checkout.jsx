@@ -17,9 +17,9 @@ function CheckoutPage() {
       <MainContent>
         <Breadcrumb />
         <HeaderTitle>
-          <h2 tw='w-9/12'>Product</h2>
-          <h2 tw='w-1/3 pl-16'>Price</h2>
-          <h2 tw='w-1/2 pl-8'>Quantity</h2>
+          <h2 tw='w-9/12 lg:w-11/12'>Product</h2>
+          <h2 tw='w-1/3 pl-16 lg:pl-20'>Price</h2>
+          <h2 tw='w-1/2 pl-8 lg:pl-24'>Quantity</h2>
         </HeaderTitle>
         <CartSection>
           <CartItem />
@@ -56,7 +56,7 @@ function CheckoutPage() {
 const MainContent = tw.main`p-10`;
 const HeaderTitle = tw.header`items-center hidden p-3 text-lg font-bold md:flex text-dark`;
 const CartSection = tw.section`space-y-9`;
-const TotalSection = tw.section`p-5 bg-white shadow-md mt-9`;
+const TotalSection = tw.section`p-5 bg-white shadow-md mt-9 md:mx-16 lg:mx-0 lg:w-4/12 lg:ml-auto`;
 const DetailInfo = tw.p`flex justify-between`;
 const ButtonContainer = tw.div`flex justify-end space-x-5 mt-7`;
 const BorderBottom = tw.hr`mt-1 mb-3 border border-black border-opacity-70`;
