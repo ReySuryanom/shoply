@@ -1,3 +1,4 @@
+import tw from 'twin.macro';
 import Head from 'next/head';
 import { Fragment } from 'react';
 import { GiSettingsKnobs } from 'react-icons/gi';
@@ -15,28 +16,40 @@ function ProductPage() {
         <title>Product | Shoply.</title>
         <meta name='description' content='Login Page' />
       </Head>
-      <main className='p-10'>
+      <MainContent>
         <Breadcrumb />
-        <div className='md:space-x-4 md:flex'>
+        <ProductContainer>
           <ProductFilter />
-          <section className='md:w-2/3'>
+          <ProductSection>
             <SearchBar />
-            <div className='flex items-center justify-between !mt-2 md:inline-block md:text-right md:w-6/12'>
-              <Button className='min-w-[35px] min-h-[35px] md:hidden'>
-                <GiSettingsKnobs className='min-w-[35px] min-h-[35px]' />
-              </Button>
+            <ButtonContainer>
+              <FilterToggle>
+                <GiSettingsKnobs tw='min-w-[35px] min-h-[35px]' />
+              </FilterToggle>
               <SortProduct />
-            </div>
-            <section className='mt-3 space-y-7 md:grid md:grid-cols-2 md:space-y-0 md:gap-2'>
+            </ButtonContainer>
+            <CartSection>
               <CardItem />
               <CardItem />
               <CardItem />
-            </section>
-          </section>
-        </div>
-      </main>
+              <CardItem />
+              <CardItem />
+              <CardItem />
+              <CardItem />
+              <CardItem />
+            </CartSection>
+          </ProductSection>
+        </ProductContainer>
+      </MainContent>
     </Fragment>
   );
 }
+
+const MainContent = tw.main`p-10`;
+const ProductContainer = tw.div`md:space-x-4 md:flex`;
+const ProductSection = tw.section`md:w-2/3 lg:w-4/5`;
+const ButtonContainer = tw.div`flex items-center justify-between !mt-2 md:inline-block md:text-right md:w-6/12`;
+const CartSection = tw.section`mt-3 space-y-7 md:grid md:grid-cols-2 md:space-y-0 md:gap-2 lg:grid-cols-4 lg:gap-4`;
+const FilterToggle = tw(Button)`min-w-[35px] min-h-[35px] md:hidden`;
 
 export default ProductPage;

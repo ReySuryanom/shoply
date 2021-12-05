@@ -34,7 +34,7 @@ function ProductFilter() {
   );
 }
 
-const FilterWrapper = tw.aside`md:rounded-lg md:sticky md:w-1/3 space-y-8 flex flex-col fixed top-0 left-0 z-10 w-full h-screen bg-white p-5 text-[#211F1C]`;
+const FilterWrapper = tw.aside`md:rounded-lg md:sticky md:w-1/3 space-y-8 flex flex-col fixed top-0 left-0 z-10 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5`;
 const FilterHeading = tw.h2`!mt-0 text-3xl font-bold md:text-2xl`;
 const FilterSection = tw.section`w-2/3 space-y-2.5 md:w-11/12`;
 const CategoryHeading = tw.h3`text-xl font-medium text-black md:text-lg`;
