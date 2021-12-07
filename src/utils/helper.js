@@ -9,11 +9,11 @@ export const trimmingText = (text, margin = 20) => {
 export const createRatingStars = (rate) => {
   let icons = [];
 
-  for (let i = 0, j = rate; i < 5; i += 1, j -= 1) {
-    if (j >= 1) {
-      icons.push(<GiRoundStar className='text-yellow-400' key={i} />);
+  for (let index = 0; index < 5; index += 1, rate -= 1) {
+    if (rate >= 1) {
+      icons.push(<GiRoundStar className='text-yellow-400' key={index} />);
     } else {
-      icons.push(<GiRoundStar key={i} />);
+      icons.push(<GiRoundStar key={index} />);
     }
   }
 
@@ -25,4 +25,9 @@ export const getData = async (query) => {
   const data = await res.json();
 
   return data;
+};
+
+export const hasObjectValue = (value) => {
+  for (var i in value) return true;
+  return false;
 };

@@ -8,9 +8,10 @@ import {
   SortProduct,
 } from '../../components/product';
 import { Breadcrumb, Button, CardItem } from '../../components/ui';
-import { getData } from '../../utils/helper';
+import { getData, hasObjectValue } from '../../utils/helper';
 
-function ProductPage({ products }) {
+function ProductPage({ products, context }) {
+  console.log(context);
   return (
     <Fragment>
       <Head>
@@ -41,11 +42,23 @@ function ProductPage({ products }) {
   );
 }
 
-export async function getServerSideProps() {
-  const products = await getData('products');
+export async function getServerSideProps(context) {
+  let urlParams = null;
+  const { query } = context;
+
+  if (hasObjectValue(query)) {
+    const keys = Object.keys(query);
+    const values = Object.values(query);
+
+    urlParams = `products/${keys}/${values}`;
+  } else {
+    urlParams = 'products';
+  }
+
+  const products = await getData(urlParams);
 
   return {
-    props: { products },
+    props: { products, context: query },
   };
 }
 

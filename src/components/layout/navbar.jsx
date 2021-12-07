@@ -5,11 +5,13 @@ import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
 import { Button } from '../ui';
 import { navbarLinks } from '../../utils/constant';
 import { useRouter } from 'next/router';
+import { hasObjectValue } from '../../utils/helper';
 
 function Navbar() {
   const router = useRouter();
   const route = router.pathname;
-  console.log(route);
+
+  // console.log(hasObjectValue(router.query), router);
 
   return (
     <NavbarWrapper>
