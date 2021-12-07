@@ -21,13 +21,35 @@ export const createRatingStars = (rate) => {
 };
 
 export const getData = async (query) => {
-  const res = await fetch(`${BASE_URL}${query}`);
-  const data = await res.json();
-
-  return data;
+  try {
+    const res = await fetch(`${BASE_URL}${query}`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log(error)
+    throw new Error('Maaf, sepertinya url yang anda tuju tidak ada.');
+  }
 };
 
 export const hasObjectValue = (value) => {
   for (var i in value) return true;
   return false;
+};
+
+export const formatUrl = (query) => {
+  let url = 'products';
+
+  if (hasObjectValue(query)) {
+    const keys = Object.keys(query);
+    const values = Object.values(query);
+
+    for (let index = 0; index < keys.length; index++) {
+      const isSpecialCases = keys[index] === 'sort' || keys[index] === 'limit';
+      const firstSymbol = isSpecialCases ? (url.includes('?') ? '&' : '?') : '/';
+      const secondSymbol = isSpecialCases ? '=' : '/';
+      url += `${firstSymbol}${keys[index]}${secondSymbol}${values[index]}`;
+    }
+  }
+
+  return url;
 };
