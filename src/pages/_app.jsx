@@ -1,16 +1,16 @@
 import '../styles/globals.css';
-import { Fragment } from 'react';
 import { GlobalStyles } from 'twin.macro';
+import { ProductProvider } from '../context/product-context';
 import { Footer, Navbar } from '../components/layout';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Fragment>
+    <ProductProvider>
       <GlobalStyles />
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-    </Fragment>
+    </ProductProvider>
   );
 }
 
