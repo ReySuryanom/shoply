@@ -8,6 +8,7 @@ import {
   SortProduct,
 } from '../../components/product';
 import { Breadcrumb, Button, CardItem } from '../../components/ui';
+import { getData } from '../../utils/helper';
 
 function ProductPage({ products }) {
   return (
@@ -41,8 +42,7 @@ function ProductPage({ products }) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('https://fakestoreapi.com/products');
-  const products = await res.json();
+  const products = await getData('products');
 
   return {
     props: { products },

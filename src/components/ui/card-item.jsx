@@ -29,7 +29,7 @@ function CardItem({ id, title, image, rating: { rate, count }, price }) {
 }
 
 const CardWrapper = tw.article`w-full overflow-hidden shadow-md rounded-xl`;
-const CardHeader = tw.div`relative w-[268.49px] h-64 bg-white`;
+const CardHeader = tw.div`relative w-auto h-64 bg-white`;
 const PaddingTop = tw.div`relative w-full pt-6 bg-white md:hidden`;
 const CardBody = tw.div`relative w-full text-center bg-white py-3.5 space-y-1.5 md:pt-0`;
 const ItemName = tw.h3`text-lg font-bold lg:text-xl`;

@@ -13,7 +13,7 @@ function Navbar() {
 
   return (
     <NavbarWrapper>
-      <Link href='/'>
+      <Link href='/' passHref>
         <NavbarBrand>
           <Image
             src='/images/logo-Rey.webp'
@@ -25,12 +25,15 @@ function Navbar() {
       </Link>
       <ListContainer>
         {navbarLinks.map(({ text, link }) => {
-          const isCurrentPage = link === route && ListStyle;
+          const defaultStyle = ' list';
+          const isCurrentPage = link === route && 'list-style';
 
           return (
             <Page key={text}>
-              <Link href={link}>
-                <ListItem className={isCurrentPage}>{text}</ListItem>
+              <Link href={link} passHref>
+                <ListItem className={isCurrentPage + defaultStyle}>
+                  {text}
+                </ListItem>
               </Link>
             </Page>
           );
@@ -53,12 +56,10 @@ const NavbarWrapper = tw.nav`flex items-center justify-between shadow-md bg-dark
 const NavbarBrand = tw.a`relative ml-5 scale-125 top-5 md:ml-0 lg:scale-[1.75] lg:top-8`;
 const ListContainer = tw.ul`hidden text-base md:flex md:items-center md:space-x-9 lg:space-x-28`;
 const Page = tw.li`cursor-default relative text-center`;
-const ListItem = tw.a`text-white  cursor-pointer`;
+const ListItem = tw.a`text-white cursor-pointer lg:text-xl`;
 const ButtonContainer = tw.div`flex items-center bg-dark`;
-const ListStyle =
-  'font-bold after:border-b-2 after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2';
 const LoginButton = tw(
   Button
-)`hidden px-5 py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white lg:py-1 px-6`;
+)`hidden px-5 py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white lg:py-1 px-6 lg:text-xl`;
 
 export default Navbar;

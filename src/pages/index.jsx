@@ -10,8 +10,9 @@ import {
   ProductList,
   Services,
 } from '../components/home';
+import { getData } from '../utils/helper';
 
-export default function HomePage() {
+export default function HomePage({ products }) {
   const router = useRouter();
 
   return (
@@ -32,7 +33,7 @@ export default function HomePage() {
       </MainHeader>
       <main>
         <Categories />
-        <ProductList />
+        <ProductList products={products} />
         <Services />
         <Partners />
         <Feedback />
@@ -41,8 +42,14 @@ export default function HomePage() {
   );
 }
 
+export async function getStaticProps() {
+  const urlParams = 'products?limit=4';
+  const products = await getData(urlParams);
+  return { props: { products } };
+}
+
 const MainHeader = tw.header`px-10 py-16 my-5 bg-white md:bg-hero md:bg-no-repeat md:bg-right-top lg:py-20`;
-const MainHeading = tw.h1`text-6xl md:text-8xl font-bold leading-8 uppercase lg:text-9xl`;
+const MainHeading = tw.h1`text-6xl md:text-8xl font-bold leading-8 uppercase`;
 const MainParagraf = tw.p`w-8/12 mt-2.5 md:text-xl mb-10 leading-normal text-gray-500 lg:text-2xl`;
 const ShopButton = tw(
   Button
