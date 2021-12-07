@@ -9,7 +9,7 @@ import {
 } from '../../components/product';
 import { Breadcrumb, Button, CardItem } from '../../components/ui';
 
-function ProductPage() {
+function ProductPage({ products }) {
   return (
     <Fragment>
       <Head>
@@ -29,20 +29,24 @@ function ProductPage() {
               <SortProduct />
             </ButtonContainer>
             <CartSection>
-              <CardItem />
-              <CardItem />
-              <CardItem />
-              <CardItem />
-              <CardItem />
-              <CardItem />
-              <CardItem />
-              <CardItem />
+              {products.map((item) => (
+                <CardItem {...item} key={item.id} />
+              ))}
             </CartSection>
           </ProductSection>
         </ProductContainer>
       </MainContent>
     </Fragment>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  const products = await res.json();
+
+  return {
+    props: { products },
+  };
 }
 
 const MainContent = tw.main`p-10`;
