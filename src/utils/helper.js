@@ -2,7 +2,7 @@ import { GiRoundStar } from 'react-icons/gi';
 
 const BASE_URL = 'https://fakestoreapi.com/';
 
-export const trimmingText = (text, margin = 20) => {
+export const trimmingText = (text, margin = 15) => {
   return text.length > margin ? `${text.substr(0, margin)}...` : text;
 };
 

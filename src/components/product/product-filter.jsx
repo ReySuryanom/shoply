@@ -15,7 +15,7 @@ function ProductFilter() {
         {categoriesList.map(({ id, params }) => (
           <CategoryContainer key={id}>
             <CategoryLabel>{params}</CategoryLabel>
-            <input type='checkbox' name={id} id={id} />
+            <input type='radio' name='categories' id={id} value={params} />
           </CategoryContainer>
         ))}
       </FilterSection>

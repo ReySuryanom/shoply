@@ -1,17 +1,27 @@
 import tw from 'twin.macro';
 import Head from 'next/head';
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { GiSettingsKnobs } from 'react-icons/gi';
+import { Breadcrumb, Button, CardItem } from '../../components/ui';
+import { formatUrl, getData } from '../../utils/helper';
+import { useProductContext } from '../../context/product-context';
 import {
   ProductFilter,
   SearchBar,
   SortProduct,
 } from '../../components/product';
-import { Breadcrumb, Button, CardItem } from '../../components/ui';
-import { formatUrl, getData, hasObjectValue } from '../../utils/helper';
 
-function ProductPage({ products, context }) {
-  // console.log(Object.keys(context.query), context.x);
+function ProductPage({ products }) {
+  const { state } = useProductContext();
+  const [data, setData] = useState(products);
+
+  useEffect(() => {
+    const filterredProeducts = products.filter((item) => {
+      const regex = new RegExp(state.query, 'gi');
+      return item.title.match(regex);
+    });
+    setData(filterredProeducts);
+  }, [state.query]);
 
   return (
     <Fragment>
@@ -32,7 +42,7 @@ function ProductPage({ products, context }) {
               <SortProduct />
             </ButtonContainer>
             <CartSection>
-              {products.map((item) => (
+              {data.map((item) => (
                 <CardItem {...item} key={item.id} />
               ))}
             </CartSection>

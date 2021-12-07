@@ -1,14 +1,41 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import tw from 'twin.macro';
+import { useProductContext } from '../../context/product-context';
+import { SEARCH_PRODUCT } from '../../reducers/actions';
 import { Button } from '../ui';
 
 function SearchBar() {
+  const { dispatch } = useProductContext();
+  const [item, setItem] = useState('');
+  const searchInput = useRef(null);
+
+  useEffect(() => {
+    searchInput.current.focus();
+  }, []);
+
+  const searchHandler = (event) => {
+    if (event.key === 'Enter' || event['type'] === 'click') {
+      dispatch({ type: SEARCH_PRODUCT, payload: item });
+    }
+  };
+
   return (
     <Fragment>
       <SearchbarContainer>
-        <SearchInput type='text' placeholder='Search your item here...' />
-        <Button tw='absolute left-4 top-3 min-h-[20px] min-w-[20px]'>
+        <SearchInput
+          type='text'
+          placeholder='Search your item here (min. 3 characters to search)...'
+          ref={searchInput}
+          value={item}
+          onKeyPress={searchHandler}
+          onChange={(e) => setItem(e.target.value)}
+        />
+        <Button
+          tw='absolute left-4 top-3 min-h-[20px] min-w-[20px]'
+          eventHandler={searchHandler}
+          tabIndex='-1'
+        >
           <FaSearch tw='text-lg lg:text-xl' />
         </Button>
       </SearchbarContainer>
