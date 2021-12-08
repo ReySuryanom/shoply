@@ -1,10 +1,22 @@
 import Image from 'next/image';
 import { trimmingText } from '../../utils/helper';
 import { RatingProduct } from '.';
+import { useRouter } from 'next/router';
 
 function CardItem({ id, title, image, rating: { rate, count }, price }) {
+  const router = useRouter();
+
+  const eventHandler = (event) => {
+    event.preventDefault();
+    router.push(`/products/${id}`);
+  };
+
   return (
-    <article className='w-full overflow-hidden shadow-md rounded-xl'>
+    <article
+      className='w-full overflow-hidden shadow-md rounded-xl'
+      onClick={eventHandler}
+      role='button'
+    >
       <div className='relative w-full pt-6 bg-white md:hidden' />
       <div className='relative w-auto h-64 bg-white'>
         <Image

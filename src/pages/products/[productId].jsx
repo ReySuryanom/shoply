@@ -25,7 +25,7 @@ export default function DetailProductPage({ product }) {
         <meta name='description' content='Login Page' />
       </Head>
       <main className='p-10'>
-        <Breadcrumb routes={['products', product.title]} />
+        <Breadcrumb routes={['products', product.category]} />
         <div className='relative lg:flex lg:space-x-7'>
           <header className='lg:w-2/5'>
             {ProductImages('relative bg-white shadow h-72 md:h-96', true)}
