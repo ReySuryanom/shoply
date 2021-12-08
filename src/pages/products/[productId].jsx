@@ -3,8 +3,11 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { GiShoppingCart } from 'react-icons/gi';
 import { Breadcrumb, Button, RatingProduct } from '../../components/ui';
+import { useProductContext } from '../../context/product-context';
+import { ADD_CART } from '../../reducers/actions';
 
 export default function DetailProductPage({ product }) {
+  const { state, dispatch } = useProductContext();
   const ProductImages = (className, priority = false) => (
     <div className={className}>
       <Image
@@ -17,6 +20,12 @@ export default function DetailProductPage({ product }) {
       />
     </div>
   );
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    dispatch({ type: ADD_CART, payload: product });
+    console.log(state.carts);
+  };
 
   return (
     <Fragment>
@@ -63,6 +72,7 @@ export default function DetailProductPage({ product }) {
             <Button
               className='w-full py-2.5 px-12 mt-3 text-xl text-white rounded-sm bg-dark flex items-center md:max-w-xs md:px-20'
               text='Add to Cart'
+              eventHandler={addToCart}
             >
               <GiShoppingCart className='text-3xl' />
             </Button>

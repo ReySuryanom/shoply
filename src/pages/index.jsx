@@ -48,7 +48,7 @@ export default function HomePage({ products }) {
 }
 
 export async function getStaticProps() {
-  const urlParams = 'products?limit=4';
+  const urlParams = 'products/category/jewelery?limit=4';
   const products = await getData(urlParams);
   return { props: { products } };
 }

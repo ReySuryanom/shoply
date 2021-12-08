@@ -11,6 +11,7 @@ import * as TYPE from './actions';
  */
 export const initialState = {
   products: [],
+  carts: [],
   query: '',
   isLoading: true,
 };
@@ -22,6 +23,14 @@ export const product_reducer = (state, action) => {
         ...state,
         query: action.payload,
       };
+    case TYPE.ADD_CART:
+      const totalCarts = state.carts;
+
+      return {
+        ...state,
+        carts: [...totalCarts, action.payload],
+      };
+
     default:
       throw new Error(`No Matching "${action.type}" - action type`);
   }

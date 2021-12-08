@@ -2,8 +2,11 @@ import Head from 'next/head';
 import { Fragment } from 'react';
 import CartItem from '../components/cart/cart-item';
 import { Breadcrumb, Button } from '../components/ui';
+import { useProductContext } from '../context/product-context';
 
 export default function CheckoutPage() {
+  const { state } = useProductContext();
+
   return (
     <Fragment>
       <Head>
@@ -21,9 +24,9 @@ export default function CheckoutPage() {
           <h2 className='w-1/2 pl-8 lg:pl-24'>Quantity</h2>
         </header>
         <section className='space-y-9'>
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {state.carts.map((cart) => (
+            <CartItem {...cart} key={cart.id} />
+          ))}
         </section>
         <section className='p-5 bg-white shadow-md mt-9 md:mx-16 lg:mx-0 lg:w-4/12 lg:ml-auto'>
           <p className='flex justify-between'>
