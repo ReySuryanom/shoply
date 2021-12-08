@@ -18,6 +18,7 @@ function AboutPage() {
             <Image
               src='/images/about.png'
               tw='rounded-md md:!object-cover md:object-top'
+              alt='Author'
               layout='fill'
               objectFit='contain'
               priority

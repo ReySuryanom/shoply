@@ -8,9 +8,9 @@ function Partners() {
     <PartnerSection>
       <PartnerHeading>Partner Kami</PartnerHeading>
       <LogoContainer>
-        {partnerLogos.map(({ src }, index) => (
+        {partnerLogos.map(({ src, name }, index) => (
           <PartnerLogo key={src} variant={index}>
-            <Image src={src} layout='fill' objectFit='contain' />
+            <Image src={src} layout='fill' alt={name} objectFit='contain' />
           </PartnerLogo>
         ))}
       </LogoContainer>

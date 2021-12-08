@@ -20,6 +20,7 @@ function DetailProductPage() {
               <Image
                 src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
                 className='scale-75 rounded-md'
+                alt='example'
                 layout='fill'
                 objectFit='contain'
                 priority
@@ -29,6 +30,7 @@ function DetailProductPage() {
               <ImageContainer>
                 <Image
                   src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+                  alt='example'
                   className='w-full scale-75 rounded-md'
                   objectFit='contain'
                   layout='fill'
@@ -37,6 +39,7 @@ function DetailProductPage() {
               <ImageContainer>
                 <Image
                   src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+                  alt='example'
                   className='w-full scale-75 rounded-md'
                   objectFit='contain'
                   layout='fill'
@@ -45,6 +48,7 @@ function DetailProductPage() {
               <ImageContainer>
                 <Image
                   src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
+                  alt='example'
                   className='w-full scale-75 rounded-md'
                   objectFit='contain'
                   layout='fill'
@@ -56,7 +60,7 @@ function DetailProductPage() {
             <ProductName>Razer Mouse X89</ProductName>
             <HeaderContainer>
               <RatingProduct />
-              <ProductCategory>Woman's Clothes</ProductCategory>
+              <ProductCategory>Woman&apos;s Clothes</ProductCategory>
             </HeaderContainer>
             <ProductDescription>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius

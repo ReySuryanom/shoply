@@ -18,7 +18,7 @@ function LoginPage() {
       </Head>
       <MainContent>
         <ImageContainer>
-          <Image src='/images/login.png' layout='fill' objectFit='contain' />
+          <Image src='/images/login.png' alt='Login' layout='fill' objectFit='contain' />
         </ImageContainer>
         <LoginForm>
           <MainHeading>SHOPLY.</MainHeading>

@@ -21,7 +21,7 @@ function ProductPage({ products }) {
       return item.title.match(regex);
     });
     setData(filterredProeducts);
-  }, [state.query]);
+  }, [state.query, products]);
 
   return (
     <Fragment>

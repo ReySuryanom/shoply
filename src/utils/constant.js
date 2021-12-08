@@ -26,18 +26,22 @@ export const servicesList = [
 
 export const partnerLogos = [
   {
+    name: 'Jp Morgan',
     style: tw`h-7`,
     src: '/images/jp-morgan.png',
   },
   {
+    name: 'Oysho',
     style: tw`h-6`,
     src: '/images/oysho.png',
   },
   {
+    name: 'Pull Bear',
     style: tw`h-5`,
     src: '/images/pull-bear.png',
   },
   {
+    name: 'Rosewood',
     style: tw`h-8`,
     src: '/images/rosewood.png',
   },

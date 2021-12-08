@@ -10,6 +10,7 @@ function Feedback() {
           <Image
             src='/images/customer.webp'
             objectFit='cover'
+            alt='Customers profile'
             objectPosition='top'
             tw='rounded-full'
             layout='fill'
@@ -17,9 +18,9 @@ function Feedback() {
           />
         </ImageContainer>
         <FeedbackText>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+          &quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           consectetur, purus id tincidunt feugiat, metus orci sagittis elit,
-          quis tempor orci elit id arcu. Proin egestas bibendum efficitur."
+          quis tempor orci elit id arcu. Proin egestas bibendum efficitur.&quot;
         </FeedbackText>
         <ClientName>Adriana Lopez</ClientName>
         <ClientStatus>Client</ClientStatus>
