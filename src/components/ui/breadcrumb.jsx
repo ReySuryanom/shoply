@@ -4,10 +4,10 @@ import Link from 'next/link';
 function Breadcrumb({ routes = [] }) {
   const format = '\xa0\xa0/\xa0\xa0';
 
-  const previousPage = (route, index = -1) => (
-    <Fragment>
-      <li className='capitalize hover:underline' key={index}>
-        <Link href={`/${route === 'home' ? '' : route}`}>
+  const previousPage = (route, index) => (
+    <Fragment key={index}>
+      <li className='capitalize hover:underline'>
+        <Link href={`/${route === 'home' ? '' : route}`} passHref>
           <a role='button'>{route}</a>
         </Link>
       </li>
@@ -29,7 +29,7 @@ function Breadcrumb({ routes = [] }) {
   return (
     <div className='px-2.5 py-3.5 bg-white mb-7 shadow-md rounded-md'>
       <ul className='flex items-center text-base md:text-lg'>
-        {previousPage('home')}
+        {previousPage('home', -1)}
         {routelinks}
       </ul>
     </div>

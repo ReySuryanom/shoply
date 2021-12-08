@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import CartItem from '../components/cart/cart-item';
 import { Breadcrumb, Button } from '../components/ui';
 
-function CheckoutPage() {
+export default function CheckoutPage() {
   return (
     <Fragment>
       <Head>
@@ -51,5 +51,3 @@ function CheckoutPage() {
     </Fragment>
   );
 }
-
-export default CheckoutPage;

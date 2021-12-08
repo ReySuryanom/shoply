@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
 import { Button } from '../components/ui';
 
-function LoginPage() {
+export default function LoginPage() {
   const submitHandler = (e) => {
     e.preventDefault();
   };
@@ -58,5 +58,3 @@ function LoginPage() {
     </Fragment>
   );
 }
-
-export default LoginPage;

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Fragment } from 'react';
 import { Breadcrumb } from '../components/ui';
 
-function AboutPage() {
+export default function AboutPage() {
   return (
     <Fragment>
       <Head>
@@ -44,5 +44,3 @@ function AboutPage() {
     </Fragment>
   );
 }
-
-export default AboutPage;

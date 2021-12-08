@@ -4,73 +4,51 @@ import { Fragment } from 'react';
 import { GiShoppingCart } from 'react-icons/gi';
 import { Breadcrumb, Button, RatingProduct } from '../../components/ui';
 
-function DetailProductPage({ product }) {
+export default function DetailProductPage({ product }) {
+  const ProductImages = (className, priority = false) => (
+    <div className={className}>
+      <Image
+        src={product.image}
+        className='w-full scale-75 rounded-md'
+        alt={product.title}
+        layout='fill'
+        objectFit='contain'
+        priority={priority}
+      />
+    </div>
+  );
+
   return (
     <Fragment>
       <Head>
-        <title>Product | Shoply.</title>
+        <title>{product.title} | Shoply.</title>
         <meta name='description' content='Login Page' />
       </Head>
       <main className='p-10'>
-        <Breadcrumb routes={['products', 'test']} />
+        <Breadcrumb routes={['products', product.title]} />
         <div className='relative lg:flex lg:space-x-7'>
           <header className='lg:w-2/5'>
-            <div className='relative bg-white shadow h-72 md:h-96'>
-              <Image
-                src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-                className='scale-75 rounded-md'
-                alt='example'
-                layout='fill'
-                objectFit='contain'
-                priority
-              />
-            </div>
+            {ProductImages('relative bg-white shadow h-72 md:h-96', true)}
             <div className='relative flex mt-4 space-x-4'>
-              <div className='relative w-full h-24 bg-white shadow md:h-48'>
-                <Image
-                  src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-                  alt='example'
-                  className='w-full scale-75 rounded-md'
-                  objectFit='contain'
-                  layout='fill'
-                />
-              </div>
-              <div className='relative w-full h-24 bg-white shadow md:h-48'>
-                <Image
-                  src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-                  alt='example'
-                  className='w-full scale-75 rounded-md'
-                  objectFit='contain'
-                  layout='fill'
-                />
-              </div>
-              <div className='relative w-full h-24 bg-white shadow md:h-48'>
-                <Image
-                  src='https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'
-                  alt='example'
-                  className='w-full scale-75 rounded-md'
-                  objectFit='contain'
-                  layout='fill'
-                />
-              </div>
+              {ProductImages('relative w-full h-24 bg-white shadow md:h-48')}
+              {ProductImages('relative w-full h-24 bg-white shadow md:h-48')}
+              {ProductImages('relative w-full h-24 bg-white shadow md:h-48')}
             </div>
           </header>
           <section className='py-5 lg:w-3/5'>
-            <h2 className='text-2xl font-bold md:text-3xl'>Razer Mouse X89</h2>
+            <h2 className='text-2xl font-bold md:text-3xl'>{product.title}</h2>
             <div className='divide-gray-500 space-x-3 md:space-x-4 flex divide-x mt-1.5'>
-              <RatingProduct />
-              <h3 className='pl-3 text-lg font-semibold md:pl-4 md:text-xl'>
-                Woman&apos;s Clothes
+              <RatingProduct rate={product.rating.rate} />
+              <h3 className='pl-3 text-lg font-semibold capitalize md:pl-4 md:text-xl'>
+                {product.category}
               </h3>
             </div>
             <p className='mt-3 mb-5 text-gray-500 md:text-lg'>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius
-              neque dignissimos labore dolore quibusdam dicta laboriosam ex at
-              exercitationem mollitia?
+              {product.description}
             </p>
             <small className='text-base md:text-lg'>Harga:</small>
             <h3 className='-mt-1.5 text-2xl font-bold lining-nums tabular-nums md:text-3xl lg:mt-auto'>
-              75$
+              {product.price}$
             </h3>
             <div className='flex w-1/2 my-3 md:w-3/12 lg:w-3/12'>
               <Button className='w-1/3 text-3xl text-white bg-dark' text='-' />
@@ -95,4 +73,25 @@ function DetailProductPage({ product }) {
   );
 }
 
-export default DetailProductPage;
+export async function getStaticPaths() {
+  const res = await fetch('https://fakestoreapi.com/products');
+  const products = await res.json();
+
+  // Get the paths we want to pre-render based on products
+  const paths = products.map((product) => ({
+    params: { productId: product.id.toString() },
+  }));
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params: { productId } }) {
+  const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
+  const product = await res.json();
+
+  // Pass post data to the page via props
+  return { props: { product } };
+  // return { props: { product: [], context: params } };
+}

@@ -10,7 +10,7 @@ import {
   SortProduct,
 } from '../../components/product';
 
-function ProductPage({ products }) {
+export default function ProductPage({ products }) {
   const { state } = useProductContext();
   const [data, setData] = useState(products);
 
@@ -62,5 +62,3 @@ export async function getServerSideProps(context) {
     props: { products, context: { query } },
   };
 }
-
-export default ProductPage;
