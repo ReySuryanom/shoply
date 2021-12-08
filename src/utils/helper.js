@@ -7,17 +7,17 @@ export const trimmingText = (text, margin = 15) => {
 };
 
 export const createRatingStars = (rate) => {
-  let icons = [];
-
-  for (let index = 0; index < 5; index += 1, rate -= 1) {
-    if (rate >= 1) {
-      icons.push(<GiRoundStar className='text-yellow-400' key={index} />);
-    } else {
-      icons.push(<GiRoundStar key={index} />);
-    }
-  }
-
-  return icons;
+  const rating = parseInt(rate);
+  const starIcons = Array(5)
+    .fill(null)
+    .map((_, index) =>
+      rating > index ? (
+        <GiRoundStar key={index} />
+      ) : (
+        <GiRoundStar style={{ color: '#484543' }} key={index} />
+      )
+    );
+  return starIcons;
 };
 
 export const getData = async (query) => {
@@ -26,7 +26,7 @@ export const getData = async (query) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw new Error('Maaf, sepertinya url yang anda tuju tidak ada.');
   }
 };
@@ -45,7 +45,11 @@ export const formatUrl = (query) => {
 
     for (let index = 0; index < keys.length; index++) {
       const isSpecialCases = keys[index] === 'sort' || keys[index] === 'limit';
-      const firstSymbol = isSpecialCases ? (url.includes('?') ? '&' : '?') : '/';
+      const firstSymbol = isSpecialCases
+        ? url.includes('?')
+          ? '&'
+          : '?'
+        : '/';
       const secondSymbol = isSpecialCases ? '=' : '/';
       url += `${firstSymbol}${keys[index]}${secondSymbol}${values[index]}`;
     }
