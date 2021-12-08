@@ -29,7 +29,7 @@ function ProductPage({ products }) {
         <meta name='description' content='Login Page' />
       </Head>
       <main className='p-10'>
-        <Breadcrumb />
+        <Breadcrumb routes={['products']} />
         <div className='md:space-x-4 md:flex'>
           <ProductFilter />
           <section className='md:w-2/3 lg:w-4/5'>

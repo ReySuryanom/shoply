@@ -22,6 +22,7 @@ function LoginPage() {
             alt='Login'
             layout='fill'
             objectFit='contain'
+            priority
           />
         </div>
         <form className='flex flex-col w-full text-dark md:px-28 lg:w-1/2 lg:px-10'>

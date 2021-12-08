@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <nav className='flex items-center justify-between px-8 shadow-md bg-dark lg:py-5 lg:px-16'>
       <Link href='/' passHref>
-        <a className='relative ml-5 scale-125 top-5 md:ml-0 lg:scale-[1.75] lg:top-8'>
+        <a className='relative ml-5 scale-125 top-5 md:ml-0 lg:scale-[1.75] lg:top-8' role='button'>
           <Image
             src='/images/logo-Rey.webp'
             alt='Shoply Icon'

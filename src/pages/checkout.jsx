@@ -14,7 +14,7 @@ function CheckoutPage() {
         />
       </Head>
       <main className='p-10'>
-        <Breadcrumb />
+        <Breadcrumb routes={['cart']} />
         <header className='items-center hidden p-3 text-lg font-bold md:flex text-dark'>
           <h2 className='w-9/12 lg:w-11/12'>Product</h2>
           <h2 className='w-1/3 pl-16 lg:pl-20'>Price</h2>

@@ -4,7 +4,7 @@ import { Fragment } from 'react';
 import { GiShoppingCart } from 'react-icons/gi';
 import { Breadcrumb, Button, RatingProduct } from '../../components/ui';
 
-function DetailProductPage() {
+function DetailProductPage({ product }) {
   return (
     <Fragment>
       <Head>
@@ -12,7 +12,7 @@ function DetailProductPage() {
         <meta name='description' content='Login Page' />
       </Head>
       <main className='p-10'>
-        <Breadcrumb />
+        <Breadcrumb routes={['products', 'test']} />
         <div className='relative lg:flex lg:space-x-7'>
           <header className='lg:w-2/5'>
             <div className='relative bg-white shadow h-72 md:h-96'>

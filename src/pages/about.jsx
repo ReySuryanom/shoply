@@ -11,7 +11,7 @@ function AboutPage() {
         <meta name='description' content='About Page' />
       </Head>
       <main className='p-10'>
-        <Breadcrumb />
+        <Breadcrumb routes={['about']} />
         <div className='relative w-full lg:flex space-x-7'>
           <div className='relative w-2/5 h-72 md:h-96'>
             <Image
