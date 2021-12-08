@@ -27,7 +27,7 @@ export const getData = async (query) => {
     return data;
   } catch (error) {
     console.log(error);
-    throw new Error('Maaf, sepertinya url yang anda tuju tidak ada.');
+    throw new Error(error);
   }
 };
 
@@ -44,7 +44,7 @@ export const formatUrl = (query) => {
     const values = Object.values(query);
 
     for (let index = 0; index < keys.length; index++) {
-      const isSpecialCases = keys[index] === 'sort' || keys[index] === 'limit';
+      const isSpecialCases = keys[index] !== 'category';
       const firstSymbol = isSpecialCases
         ? url.includes('?')
           ? '&'

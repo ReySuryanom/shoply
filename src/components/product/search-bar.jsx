@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useProductContext } from '../../context/product-context';
-import { SEARCH_PRODUCT } from '../../reducers/actions';
+import { SET_QUERY } from '../../reducers/actions';
 import { Button } from '../ui';
 
 function SearchBar() {
@@ -15,7 +15,7 @@ function SearchBar() {
 
   const searchHandler = (event) => {
     if (event.key === 'Enter' || event['type'] === 'click') {
-      dispatch({ type: SEARCH_PRODUCT, payload: item });
+      dispatch({ type: SET_QUERY, payload: item });
     }
   };
 
@@ -25,14 +25,14 @@ function SearchBar() {
         <input
           className='w-full px-12 py-1.5 text-lg bg-white rounded-full shadow-sm'
           type='text'
-          placeholder='Search your item here (min. 3 characters to search)...'
+          placeholder='Search your item here...'
           ref={searchInput}
           value={item}
           onKeyPress={searchHandler}
           onChange={(e) => setItem(e.target.value)}
         />
         <Button
-          className='absolute left-4 top-3 min-h-[20px] min-w-[20px]'
+          className='absolute left-4 top-2  min-h-[20px] min-w-[20px]'
           eventHandler={searchHandler}
           tabIndex='-1'
         >

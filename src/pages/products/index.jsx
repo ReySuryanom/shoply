@@ -10,18 +10,19 @@ import {
   SortProduct,
 } from '../../components/product';
 
-export default function ProductPage({ products }) {
+export default function ProductPage({ products, context }) {
   const { state } = useProductContext();
   const [data, setData] = useState(products);
 
   useEffect(() => {
-    const filterredProeducts = products.filter((item) => {
+    const filterredProducts = products.filter((item) => {
       const regex = new RegExp(state.query, 'gi');
       return item.title.match(regex);
     });
-    setData(filterredProeducts);
+    setData(filterredProducts);
   }, [state.query, products]);
 
+  // console.log(context);
   return (
     <Fragment>
       <Head>
@@ -56,7 +57,13 @@ export async function getServerSideProps(context) {
   const { query } = context;
   let urlParams = formatUrl(query);
 
-  const products = await getData(urlParams);
+  let products = await getData(urlParams);
+
+  if (query?.max && query?.min) {
+    products = products.filter(
+      (item) => item.price > query.min && item.price < query.max
+    );
+  }
 
   return {
     props: { products, context: { query } },

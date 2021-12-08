@@ -27,7 +27,7 @@ function Breadcrumb({ routes = [] }) {
   });
 
   return (
-    <div className='px-2.5 py-3.5 bg-white mb-7 shadow-md rounded-md'>
+    <div className='px-2.5 py-3.5 bg-white mb-7 shadow-sm rounded-md'>
       <ul className='flex items-center text-base md:text-lg'>
         {previousPage('home', -1)}
         {routelinks}

@@ -1,2 +1,2 @@
-export const SEARCH_PRODUCT = 'SEARCH_PRODUCT';
+export const SET_QUERY = 'SET_QUERY';
 export const ADD_CART = 'ADD_CART';

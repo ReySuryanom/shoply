@@ -13,12 +13,13 @@ export const initialState = {
   products: [],
   carts: [],
   query: '',
+  range: { min: -1, max: -1 },
   isLoading: true,
 };
 
 export const product_reducer = (state, action) => {
   switch (action.type) {
-    case TYPE.SEARCH_PRODUCT:
+    case TYPE.SET_QUERY:
       return {
         ...state,
         query: action.payload,

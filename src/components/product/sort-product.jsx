@@ -6,33 +6,34 @@ function SortProduct() {
   const router = useRouter();
   const [sort] = useState(router.query?.sort || 'asc');
 
+  const isAlreadySort = (url) => {
+    const regex = new RegExp('[?|&]sort=(asc|desc)', 'g');
+    if (url.match('sort')) {
+      return url.replace(regex, '');
+    }
+    return url;
+  };
+
   const eventHandler = (e) => {
     e.preventDefault();
     const value = e.target.value;
-    const currentUrl = router.pathname;
-    const { query } = router;
-
-    if (hasObjectValue(query)) {
-      const keys = Object.keys(query).filter((params) => params !== 'sort');
-      const values = Object.values(query).filter(
-        (params) => params !== 'asc' && params !== 'desc'
-      );
-      const currentParams = `?${keys}=${values}`;
-      const url = `${currentUrl}${currentParams}&sort=${value}`;
-
-      router.push(url.replace('=&', ''));
-    } else {
-      const url = `${currentUrl}?sort=${value}`;
-
-      router.push(url.replace('=&', ''));
+    let symbol = '?';
+    const currentUrl = isAlreadySort(router.asPath);
+    console.log(currentUrl.includes('sort'));
+    if (currentUrl.includes('?')) {
+      symbol = '&';
     }
+
+    console.log(currentUrl);
+
+    router.push(`${currentUrl}${symbol}sort=${value}`);
   };
 
   return (
     <div className='flex items-center justify-end'>
       <small>Sort by Name</small>
       <select
-        className='px-1.5 py-1 rounded-full border-dark border ml-2'
+        className='px-1.5 py-1 rounded-full border-dark border ml-2 text-center'
         onChange={eventHandler}
         defaultValue={sort}
       >
