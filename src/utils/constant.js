@@ -1,4 +1,3 @@
-import tw from 'twin.macro';
 import { RiComputerLine } from 'react-icons/ri';
 import {
   GiTruck,
@@ -12,37 +11,37 @@ import {
 export const servicesList = [
   {
     text: 'Best Quality',
-    Icon: <GiAlliedStar tw='block m-auto text-6xl md:text-7xl' />,
+    Icon: <GiAlliedStar className='block m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Free Shipping',
-    Icon: <GiTruck tw='block m-auto text-6xl md:text-7xl' />,
+    Icon: <GiTruck className='block m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Warranty',
-    Icon: <GiRibbonMedal tw='block m-auto text-6xl md:text-7xl' />,
+    Icon: <GiRibbonMedal className='block m-auto text-6xl md:text-7xl' />,
   },
 ];
 
 export const partnerLogos = [
   {
     name: 'Jp Morgan',
-    style: tw`h-7`,
+    style: 'h-7',
     src: '/images/jp-morgan.png',
   },
   {
     name: 'Oysho',
-    style: tw`h-6`,
+    style: 'h-6',
     src: '/images/oysho.png',
   },
   {
     name: 'Pull Bear',
-    style: tw`h-5`,
+    style: 'h-5',
     src: '/images/pull-bear.png',
   },
   {
     name: 'Rosewood',
-    style: tw`h-8`,
+    style: 'h-8',
     src: '/images/rosewood.png',
   },
 ];

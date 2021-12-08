@@ -1,29 +1,23 @@
-import tw from 'twin.macro';
 import Image from 'next/image';
-import styled from '@emotion/styled';
 import { partnerLogos } from '../../utils/constant';
 
 function Partners() {
   return (
-    <PartnerSection>
-      <PartnerHeading>Partner Kami</PartnerHeading>
-      <LogoContainer>
-        {partnerLogos.map(({ src, name }, index) => (
-          <PartnerLogo key={src} variant={index}>
-            <Image src={src} layout='fill' alt={name} objectFit='contain' />
-          </PartnerLogo>
-        ))}
-      </LogoContainer>
-    </PartnerSection>
+    <section className='p-10'>
+      <h2 className='mb-10 text-4xl font-bold text-center md:text-5xl lg:mb-16'>
+        Partner Kami
+      </h2>
+      <div className='grid grid-cols-2 gap-8 md:grid-cols-4'>
+        {partnerLogos.map(({ src, name, style }) => {
+          return (
+            <section className={`relative ${style}`} key={src}>
+              <Image src={src} layout='fill' alt={name} objectFit='contain' />
+            </section>
+          );
+        })}
+      </div>
+    </section>
   );
 }
-
-const PartnerSection = tw.section`p-10`;
-const PartnerHeading = tw.h2`mb-10 text-4xl font-bold text-center md:text-5xl lg:mb-16`;
-const LogoContainer = tw.div`grid gap-8 grid-cols-2 md:grid-cols-4`;
-const PartnerLogo = styled.section(() => [
-  tw`relative`,
-  ({ variant }) => partnerLogos[variant].style,
-]);
 
 export default Partners;

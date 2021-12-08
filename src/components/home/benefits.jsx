@@ -1,20 +1,14 @@
-import tw from 'twin.macro';
-
 function Benefits({ text, Icon }) {
   return (
-    <BenefitContainer>
+    <div className='text-center md:px-24'>
       {Icon}
-      <BenefitHeading>{text}</BenefitHeading>
-      <BenefitParagraf>
+      <h3 className='text-2xl font-medium md:text-3xl'>{text}</h3>
+      <p className='text-base md:text-lg'>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
         consectetur, purus id
-      </BenefitParagraf>
-    </BenefitContainer>
+      </p>
+    </div>
   );
 }
-
-const BenefitContainer = tw.div`text-center md:px-24`;
-const BenefitHeading = tw.h3`text-2xl font-medium md:text-3xl`;
-const BenefitParagraf = tw.p`text-base md:text-lg`;
 
 export default Benefits;

@@ -1,4 +1,3 @@
-import tw from 'twin.macro';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { hasObjectValue } from '../../utils/helper';
@@ -30,17 +29,18 @@ function SortProduct() {
   };
 
   return (
-    <SelectContainer>
+    <div className='flex items-center justify-end'>
       <small>Sort by Name</small>
-      <Selection onChange={eventHandler} defaultValue={sort}>
+      <select
+        className='px-1.5 py-1 rounded-full border-dark border ml-2'
+        onChange={eventHandler}
+        defaultValue={sort}
+      >
         <option value='asc'>ASC</option>
         <option value='desc'>DESC</option>
-      </Selection>
-    </SelectContainer>
+      </select>
+    </div>
   );
 }
-
-const SelectContainer = tw.div`flex items-center justify-end`;
-const Selection = tw.select`px-1.5 py-1 rounded-full border-dark border ml-2`;
 
 export default SortProduct;

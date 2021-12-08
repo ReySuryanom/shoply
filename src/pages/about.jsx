@@ -1,4 +1,3 @@
-import tw from 'twin.macro';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
@@ -11,24 +10,26 @@ function AboutPage() {
         <title>About Us | Shoply.</title>
         <meta name='description' content='About Page' />
       </Head>
-      <MainContent>
+      <main className='p-10'>
         <Breadcrumb />
-        <AboutWrapper>
-          <ImageContainer>
+        <div className='relative w-full lg:flex space-x-7'>
+          <div className='relative w-2/5 h-72 md:h-96'>
             <Image
+              className='rounded-md md:!object-cover md:object-top'
               src='/images/about.png'
-              tw='rounded-md md:!object-cover md:object-top'
               alt='Author'
               layout='fill'
               objectFit='contain'
               priority
             />
-          </ImageContainer>
-          <AboutSection>
-            <AboutContainer>
-              <AboutHeading>Tentang Kami</AboutHeading>
-            </AboutContainer>
-            <AboutParagraf>
+          </div>
+          <section className='relative w-3/5'>
+            <div className='relative my-5 lg:mt-0'>
+              <h2 className='text-xl font-bold uppercase md:text-2xl after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6'>
+                Tentang Kami
+              </h2>
+            </div>
+            <p className='text-justify md:text-lg'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatibus, laborum similique dicta aliquam libero, cumque iusto
               quod temporibus dolorum sequi nisi exercitationem nam adipisci
@@ -36,20 +37,12 @@ function AboutPage() {
               consectetur dolores! Blanditiis, exercitationem voluptatem,
               expedita velit veniam odio laudantium, non magnam est minima
               corporis magni enim assumenda.
-            </AboutParagraf>
-          </AboutSection>
-        </AboutWrapper>
-      </MainContent>
+            </p>
+          </section>
+        </div>
+      </main>
     </Fragment>
   );
 }
-
-const MainContent = tw.main`p-10`;
-const ImageContainer = tw.div`relative h-72 md:h-96 w-2/5`;
-const AboutWrapper = tw.div`lg:flex w-full relative space-x-7`;
-const AboutSection = tw.section`relative w-3/5`;
-const AboutContainer = tw.div`relative my-5 lg:mt-0`;
-const AboutHeading = tw.h2`text-xl font-bold uppercase md:text-2xl after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6`;
-const AboutParagraf = tw.h2`text-justify md:text-lg`;
 
 export default AboutPage;

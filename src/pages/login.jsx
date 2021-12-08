@@ -1,4 +1,3 @@
-import tw from 'twin.macro';
 import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
@@ -16,40 +15,47 @@ function LoginPage() {
         <title>Login | Shoply.</title>
         <meta name='description' content='Login Page' />
       </Head>
-      <MainContent>
-        <ImageContainer>
-          <Image src='/images/login.png' alt='Login' layout='fill' objectFit='contain' />
-        </ImageContainer>
-        <LoginForm>
-          <MainHeading>SHOPLY.</MainHeading>
-          <InputWrapper>
-            <InputContainer>
-              <InputComponent placeholder='Username' type='text' />
-              <AiOutlineUser tw='relative text-2xl left-3 top-2 lg:top-3' />
-            </InputContainer>
-            <InputContainer>
-              <InputComponent placeholder='Password' type='password' />
-              <AiOutlineLock tw='relative text-2xl left-3 top-2 lg:top-3' />
-            </InputContainer>
-          </InputWrapper>
-          <LoginButton text='Login' eventHandler={submitHandler} />
-          <Text>lupa password?</Text>
-        </LoginForm>
-      </MainContent>
+      <main className='items-center max-h-screen px-10 py-20 bg-white lg:flex lg:px-32'>
+        <div className='relative hidden w-1/2 h-96 lg:block'>
+          <Image
+            src='/images/login.png'
+            alt='Login'
+            layout='fill'
+            objectFit='contain'
+          />
+        </div>
+        <form className='flex flex-col w-full text-dark md:px-28 lg:w-1/2 lg:px-10'>
+          <h1 className='mb-5 text-4xl font-bold text-center md:text-5xl lg:text-6xl'>
+            SHOPLY.
+          </h1>
+          <div className='space-y-12'>
+            <div className='relative'>
+              <input
+                className='absolute w-full px-10 py-2.5 bg-[#F5F7FB] rounded-full lg:py-3.5'
+                placeholder='Username'
+                type='text'
+              />
+              <AiOutlineUser className='relative text-2xl left-3 top-2 lg:top-3' />
+            </div>
+            <div className='relative'>
+              <input
+                className='absolute w-full px-10 py-2.5 bg-[#F5F7FB] rounded-full lg:py-3.5'
+                placeholder='Password'
+                type='password'
+              />
+              <AiOutlineLock className='relative text-2xl left-3 top-2 lg:top-3' />
+            </div>
+          </div>
+          <Button
+            className='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5'
+            text='Login'
+            eventHandler={submitHandler}
+          />
+          <p className='text-center'>lupa password?</p>
+        </form>
+      </main>
     </Fragment>
   );
 }
-
-const MainContent = tw.main`max-h-screen px-10 py-20 bg-white lg:flex items-center lg:px-32`;
-const MainHeading = tw.h1`mb-5 text-4xl font-bold text-center md:text-5xl lg:text-6xl`;
-const ImageContainer = tw.div`hidden relative h-96 w-1/2 lg:block`;
-const LoginForm = tw.form`flex flex-col w-full text-dark md:px-28 lg:w-1/2 lg:px-10`;
-const InputWrapper = tw.div`space-y-12`;
-const InputContainer = tw.div`relative`;
-const InputComponent = tw.input`absolute w-full px-10 py-2.5 bg-[#F5F7FB] rounded-full lg:py-3.5`;
-const Text = tw.p`text-center`;
-const LoginButton = tw(
-  Button
-)`text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5`;
 
 export default LoginPage;

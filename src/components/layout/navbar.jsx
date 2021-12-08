@@ -1,67 +1,55 @@
-import tw from 'twin.macro';
 import Link from 'next/link';
 import Image from 'next/image';
 import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
 import { Button } from '../ui';
 import { navbarLinks } from '../../utils/constant';
 import { useRouter } from 'next/router';
-import { hasObjectValue } from '../../utils/helper';
 
 function Navbar() {
   const router = useRouter();
   const route = router.pathname;
 
-  // console.log(hasObjectValue(router.query), router);
-
   return (
-    <NavbarWrapper>
+    <nav className='flex items-center justify-between px-8 shadow-md bg-dark lg:py-5 lg:px-16'>
       <Link href='/' passHref>
-        <NavbarBrand>
+        <a className='relative ml-5 scale-125 top-5 md:ml-0 lg:scale-[1.75] lg:top-8'>
           <Image
             src='/images/logo-Rey.webp'
             alt='Shoply Icon'
             width={50}
             height={50}
           />
-        </NavbarBrand>
+        </a>
       </Link>
-      <ListContainer>
+      <ul className='hidden text-base md:flex md:items-center md:space-x-9 lg:space-x-28'>
         {navbarLinks.map(({ text, link }) => {
-          const defaultStyle = ' list';
+          const defaultStyle = ' text-white cursor-pointer lg:text-xl list';
           const isCurrentPage = link === route && 'list-style';
 
           return (
-            <Page key={text}>
+            <li className='relative text-center cursor-default' key={text}>
               <Link href={link} passHref>
-                <ListItem className={isCurrentPage + defaultStyle}>
-                  {text}
-                </ListItem>
+                <a className={isCurrentPage + defaultStyle}>{text}</a>
               </Link>
-            </Page>
+            </li>
           );
         })}
-      </ListContainer>
-      <ButtonContainer>
-        <Button tw='md:hidden'>
-          <GiHamburgerMenu tw='text-white md:hidden text-4xl' />
+      </ul>
+      <div className='flex items-center bg-dark'>
+        <Button className='md:hidden'>
+          <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
-        <Button tw='hidden md:block' to='checkout'>
-          <GiShoppingCart tw='hidden md:block text-white text-3xl' />
+        <Button className='hidden md:block' to='checkout'>
+          <GiShoppingCart className='hidden text-3xl text-white md:block' />
         </Button>
-        <LoginButton text='Login' to='login' />
-      </ButtonContainer>
-    </NavbarWrapper>
+        <Button
+          className='hidden py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white lg:py-1 px-6 lg:text-xl'
+          text='Login'
+          to='login'
+        />
+      </div>
+    </nav>
   );
 }
-
-const NavbarWrapper = tw.nav`flex items-center justify-between shadow-md bg-dark px-8 lg:py-5 lg:px-16`;
-const NavbarBrand = tw.a`relative ml-5 scale-125 top-5 md:ml-0 lg:scale-[1.75] lg:top-8`;
-const ListContainer = tw.ul`hidden text-base md:flex md:items-center md:space-x-9 lg:space-x-28`;
-const Page = tw.li`cursor-default relative text-center`;
-const ListItem = tw.a`text-white cursor-pointer lg:text-xl`;
-const ButtonContainer = tw.div`flex items-center bg-dark`;
-const LoginButton = tw(
-  Button
-)`hidden px-5 py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] md:block text-lg bg-white lg:py-1 px-6 lg:text-xl`;
 
 export default Navbar;
