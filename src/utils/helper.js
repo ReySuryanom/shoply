@@ -36,12 +36,24 @@ export const hasObjectValue = (value) => {
   return false;
 };
 
-export const formatUrl = (query) => {
-  let url = 'products';
+const moveCategoryKeyToFront = (object) => {
+  if (!!object['category']) {
+    const temp = object['category'];
+    delete object['category'];
 
-  if (hasObjectValue(query)) {
-    const keys = Object.keys(query);
-    const values = Object.values(query);
+    object = { category: temp, ...object };
+  }
+  return object;
+};
+
+export const formatUrl = (query) => {
+  let url = 'products',
+    finalQuery = query;
+  if (hasObjectValue(finalQuery)) {
+    finalQuery = moveCategoryKeyToFront(finalQuery);
+
+    const keys = Object.keys(finalQuery);
+    const values = Object.values(finalQuery);
 
     for (let index = 0; index < keys.length; index++) {
       const isSpecialCases = keys[index] !== 'category';

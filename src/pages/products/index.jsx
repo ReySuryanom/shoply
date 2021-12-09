@@ -21,8 +21,10 @@ export default function ProductPage({ products, context }) {
     });
     setData(filterredProducts);
   }, [state.query, products]);
-
-  console.log(context, products, data);
+  // const azz = { max: 0, category: 'text', min: 10 };
+  // delete azz['category'];
+  // console.log(azz, { f: 'f', ...azz }, !!azz.category);
+  console.log(context.query, context.urlParams);
   return (
     <Fragment>
       <Head>
