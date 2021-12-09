@@ -7,6 +7,7 @@ import {
   GiLargeDress,
   GiClothes,
 } from 'react-icons/gi';
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 export const servicesList = [
   {
@@ -20,6 +21,29 @@ export const servicesList = [
   {
     text: 'Warranty',
     Icon: <GiRibbonMedal className='block m-auto text-6xl md:text-7xl' />,
+  },
+];
+
+export const iconlists = [
+  {
+    name: 'Facebook',
+    link: 'https://www.facebook.com/hacktiv8id/',
+    icon: <FaFacebook />,
+  },
+  {
+    name: 'Instagram',
+    link: 'https://www.instagram.com/hacktiv8id/',
+    icon: <FaInstagram />,
+  },
+  {
+    name: 'Twitter',
+    link: 'https://www.twitter.com/hacktiv8id',
+    icon: <FaTwitter />,
+  },
+  {
+    name: 'Youtube',
+    link: 'https://www.youtube.com/c/hacktiv8',
+    icon: <FaYoutube />,
   },
 ];
 

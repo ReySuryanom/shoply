@@ -21,7 +21,7 @@
   }
 
   button {
-    @apply min-h-[44px] min-w-[44px] inline-block;
+    @apply min-h-[44px] min-w-[44px] relative inline-block;
   }
 
   .list:hover {

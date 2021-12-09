@@ -28,7 +28,7 @@ function CardItem({ id, title, image, rating: { rate, count }, price }) {
           priority
         />
       </div>
-      <div className='relative w-full text-center bg-white py-3.5 space-y-1.5 md:pt-0'>
+      <div className='relative w-full h-full text-center bg-white py-3.5 space-y-1.5 md:pt-0'>
         <h3 className='text-lg font-bold lg:text-xl'>{trimmingText(title)}</h3>
         <RatingProduct rate={rate} />
         <p className='text-gray-500 text-base !mt-0'>{count} reviews</p>

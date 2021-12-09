@@ -12,24 +12,24 @@ export default function AboutPage() {
       </Head>
       <main className='p-10'>
         <Breadcrumb routes={['about']} />
-        <div className='relative w-full lg:flex space-x-7'>
-          <div className='relative w-2/5 h-72 md:h-96'>
+        <div className='relative w-full md:flex md:space-x-7'>
+          <div className='relative w-full md:w-2/5 h-60 lg:h-72'>
             <Image
-              className='rounded-md md:!object-cover md:object-top'
+              className='rounded-md md:!object-cover object-top'
               src='/images/about.png'
               alt='Author'
               layout='fill'
-              objectFit='contain'
+              objectFit='cover'
               priority
             />
           </div>
-          <section className='relative w-3/5'>
-            <div className='relative my-5 lg:mt-0'>
+          <section className='relative w-full md:w-3/5'>
+            <div className='relative my-5 md:mt-0'>
               <h2 className='text-xl font-bold uppercase md:text-2xl after:left-0 after:border-dark after:border-solid after:-bottom-1 after:absolute after:border-b-4 after:w-1/6'>
                 Tentang Kami
               </h2>
             </div>
-            <p className='text-justify md:text-lg'>
+            <p className='text-justify md:text-base lg:text-lg'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Voluptatibus, laborum similique dicta aliquam libero, cumque iusto
               quod temporibus dolorum sequi nisi exercitationem nam adipisci
