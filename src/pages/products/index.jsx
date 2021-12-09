@@ -22,7 +22,7 @@ export default function ProductPage({ products, context }) {
     setData(filterredProducts);
   }, [state.query, products]);
 
-  console.log(context, products,data);
+  console.log(context, products, data);
   return (
     <Fragment>
       <Head>
@@ -53,7 +53,7 @@ export default function ProductPage({ products, context }) {
   );
 }
 
-export async function getServerSideProps(context) { 
+export async function getServerSideProps(context) {
   const { query } = context;
   let urlParams = formatUrl(query);
 
@@ -66,6 +66,6 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { products, context: { query } },
+    props: { products, context: { query, urlParams } },
   };
 }
