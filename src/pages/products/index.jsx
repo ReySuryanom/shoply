@@ -12,6 +12,7 @@ import {
 
 export default function ProductPage({ products, context }) {
   const { state } = useProductContext();
+  const [filterToggler, setFilterToggler] = useState(false);
   const [data, setData] = useState(products);
 
   useEffect(() => {
@@ -21,10 +22,7 @@ export default function ProductPage({ products, context }) {
     });
     setData(filterredProducts);
   }, [state.query, products]);
-  // const azz = { max: 0, category: 'text', min: 10 };
-  // delete azz['category'];
-  // console.log(azz, { f: 'f', ...azz }, !!azz.category);
-  console.log(context.query, context.urlParams);
+
   return (
     <Fragment>
       <Head>
@@ -34,11 +32,17 @@ export default function ProductPage({ products, context }) {
       <main className='p-10'>
         <Breadcrumb routes={['products']} />
         <div className='md:space-x-4 md:flex'>
-          <ProductFilter />
+          <ProductFilter
+            filterToggler={setFilterToggler}
+            filterSection={filterToggler}
+          />
           <section className='md:w-2/3 lg:w-4/5'>
             <SearchBar />
             <div className='flex items-center justify-between !mt-2 md:inline-block md:text-right md:w-6/12'>
-              <Button className='min-w-[35px] min-h-[35px] md:hidden'>
+              <Button
+                className='min-w-[35px] min-h-[35px] md:hidden'
+                eventHandler={() => setFilterToggler(true)}
+              >
                 <GiSettingsKnobs className='min-w-[35px] min-h-[35px]' />
               </Button>
               <SortProduct />

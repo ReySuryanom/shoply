@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { hasObjectValue } from '../../utils/helper';
 
 function SortProduct() {
   const router = useRouter();
