@@ -8,9 +8,9 @@ function Partners() {
         Partner Kami
       </h2>
       <div className='grid grid-cols-2 gap-8 md:grid-cols-4'>
-        {partnerLogos.map(({ src, name, style }) => {
+        {partnerLogos.map(({ src, name }) => {
           return (
-            <section className={`relative ${style}`} key={src}>
+            <section className='relative h-7' key={src}>
               <Image src={src} layout='fill' alt={name} objectFit='contain' />
             </section>
           );

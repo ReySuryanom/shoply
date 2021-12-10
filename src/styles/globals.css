@@ -25,10 +25,10 @@
   }
 
   .list:hover {
-    @apply font-normal after:border-b-2 after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2;
+    @apply font-normal after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2;
   }
 
   .list-style {
-    @apply !font-bold after:border-b-2 after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2;
+    @apply !font-bold after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2;
   }
 }

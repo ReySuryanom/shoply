@@ -12,6 +12,7 @@ import * as TYPE from './actions';
 export const initialState = {
   products: [],
   carts: [],
+  stock: new Array(20).fill(20),
   query: '',
   range: { min: -1, max: -1 },
   isLoading: true,
@@ -19,19 +20,34 @@ export const initialState = {
 
 export const product_reducer = (state, action) => {
   switch (action.type) {
-    case TYPE.SET_QUERY:
+    case TYPE.SET_QUERY: {
       return {
         ...state,
         query: action.payload,
       };
-    case TYPE.ADD_CART:
+    }
+    case TYPE.ADD_CART: {
       const totalCarts = state.carts;
 
       return {
         ...state,
         carts: [...totalCarts, action.payload],
       };
-
+    }
+    case TYPE.UPDATE_STOCK: {
+      const updatedStock = [];
+      return {
+        ...state,
+        stock: [updatedStock],
+      };
+    }
+    case TYPE.SUBSTRACT_STOCK: {
+      const updatedStock = [];
+      return {
+        ...state,
+        stock: [updatedStock],
+      };
+    }
     default:
       throw new Error(`No Matching "${action.type}" - action type`);
   }

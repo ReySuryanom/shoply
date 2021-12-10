@@ -50,23 +50,19 @@ export const iconlists = [
 export const partnerLogos = [
   {
     name: 'Jp Morgan',
-    style: 'h-7',
-    src: '/images/jp-morgan.png',
+    src: '/images/jp-morgan.svg',
   },
   {
     name: 'Oysho',
-    style: 'h-6',
-    src: '/images/oysho.png',
+    src: '/images/oysho.svg',
   },
   {
     name: 'Pull Bear',
-    style: 'h-5',
-    src: '/images/pull-bear.png',
+    src: '/images/pull-bear.svg',
   },
   {
     name: 'Rosewood',
-    style: 'h-8',
-    src: '/images/rosewood.png',
+    src: '/images/rosewood.svg',
   },
 ];
 
