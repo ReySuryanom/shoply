@@ -27,11 +27,25 @@ export const product_reducer = (state, action) => {
       };
     }
     case TYPE.ADD_CART: {
+      const item = action.payload;
       const totalCarts = state.carts;
+
+      const removeDuplicateCarts = totalCarts.filter(
+        (cart) => cart.id !== item.id
+      );
 
       return {
         ...state,
-        carts: [...totalCarts, action.payload],
+        carts: [...removeDuplicateCarts, action.payload],
+      };
+    }
+    case TYPE.REMOVE_CART: {
+      const totalCarts = state.carts;
+      const newCarts = totalCarts.filter((cart) => cart.id !== action.payload);
+
+      return {
+        ...state,
+        carts: newCarts,
       };
     }
     case TYPE.UPDATE_STOCK: {

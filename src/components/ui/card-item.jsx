@@ -20,7 +20,7 @@ function CardItem({ id, title, image, rating: { rate, count }, price }) {
       <div className='relative w-full pt-6 bg-white md:hidden' />
       <div className='relative w-auto h-64 bg-white'>
         <Image
-          className='md:scale-75'
+          className='scale-90 md:scale-75'
           src={image}
           alt={title}
           layout='fill'

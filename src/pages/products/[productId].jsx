@@ -2,9 +2,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { GiShoppingCart } from 'react-icons/gi';
+import QuantityButton from '../../components/cart/quantity-button';
 import { Breadcrumb, Button, RatingProduct } from '../../components/ui';
 import { useProductContext } from '../../context/product-context';
 import { ADD_CART } from '../../reducers/actions';
+import { getData } from '../../utils/helper';
 
 export default function DetailProductPage({ product }) {
   const { state, dispatch } = useProductContext();
@@ -59,15 +61,11 @@ export default function DetailProductPage({ product }) {
             <h3 className='-mt-1.5 text-2xl font-bold lining-nums tabular-nums md:text-3xl lg:mt-auto'>
               {product.price}$
             </h3>
-            <div className='flex w-1/2 my-3 md:w-3/12 lg:w-3/12'>
-              <Button className='w-1/3 text-3xl text-white bg-dark' text='-' />
-              <input
-                className='w-1/3 text-xl font-bold text-center border-t-2 border-b-2 border-dark lg:pl-3'
-                value={0}
-                type='number'
-                readOnly
-              />
-              <Button className='w-1/3 text-3xl text-white bg-dark' text='+' />
+            <div className='flex items-center w-full my-3'>
+              <QuantityButton className='md:w-3/12 lg:w-3/12' />
+              <p className='font-semibold'>
+                {state.stock[product.id - 1]} stock left
+              </p>
             </div>
             <Button
               className='w-full py-2.5 px-12 mt-3 text-xl text-white rounded-sm bg-dark flex items-center md:max-w-xs md:px-20'
@@ -84,8 +82,7 @@ export default function DetailProductPage({ product }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('https://fakestoreapi.com/products');
-  const products = await res.json();
+  const products = await getData('products');
 
   // Get the paths we want to pre-render based on products
   const paths = products.map((product) => ({
