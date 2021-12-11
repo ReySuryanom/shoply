@@ -13,7 +13,6 @@ export default function LoginPage() {
     <Fragment>
       <Head>
         <title>Login | Shoply.</title>
-        <meta name='description' content='Login Page' />
       </Head>
       <main className='items-center max-h-screen px-10 py-20 bg-white lg:flex lg:px-32'>
         <div className='relative hidden w-1/2 h-96 lg:block'>

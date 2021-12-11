@@ -37,7 +37,7 @@ export default function DetailProductPage({ product }) {
     <Fragment>
       <Head>
         <title>{product.title} | Shoply.</title>
-        <meta name='description' content='Login Page' />
+        <meta name='description' content={product.description} />
       </Head>
       <main className='p-10'>
         <Breadcrumb routes={['products', product.category]} />

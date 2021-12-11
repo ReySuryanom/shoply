@@ -5,6 +5,10 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
+          <meta
+            name='description'
+            content='Shoply merupakan web e-commerce yang dibuat oleh Muhammad Raihan S dan Muhammad Rian. Kami berusaha mendesign dengan tema modern dan menggunakan framework Next agar pengguna dapat merasakan pengalaman yang baik.'
+          />
           <link rel='preconnect' href='https://fonts.googleapis.com' />
           <link
             rel='preconnect'

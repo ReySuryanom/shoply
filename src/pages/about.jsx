@@ -8,7 +8,10 @@ export default function AboutPage() {
     <Fragment>
       <Head>
         <title>About Us | Shoply.</title>
-        <meta name='description' content='About Page' />
+        <meta
+          name='description'
+          content='Shoply merupakan web e-commerce yang dibuat oleh Muhammad Raihan S dan Muhammad Rian. Tujuan dibuatnya web ini untuk penilaian final project kedua kami.'
+        />
       </Head>
       <main className='p-10'>
         <Breadcrumb routes={['about']} />

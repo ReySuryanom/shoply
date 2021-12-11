@@ -20,7 +20,7 @@ export default function HomePage({ products }) {
         <title>Shoply | Situs Jual Beli Online Terlengkap, Murah & Aman</title>
         <meta
           name='description'
-          content='Created by Muhammad Raihan and Muhammad Rian'
+          content='Shoply merupakan web e-commerce yang dibuat oleh Muhammad Raihan S dan Muhammad Rian. Kami berusaha mendesign dengan tema modern dan menggunakan framework Next agar pengguna dapat merasakan pengalaman yang baik.'
         />
       </Head>
       <header className='px-10 py-16 my-5 bg-white md:bg-hero md:bg-no-repeat md:bg-right-top lg:py-20'>

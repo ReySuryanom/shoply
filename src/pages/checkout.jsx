@@ -10,11 +10,7 @@ export default function CheckoutPage() {
   return (
     <Fragment>
       <Head>
-        <title>Shoply | Situs Jual Beli Online Terlengkap, Murah & Aman</title>
-        <meta
-          name='description'
-          content='Created by Muhammad Raihan and Muhammad Rian'
-        />
+        <title>Checkout | Shoply</title>
       </Head>
       <main className='p-10'>
         <Breadcrumb routes={['cart']} />
