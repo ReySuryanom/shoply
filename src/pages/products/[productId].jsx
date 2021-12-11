@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { Fragment } from 'react';
 import { GiShoppingCart } from 'react-icons/gi';
+import { useToasts } from 'react-toast-notifications';
 import QuantityButton from '../../components/cart/quantity-button';
 import { Breadcrumb, Button, RatingProduct } from '../../components/ui';
 import { useProductContext } from '../../context/product-context';
@@ -9,6 +10,7 @@ import { ADD_CART } from '../../reducers/actions';
 import { getData } from '../../utils/helper';
 
 export default function DetailProductPage({ product }) {
+  const { addToast } = useToasts();
   const { state, dispatch } = useProductContext();
   const ProductImages = (className, priority = false) => (
     <div className={className}>
@@ -25,7 +27,9 @@ export default function DetailProductPage({ product }) {
 
   const addToCart = (e) => {
     e.preventDefault();
+    const message = 'Item has been successfully added.';
     dispatch({ type: ADD_CART, payload: product });
+    addToast(message, { appearance: 'success' });
     console.log(state.carts);
   };
 
@@ -95,8 +99,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { productId } }) {
-  const res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-  const product = await res.json();
+  const product = await getData(`products/${productId}`);
 
   // Pass post data to the page via props
   return { props: { product } };

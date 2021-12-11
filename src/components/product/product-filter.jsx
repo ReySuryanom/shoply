@@ -1,13 +1,17 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
+import { useToasts } from 'react-toast-notifications';
 import { categoriesList } from '../../utils/constant';
 import { Button } from '../ui';
 
 function ProductFilter({ filterSection, filterToggler }) {
   const router = useRouter();
+  const { addToast } = useToasts();
   const [filter, setFilter] = useState({ category: '', min: '', max: '' });
-  const isFilterOpen = filterSection ? 'fixed md:sticky' : 'hidden md:block md:sticky';
+  const isFilterOpen = filterSection
+    ? 'fixed md:sticky'
+    : 'hidden md:block md:sticky';
 
   const eventHandler = (event) => {
     const key = event.target.name;
@@ -19,16 +23,20 @@ function ProductFilter({ filterSection, filterToggler }) {
 
   const applyButton = (event) => {
     event.preventDefault();
-    if (!filter.category && (!filter.max || !filter.min) ) {
-      alert('f')
+    const { category, min, max } = filter;
+
+    if (!min || !max || !category) {
+      const message = 'Invalid option, please select filters correctly';
+      addToast(message, { appearance: 'error' });
       return;
     }
+    // console.log(!filter && !max && !min)
     let route = '/products';
-    route += !!filter.category ? `?category=${filter.category}` : '';
+    route += !!category ? `?category=${category}` : '';
 
     const symbol = route.includes('?category') ? '&' : '?';
 
-    route += !!filter.min ? `${symbol}min=${filter.min}&max=${filter.max}` : '';
+    route += !!min ? `${symbol}min=${min}&max=${max}` : '';
 
     router.push(route);
   };

@@ -30,7 +30,7 @@ function SortProduct() {
 
   return (
     <div className='flex items-center justify-end'>
-      <small>Sort by Name</small>
+      <small>Sort by Id</small>
       <select
         className='px-1.5 py-1 rounded-full border-dark border ml-2 text-center'
         onChange={eventHandler}

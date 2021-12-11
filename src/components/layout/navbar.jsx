@@ -13,14 +13,10 @@ function Navbar() {
   const isNavbarOpen = navbar
     ? 'flex flex-col absolute right-0 space-y-2 py-2 top-14 bg-dark w-full md:w-auto !text-right'
     : 'hidden md:flex';
-  {
-    /* <div className=''></div> */
-  }
+  
   const navbarTogglers = () => {
     setNavbar((navbar) => !navbar);
   };
-
-  console.log(navbar);
 
   return (
     <nav className='relative flex items-center justify-between px-8 shadow-md bg-dark md:py-0 lg:py-5 lg:px-16'>
@@ -37,24 +33,17 @@ function Navbar() {
           />
         </a>
       </Link>
-      <ul
-        className={`${isNavbarOpen} z-10 text-center md:static md:flex-row md:items-center md:space-y-0 md:space-x-9 lg:space-x-28`}
-      >
+      <ul className={`${isNavbarOpen} z-10 text-center md:static md:flex-row md:items-center md:space-y-0 md:space-x-9 lg:space-x-28`}>
         {navbarLinks.map(({ text, link }) => {
-          const defaultStyle =
-            ' after:border-0 md:after:border-b-2 md:p-0 text-white text-lg md:text-base cursor-pointer lg:text-xl list';
+          const defaultStyle = 'after:border-0 md:after:border-b-2 md:p-0 text-white text-lg md:text-base lg:text-xl list';
           const isCurrentPage = link === route;
+          const listStyle = `${isCurrentPage && 'bg-[#302E2C] md:bg-transparent'} relative cursor-default pr-3 py-1.5 md:p-0 rounded-lg mx-6 md:mx-0 md:rounded-none`;
 
           return (
-            <li
-              className={`${
-                isCurrentPage && 'bg-[#302E2C] md:bg-transparent'
-              } relative cursor-default pr-3 py-1.5 md:p-0 rounded-lg mx-6 md:mx-0 md:rounded-none`}
-              key={text}
-            >
+            <li className={listStyle} key={text}>
               <Link href={link} passHref>
                 <a
-                  className={`${isCurrentPage && 'list-item'}${defaultStyle}`}
+                  className={`${isCurrentPage && 'list-style'} ${defaultStyle}`}
                   onClick={() => setNavbar(false)}
                   role='button'
                 >

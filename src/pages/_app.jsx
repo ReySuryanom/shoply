@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { ProductProvider } from '../context/product-context';
 import { Footer, Navbar } from '../components/layout';
 import { useEffect } from 'react';
+import { ToastProvider } from 'react-toast-notifications';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -25,17 +26,19 @@ function MyApp({ Component, pageProps }) {
   }, [router]);
 
   return (
-    <ProductProvider>
-      <Head>
-        <link
-          rel='stylesheet'
-          href='https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css'
-        />
-      </Head>
-      <Navbar />
-      <Component {...pageProps} />
-      <Footer />
-    </ProductProvider>
+    <ToastProvider autoDismiss={true} autoDismissTimeout={3000} placement='bottom-right'>
+      <ProductProvider>
+        <Head>
+          <link
+            rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css'
+          />
+        </Head>
+        <Navbar />
+        <Component {...pageProps} />
+        <Footer />
+      </ProductProvider>
+    </ToastProvider>
   );
 }
 

@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "next": "12.0.4",
-    "nprogress": "^0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
@@ -18,8 +17,10 @@
     "autoprefixer": "^10.4.0",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "nprogress": "^0.2.0",
     "postcss": "^8.4.1",
     "react-icons": "^4.3.1",
+    "react-toast-notifications": "^2.5.1",
     "tailwindcss": "^2.2.19"
   }
 }
