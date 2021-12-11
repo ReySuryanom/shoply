@@ -55,7 +55,7 @@ function Navbar() {
               <Link href={link} passHref>
                 <a
                   className={`${isCurrentPage && 'list-item'}${defaultStyle}`}
-                  onClick={navbarTogglers}
+                  onClick={() => setNavbar(false)}
                   role='button'
                 >
                   {text}
@@ -69,7 +69,7 @@ function Navbar() {
         <Button className='md:hidden' eventHandler={navbarTogglers}>
           <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
-        <Button className='hidden' to='checkout'>
+        <Button className='hidden md:block' to='checkout'>
           <GiShoppingCart className='hidden text-3xl text-white md:block' />
         </Button>
         <Button

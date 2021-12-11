@@ -52,7 +52,6 @@ export default function LoginPage() {
             text='Login'
             eventHandler={submitHandler}
           />
-          <p className='text-center'>lupa password?</p>
         </form>
       </main>
     </Fragment>
