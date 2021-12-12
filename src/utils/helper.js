@@ -20,6 +20,21 @@ export const createRatingStars = (rate) => {
   return starIcons;
 };
 
+export const didUserEnterValidOption = (filter) => {
+  const { category, min, max } = filter;
+  const emptyRange = max === '' && min === '';
+  const isThereInput = !(
+    (min === '' && max !== '') ||
+    (min !== '' && max === '')
+  );
+
+  return (
+    (!emptyRange && isThereInput) ||
+    (category && !(emptyRange || !emptyRange)) ||
+    (category && emptyRange)
+  );
+};
+
 export const getData = async (query) => {
   try {
     const res = await fetch(`${BASE_URL}${query}`);
@@ -34,16 +49,6 @@ export const getData = async (query) => {
 export const hasObjectValue = (value) => {
   for (var i in value) return true;
   return false;
-};
-
-const moveCategoryKeyToFront = (object) => {
-  if (!!object['category']) {
-    const temp = object['category'];
-    delete object['category'];
-
-    object = { category: temp, ...object };
-  }
-  return object;
 };
 
 export const formatUrl = (query) => {
@@ -68,4 +73,14 @@ export const formatUrl = (query) => {
   }
 
   return url;
+};
+
+const moveCategoryKeyToFront = (object) => {
+  if (!!object['category']) {
+    const temp = object['category'];
+    delete object['category'];
+
+    object = { category: temp, ...object };
+  }
+  return object;
 };

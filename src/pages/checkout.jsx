@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Fragment } from 'react';
-import CartItem from '../components/cart/cart-item';
+import { CartItem } from '../components/cart';
 import { Breadcrumb, Button } from '../components/ui';
 import { useProductContext } from '../context/product-context';
 

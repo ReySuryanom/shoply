@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { FiArrowRight } from 'react-icons/fi';
 import { Button, CardItem } from '../ui';
 
-function ProductList({ products }) {
+function MainProduct({ products }) {
   return (
     <Fragment>
       <div className='mx-10'>
@@ -26,4 +26,4 @@ function ProductList({ products }) {
   );
 }
 
-export default ProductList;
+export default MainProduct;

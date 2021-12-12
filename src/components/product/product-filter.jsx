@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { useToasts } from 'react-toast-notifications';
 import { categoriesList } from '../../utils/constant';
+import { didUserEnterValidOption } from '../../utils/helper';
 import { Button } from '../ui';
 
 function ProductFilter({ filterSection, filterToggler }) {
@@ -21,24 +22,22 @@ function ProductFilter({ filterSection, filterToggler }) {
     });
   };
 
-  const applyButton = (event) => {
-    event.preventDefault();
+  const applyButton = () => {
     const { category, min, max } = filter;
 
-    if (!min || !max || !category) {
+    if (didUserEnterValidOption(filter)) {
+      let route = '/products';
+      route += category ? `?category=${category}` : '';
+      const symbol = route.includes('?category') ? '&' : '?';
+      route += !!min ? `${symbol}min=${min}&max=${max}` : '';
+
+      const message = 'Invalid option, please select filters correctly';
+      addToast(message, { appearance: 'success' });
+      router.push(route);
+    } else {
       const message = 'Invalid option, please select filters correctly';
       addToast(message, { appearance: 'error' });
-      return;
     }
-    // console.log(!filter && !max && !min)
-    let route = '/products';
-    route += !!category ? `?category=${category}` : '';
-
-    const symbol = route.includes('?category') ? '&' : '?';
-
-    route += !!min ? `${symbol}min=${min}&max=${max}` : '';
-
-    router.push(route);
   };
 
   const clearButton = (event) => {
@@ -50,7 +49,7 @@ function ProductFilter({ filterSection, filterToggler }) {
 
   return (
     <aside
-      className={`${isFilterOpen} md:rounded-lg md:w-1/3 space-y-8 flex flex-col top-0 left-0 z-10 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5 shadow-sm`}
+      className={`${isFilterOpen} md:rounded-lg md:w-1/3 space-y-8 flex flex-col top-0 left-0 z-30 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5 shadow-sm`}
     >
       <Button
         className='absolute z-20 text-black top-5 right-5 md:hidden'

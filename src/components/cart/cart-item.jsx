@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { FaTrash } from 'react-icons/fa';
+import { QuantityButton } from '.';
 import { useProductContext } from '../../context/product-context';
 import { REMOVE_CART } from '../../reducers/actions';
 import { trimmingText } from '../../utils/helper';
 import { Button } from '../ui';
-import QuantityButton from './quantity-button';
 
 function CartItem({ id, title, price, image }) {
   const { dispatch } = useProductContext();

@@ -1,5 +1,19 @@
+import DetailProduct from './product-detail';
 import ProductFilter from './product-filter';
-import SearchBar from './search-bar';
+import ProductHeader from './product-header';
+import ProductImage from './product-image';
+import ProductList from './product-list';
+import ProductNavigation from './product-navigation';
+import SearchProduct from './search-product';
 import SortProduct from './sort-product';
 
-export { SearchBar, ProductFilter, SortProduct };
+export {
+  SearchProduct,
+  ProductFilter,
+  SortProduct,
+  ProductImage,
+  ProductHeader,
+  DetailProduct,
+  ProductList,
+  ProductNavigation,
+};
