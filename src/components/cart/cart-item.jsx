@@ -22,6 +22,8 @@ function CartItem({ id, title, price, image }) {
             src={image}
             layout='fill'
             className='scale-90 md:scale-75'
+            placeholder='blur'
+            blurDataURL='https://via.placeholder.com/653x879.webp'
             objectFit='contain'
           />
         </div>

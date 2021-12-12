@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from 'react';
 import { Breadcrumb } from '../../components/ui';
 import { formatUrl, getData } from '../../utils/helper';
 import { useProductContext } from '../../context/product-context';
+import { FILTER_PRODUCTS, GET_PRODUCTS } from '../../reducers/actions';
 import {
   ProductFilter,
   ProductList,
@@ -10,18 +11,14 @@ import {
   SearchProduct,
 } from '../../components/product';
 
-export default function ProductPage({ products, context }) {
-  const { state } = useProductContext();
+export default function ProductPage({ products }) {
+  const { state, dispatch } = useProductContext();
   const [filterToggler, setFilterToggler] = useState(false);
-  const [data, setData] = useState(products);
 
   useEffect(() => {
-    const filterredProducts = products.filter((item) => {
-      const regex = new RegExp(state.query, 'gi');
-      return item.title.match(regex);
-    });
-    setData(filterredProducts);
-  }, [state.query, products]);
+    dispatch({ type: GET_PRODUCTS, payload: products });
+    dispatch({ type: FILTER_PRODUCTS, payload: state.query });
+  }, [dispatch, state.query, products]);
 
   return (
     <Fragment>
@@ -36,9 +33,9 @@ export default function ProductPage({ products, context }) {
             filterSection={filterToggler}
           />
           <section className='md:w-2/3 lg:w-4/5'>
-            <SearchProduct />
+            <SearchProduct totalProduct={state.products.length} />
             <ProductNavigation eventHandler={() => setFilterToggler(true)} />
-            <ProductList data={data} />
+            <ProductList data={state.products} />
           </section>
         </div>
       </main>

@@ -21,6 +21,7 @@ export default function LoginPage() {
             alt='Login'
             layout='fill'
             objectFit='contain'
+            blurDataURL='https://via.placeholder.com/653x879.webp'
             priority
           />
         </div>

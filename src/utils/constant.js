@@ -12,15 +12,17 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 export const servicesList = [
   {
     text: 'Best Quality',
-    Icon: <GiAlliedStar className='block m-auto text-6xl md:text-7xl' />,
+    Icon: <GiAlliedStar className='block w-full m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Free Shipping',
-    Icon: <GiTruck className='block m-auto text-6xl md:text-7xl' />,
+    Icon: <GiTruck className='block w-full m-auto text-6xl md:text-7xl' />,
   },
   {
     text: 'Warranty',
-    Icon: <GiRibbonMedal className='block m-auto text-6xl md:text-7xl' />,
+    Icon: (
+      <GiRibbonMedal className='block w-full m-auto text-6xl md:text-7xl' />
+    ),
   },
 ];
 

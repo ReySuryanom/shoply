@@ -5,12 +5,20 @@ import { QuantityButton } from '../cart';
 import { Button, RatingProduct } from '../ui';
 import { useProductContext } from '../../context/product-context';
 
-function DetailProduct({ id, title, category, rating, description, price }) {
+function DetailProduct({
+  id,
+  title,
+  image,
+  category,
+  rating,
+  description,
+  price,
+}) {
   const { addToast } = useToasts();
   const { state, dispatch } = useProductContext();
 
   const addToCart = () => {
-    const product = { id, title, price };
+    const product = { id, title, price, image };
     const message = 'Item has been successfully added.';
 
     dispatch({ type: ADD_CART, payload: product });
@@ -33,7 +41,9 @@ function DetailProduct({ id, title, category, rating, description, price }) {
       </h3>
       <div className='flex items-center w-full my-3'>
         <QuantityButton className='md:w-3/12 lg:w-3/12' />
-        <p className='font-semibold underline'>Stock: {state.stock[id - 1]} left</p>
+        <p className='font-semibold underline'>
+          Stock: {state.stock[id - 1]} left
+        </p>
       </div>
       <Button
         className='w-full py-2.5 px-12 mt-3 text-xl text-white rounded-sm bg-dark flex items-center md:max-w-xs md:px-20'

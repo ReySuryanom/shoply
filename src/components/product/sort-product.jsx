@@ -7,23 +7,14 @@ function SortProduct() {
 
   const isAlreadySort = (url) => {
     const regex = new RegExp('[?|&]sort=(asc|desc)', 'g');
-    if (url.match('sort')) {
-      return url.replace(regex, '');
-    }
-    return url;
+
+    return url.match('sort') ? url.replace(regex, '') : url;
   };
 
   const eventHandler = (e) => {
-    e.preventDefault();
     const value = e.target.value;
-    let symbol = '?';
     const currentUrl = isAlreadySort(router.asPath);
-    console.log(currentUrl.includes('sort'));
-    if (currentUrl.includes('?')) {
-      symbol = '&';
-    }
-
-    console.log(currentUrl);
+    const symbol = currentUrl.includes('?') ? '&' : '?';
 
     router.push(`${currentUrl}${symbol}sort=${value}`);
   };

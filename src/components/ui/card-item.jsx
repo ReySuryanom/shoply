@@ -26,6 +26,8 @@ function CardItem({ id, title, image, rating: { rate, count }, price }) {
           layout='fill'
           objectFit='contain'
           priority
+          placeholder='blur'
+          blurDataURL='https://via.placeholder.com/653x879.webp'
         />
       </div>
       <div className='relative w-full h-full text-center bg-white py-3.5 space-y-1.5 md:pt-0'>

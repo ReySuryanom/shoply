@@ -9,7 +9,6 @@ function Button({ children, className, text, eventHandler, to }) {
       className={className}
       onClick={to ? switchRoute : eventHandler}
       type='button'
-      // disabled
     >
       {children && text && text} {children || text}
     </button>

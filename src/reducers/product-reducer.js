@@ -15,11 +15,26 @@ export const initialState = {
   stock: new Array(20).fill(20),
   query: '',
   range: { min: -1, max: -1 },
-  isLoading: true,
 };
 
 export const product_reducer = (state, action) => {
   switch (action.type) {
+    case TYPE.GET_PRODUCTS: {
+      return {
+        ...state,
+        products: action.payload,
+      };
+    }
+    case TYPE.FILTER_PRODUCTS: {
+      const filterredProducts = state.products.filter((item) => {
+        const regex = new RegExp(action.payload, 'gi');
+        return item.title.match(regex);
+      });
+      return {
+        ...state,
+        products: filterredProducts,
+      };
+    }
     case TYPE.SET_QUERY: {
       return {
         ...state,

@@ -10,6 +10,8 @@ function ProductImage({ className, image, title, priority = false }) {
         layout='fill'
         objectFit='contain'
         priority={priority}
+        placeholder='blur'
+        blurDataURL='https://via.placeholder.com/653x879.webp'
       />
     </div>
   );

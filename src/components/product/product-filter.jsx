@@ -5,6 +5,7 @@ import { useToasts } from 'react-toast-notifications';
 import { categoriesList } from '../../utils/constant';
 import { didUserEnterValidOption } from '../../utils/helper';
 import { Button } from '../ui';
+import FilterInput from './filter-input';
 
 function ProductFilter({ filterSection, filterToggler }) {
   const router = useRouter();
@@ -33,6 +34,7 @@ function ProductFilter({ filterSection, filterToggler }) {
 
       const message = 'Invalid option, please select filters correctly';
       addToast(message, { appearance: 'success' });
+      closeButton();
       router.push(route);
     } else {
       const message = 'Invalid option, please select filters correctly';
@@ -47,13 +49,15 @@ function ProductFilter({ filterSection, filterToggler }) {
     });
   };
 
+  const closeButton = () => filterToggler(false);
+
   return (
     <aside
       className={`${isFilterOpen} md:rounded-lg md:w-1/3 space-y-8 flex flex-col top-0 left-0 z-30 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5 shadow-sm`}
     >
       <Button
         className='absolute z-20 text-black top-5 right-5 md:hidden'
-        eventHandler={() => filterToggler(false)}
+        eventHandler={closeButton}
       >
         <RiCloseCircleFill className='min-h-[30px] min-w-[30px]' />
       </Button>
@@ -81,23 +85,15 @@ function ProductFilter({ filterSection, filterToggler }) {
           Price Range
         </h3>
         <div className='flex items-center w-full space-x-3'>
-          <input
-            className='w-full border-2 rounded-xl py-0.5 text-center text-[#211F1C]'
-            onChange={eventHandler}
-            type='number'
-            name='min'
-            min='1'
+          <FilterInput
+            eventHandler={eventHandler}
             value={filter.min}
-            placeholder='Min'
+            name='min'
           />
-          <input
-            className='w-full border-2 rounded-xl py-0.5 text-center text-[#211F1C]'
-            onChange={eventHandler}
-            min='1'
-            type='number'
-            name='max'
+          <FilterInput
+            eventHandler={eventHandler}
             value={filter.max}
-            placeholder='Max'
+            name='max'
           />
         </div>
         <div className='flex flex-col w-full space-y-4 text-lg font-semibold'>

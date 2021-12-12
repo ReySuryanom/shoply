@@ -4,7 +4,7 @@ import { useProductContext } from '../../context/product-context';
 import { SET_QUERY } from '../../reducers/actions';
 import { Button } from '../ui';
 
-function SearchBar() {
+function SearchBar({ totalProduct }) {
   const { dispatch } = useProductContext();
   const [item, setItem] = useState('');
   const searchInput = useRef(null);
@@ -40,7 +40,7 @@ function SearchBar() {
         </Button>
       </div>
       <p className='my-2 ml-2 md:pl-2 md:ml-0 md:inline-block md:w-6/12'>
-        All Products
+        {totalProduct} Products found
       </p>
     </Fragment>
   );
