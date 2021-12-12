@@ -42,5 +42,4 @@ export async function getStaticProps({ params: { productId } }) {
 
   // Pass post data to the page via props
   return { props: { product } };
-  // return { props: { product: [], context: params } };
 }

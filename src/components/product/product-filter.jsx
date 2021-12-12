@@ -32,8 +32,6 @@ function ProductFilter({ filterSection, filterToggler }) {
       const symbol = route.includes('?category') ? '&' : '?';
       route += !!min ? `${symbol}min=${min}&max=${max}` : '';
 
-      const message = 'Invalid option, please select filters correctly';
-      addToast(message, { appearance: 'success' });
       closeButton();
       router.push(route);
     } else {

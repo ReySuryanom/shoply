@@ -35,7 +35,7 @@ export default function ProductPage({ products }) {
           <section className='md:w-2/3 lg:w-4/5'>
             <SearchProduct totalProduct={state.products.length} />
             <ProductNavigation eventHandler={() => setFilterToggler(true)} />
-            <ProductList data={state.products} />
+            <ProductList />
           </section>
         </div>
       </main>

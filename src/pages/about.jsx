@@ -23,6 +23,8 @@ export default function AboutPage() {
               alt='Author'
               layout='fill'
               objectFit='cover'
+              placeholder='blur'
+              blurDataURL='https://via.placeholder.com/653x879.webp'
               priority
             />
           </div>
