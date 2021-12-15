@@ -7,7 +7,7 @@ function Feedback() {
         Apa Kata Pelanggan Kami
       </h2>
       <figure className='text-center'>
-        <div className='relative mx-auto my-5 h-36 w-36 md:w-40 md:h-40 lg:w-44 lg:h-44'>
+        <div className='relative mx-auto my-5 h-36 w-36 md:w-40 md:h-40 lg:w-44 lg:h-44 border-dark border-4 lg:border-8 rounded-full'>
           <Image
             src='/images/customer.webp'
             objectFit='cover'
@@ -15,6 +15,8 @@ function Feedback() {
             objectPosition='top'
             className='rounded-full'
             layout='fill'
+            blurDataURL='https://via.placeholder.com/653x879.webp'
+            placeholder='blur'
             priority
           />
         </div>

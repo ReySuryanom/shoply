@@ -4,6 +4,7 @@ import { ADD_CART } from '../../reducers/actions';
 import { QuantityButton } from '../cart';
 import { Button, RatingProduct } from '../ui';
 import { useProductContext } from '../../context/product-context';
+import Link from 'next/link';
 
 function DetailProduct({
   id,
@@ -28,11 +29,13 @@ function DetailProduct({
   return (
     <section className='py-5 lg:w-3/5'>
       <h2 className='text-2xl font-bold md:text-3xl'>{title}</h2>
-      <div className='divide-gray-500 space-x-3 md:space-x-4 flex divide-x mt-1.5'>
+      <div className='divide-gray-500 space-x-3 md:space-x-4 flex divide-x mt-1.5 group'>
         <RatingProduct rate={rating.rate} />
-        <h3 className='pl-3 text-lg font-semibold capitalize md:pl-4 md:text-xl'>
-          {category}
-        </h3>
+        <Link href={`/products?category=${category}`}>
+          <a className='pl-3 text-lg font-semibold capitalize md:pl-4 md:text-xl group-hover:underline'>
+            {category}
+          </a>
+        </Link>
       </div>
       <p className='mt-3 mb-5 text-gray-500 md:text-lg'>{description}</p>
       <small className='text-base md:text-lg'>Harga:</small>
@@ -46,7 +49,7 @@ function DetailProduct({
         </p>
       </div>
       <Button
-        className='w-full py-2.5 px-12 mt-3 text-xl text-white rounded-sm bg-dark flex items-center md:max-w-xs md:px-20'
+        className='w-full py-2.5 px-12 mt-3 text-xl hover:text-white rounded-sm hover:bg-dark border-2 border-dark flex items-center md:max-w-xs md:px-20 duration-300 ease-in-out'
         text='Add to Cart'
         eventHandler={addToCart}
       >

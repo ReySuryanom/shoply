@@ -23,7 +23,6 @@
   button {
     @apply min-h-[44px] min-w-[44px] relative inline-block;
   }
-
   .list:hover {
     @apply font-normal after:-translate-x-1/2 after:absolute after:w-3/5 after:-bottom-1 after:left-1/2;
   }

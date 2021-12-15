@@ -96,12 +96,12 @@ function ProductFilter({ filterSection, filterToggler }) {
         </div>
         <div className='flex flex-col w-full space-y-4 text-lg font-semibold'>
           <Button
-            className='w-full px-3 text-white rounded-xl bg-[#211F1C]'
+            className='w-full px-3 text-white rounded-xl bg-[#211F1C] hover:shadow-lg'
             text='Apply'
             eventHandler={applyButton}
           />
           <Button
-            className='w-full px-3 text-dark rounded-xl border-2 border-[#211F1C]'
+            className='w-full px-3 text-dark rounded-xl border-2 border-[#211F1C] hover:text-white hover:bg-[#211F1C] duration-300 ease-in-out'
             text='Clear'
             eventHandler={clearButton}
           />

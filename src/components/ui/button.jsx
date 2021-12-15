@@ -1,6 +1,13 @@
 const { useRouter } = require('next/router');
 
-function Button({ children, className, text, eventHandler, to }) {
+function Button({
+  children,
+  className,
+  text,
+  eventHandler,
+  to,
+  tabIndex = '1',
+}) {
   const router = useRouter();
   const switchRoute = () => router.push(`/${to}`);
 
@@ -9,6 +16,7 @@ function Button({ children, className, text, eventHandler, to }) {
       className={className}
       onClick={to ? switchRoute : eventHandler}
       type='button'
+      tabIndex={tabIndex}
     >
       {children && text && text} {children || text}
     </button>

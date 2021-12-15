@@ -13,14 +13,15 @@ function CardItem({ id, title, image, rating: { rate, count }, price }) {
 
   return (
     <article
-      className='w-full overflow-hidden shadow-md rounded-xl'
+      className='w-full overflow-hidden shadow-sm hover:shadow-lg rounded-xl group'
       onClick={eventHandler}
       role='button'
+      tabIndex='1'
     >
       <div className='relative w-full pt-6 bg-white md:hidden' />
       <div className='relative w-auto h-64 bg-white'>
         <Image
-          className='scale-90 md:scale-75'
+          className='scale-90 md:scale-75 group-hover:scale-[0.8] duration-300 ease-in-out'
           src={image}
           alt={title}
           layout='fill'

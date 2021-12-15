@@ -16,7 +16,7 @@ function MainProduct({ products }) {
         </section>
       </div>
       <Button
-        className='px-8 my-12 py-0.5 mx-auto text-white rounded-sm bg-dark flex items-center'
+        className='px-8 my-12 py-0.5 mx-auto hover:text-white rounded-sm border-2 border-dark hover:bg-dark flex items-center duration-300 ease-in-out'
         text='Semua Produk'
         to='products'
       >

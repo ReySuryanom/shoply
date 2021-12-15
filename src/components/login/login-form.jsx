@@ -27,12 +27,17 @@ function LoginForm() {
         <InputForm callback={setUserInput} value={userInput} name='username'>
           <AiOutlineUser className='relative text-2xl left-3 top-2 lg:top-3' />
         </InputForm>
-        <InputForm callback={setUserInput} value={userInput} name='password' type='password'>
+        <InputForm
+          callback={setUserInput}
+          value={userInput}
+          name='password'
+          type='password'
+        >
           <AiOutlineLock className='relative text-2xl left-3 top-2 lg:top-3' />
         </InputForm>
       </div>
       <Button
-        className='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5'
+        className='text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5 hover:shadow-md duration-300 ease-in-out'
         text='Login'
         eventHandler={submitHandler}
       />

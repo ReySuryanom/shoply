@@ -10,7 +10,7 @@ function MainHeader() {
         Situs Jual Beli Online Terlengkap, Murah & Aman
       </p>
       <Button
-        className='w-full text-lg border-2 rounded-sm text-dark border-dark md:w-1/4 lg:max-w-lg'
+        className='w-full text-lg border-2 rounded-sm text-dark border-dark md:w-1/4 lg:max-w-lg duration-300 ease-in-out hover:text-white hover:bg-dark'
         to='products'
         text='Belanja Sekarang'
       />

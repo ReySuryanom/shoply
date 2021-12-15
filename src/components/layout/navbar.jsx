@@ -49,7 +49,7 @@ function Navbar() {
             <li className={listStyle} key={text}>
               <Link href={link} passHref>
                 <a
-                  className={`${isCurrentPage && 'list-style'} ${defaultStyle}`}
+                  className={`${isCurrentPage && 'list-style duration-200 ease-in-out transition-all'} ${defaultStyle}`}
                   onClick={() => setNavbar(false)}
                   role='button'
                 >

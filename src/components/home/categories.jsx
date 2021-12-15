@@ -12,7 +12,7 @@ function Categories() {
       <div className='flex justify-between overflow-hidden rounded-lg shadow-md'>
         {categoriesList.map(({ icon, params }) => (
           <Button
-            className='p-2.5 w-1/4 text-6xl md:flex text-dark md:capitalize md:flex-col md:items-center bg-white hover:bg-dark hover:text-white first-of-type:bg-dark first-of-type:text-white'
+            className='p-2.5 w-1/4 text-6xl md:flex text-dark md:capitalize md:flex-col md:items-center bg-white hover:bg-dark hover:text-white first-of-type:bg-dark first-of-type:text-white duration-200 ease-in-out'
             key={params}
             to={PATH + params}
           >

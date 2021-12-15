@@ -36,7 +36,7 @@ function SearchBar({ totalProduct }) {
           eventHandler={searchHandler}
           tabIndex='-1'
         >
-          <FaSearch className='text-lg lg:text-xl' />
+          <FaSearch className='text-lg lg:text-xl' tabIndex='-1' />
         </Button>
       </div>
       <p className='my-2 ml-2 md:pl-2 md:ml-0 md:inline-block md:w-6/12'>
