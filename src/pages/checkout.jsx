@@ -10,7 +10,7 @@ export default function CheckoutPage() {
 
   const cartNotFound = (
     <p className='min-h-screen text-center text-lg'>
-      You haven't selected an item. Go to{' '}
+      You haven&apos;t selected an item. Go to{' '}
       <span className='underline font-semibold'>
         <Link href='/products'>Products</Link>
       </span>
