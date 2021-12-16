@@ -1,10 +1,11 @@
+import Link from 'next/link';
 import { useToasts } from 'react-toast-notifications';
 import { GiShoppingCart } from 'react-icons/gi';
 import { ADD_CART } from '../../reducers/actions';
 import { QuantityButton } from '../cart';
 import { Button, RatingProduct } from '../ui';
 import { useProductContext } from '../../context/product-context';
-import Link from 'next/link';
+import { useRef } from 'react';
 
 function DetailProduct({
   id,
@@ -17,13 +18,18 @@ function DetailProduct({
 }) {
   const { addToast } = useToasts();
   const { state, dispatch } = useProductContext();
+  const inputWrapper = useRef(null);
 
   const addToCart = () => {
-    const product = { id, title, price, image };
-    const message = 'Item has been successfully added.';
+    const quantity = parseInt(inputWrapper.current.value);
+    const product = { id, title, price, image, quantity: quantity };
 
-    dispatch({ type: ADD_CART, payload: product });
-    addToast(message, { appearance: 'success' });
+    if (0 > state.stock[id - 1] - quantity) {
+      addToast('Sorry, out of stock.', { appearance: 'warning' });
+    } else {
+      dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
+      addToast('Item has been successfully added.', { appearance: 'success' });
+    }
   };
 
   return (
@@ -43,7 +49,10 @@ function DetailProduct({
         {price}$
       </h3>
       <div className='flex items-center w-full my-3'>
-        <QuantityButton className='md:w-3/12 lg:w-3/12' />
+        <QuantityButton
+          className='md:w-3/12 lg:w-3/12'
+          container={inputWrapper}
+        />
         <p className='font-semibold underline'>
           Stock: {state.stock[id - 1]} left
         </p>

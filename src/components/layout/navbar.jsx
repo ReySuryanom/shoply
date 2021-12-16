@@ -6,8 +6,11 @@ import { navbarLinks } from '../../utils/constant';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Profile from '../login/profile';
+import { useProductContext } from '../../context/product-context';
 
 function Navbar() {
+  const { state } = useProductContext();
+  console.log(state);
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const route = router.pathname;
@@ -49,7 +52,7 @@ function Navbar() {
             <li className={listStyle} key={text}>
               <Link href={link} passHref>
                 <a
-                  className={`${isCurrentPage && 'list-style duration-200 ease-in-out transition-all'} ${defaultStyle}`}
+                  className={`${isCurrentPage && 'list-style'} ${defaultStyle}`}
                   onClick={() => setNavbar(false)}
                   role='button'
                 >
@@ -64,8 +67,9 @@ function Navbar() {
         <Button className='md:hidden' eventHandler={navbarTogglers}>
           <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
-        <Button className='hidden md:block' to='checkout'>
-          <GiShoppingCart className='hidden text-3xl text-white md:block' />
+        <Button className='hidden md:block relative' to='checkout'>
+          <p className='absolute rounded-full w-2 h-2 bg-white text-white top-1.5 right-0 animate-ping'/>
+          <GiShoppingCart className='hidden text-4xl text-white md:block' />
         </Button>
         <Button
           className='hidden py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] text-lg bg-white lg:py-1 px-6 lg:text-xl'

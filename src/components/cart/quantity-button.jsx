@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Button } from '../ui';
 
-function QuantityButton({ className, dark }) {
+function QuantityButton({ className, container, value = 1, dark }) {
   const theme = dark ? 'text-dark bg-white' : 'text-white bg-dark';
   const border = dark ? 'border-l-2 border-r-2' : 'border-t-2 border-b-2';
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(value);
 
   const quantityToggler = (event) => {
     const symbol = event.target.innerText;
@@ -33,6 +33,7 @@ function QuantityButton({ className, dark }) {
         value={quantity}
         type='number'
         min={0}
+        ref={container}
         readOnly
       />
       <Button

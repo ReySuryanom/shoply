@@ -1,14 +1,5 @@
 import * as TYPE from './actions';
 
-/**
- * @property {Array<Object>} news - List berita yang didapat dari API.
- * @property {Array<Object>} saved_news - List berita yang disimpan oleh user.
- * @property {string} query - Query yang digunakan untuk menarik berita yang dicari.
- * @property {number} size - Batas ukuran berita yang diambil/fetch.
- * @property {string} message - Pesan khusus (biasanya pesan error) untuk user jika terjadi sesuatu.
- * @property {boolean} isLoading - Loading untuk menunggu proses data fetching.
- * @property {number} pages - Mengindentifikasikan sebagai halaman, dimulai dari 0:indonesia, 1:programming, dsb.
- */
 export const initialState = {
   products: [],
   carts: [],
@@ -30,9 +21,13 @@ export const product_reducer = (state, action) => {
         const regex = new RegExp(action.payload, 'gi');
         return item.title.match(regex);
       });
+
+      const isEmptyProducts =
+        filterredProducts.length === 0 ? '' : filterredProducts;
+
       return {
         ...state,
-        products: filterredProducts,
+        products: isEmptyProducts,
       };
     }
     case TYPE.SET_QUERY: {
@@ -42,17 +37,31 @@ export const product_reducer = (state, action) => {
       };
     }
     case TYPE.ADD_CART: {
-      const item = action.payload;
+      let item = action.payload.cart;
+      const quantity = action.payload.quantity;
       const totalCarts = state.carts;
 
-      const removeDuplicateCarts = totalCarts.filter(
-        (cart) => cart.id !== item.id
-      );
+      const hasSameProduct = totalCarts.find((cart) => item.id === cart.id);
 
-      return {
-        ...state,
-        carts: [...removeDuplicateCarts, action.payload],
-      };
+      const addQuantity = totalCarts.map((cart) => {
+        if (cart.id === item.id) {
+          return { ...cart, quantity: quantity + cart.quantity };
+        }
+        return cart;
+      });
+
+      state.stock[item.id - 1] -= quantity;
+      if (hasSameProduct) {
+        return {
+          ...state,
+          carts: [...addQuantity],
+        };
+      } else {
+        return {
+          ...state,
+          carts: [...addQuantity, item],
+        };
+      }
     }
     case TYPE.REMOVE_CART: {
       const totalCarts = state.carts;

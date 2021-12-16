@@ -14,6 +14,7 @@ function MyApp({ Component, pageProps }) {
     const handleStart = () => NProgress.start();
     const handleStop = () => NProgress.done();
 
+    NProgress.configure({ showSpinner: false });
     router.events.on('routeChangeStart', handleStart);
     router.events.on('routeChangeComplete', handleStop);
     router.events.on('routeChangeError', handleStop);
@@ -26,7 +27,11 @@ function MyApp({ Component, pageProps }) {
   }, [router]);
 
   return (
-    <ToastProvider autoDismiss={true} autoDismissTimeout={3000} placement='bottom-right'>
+    <ToastProvider
+      autoDismiss={true}
+      autoDismissTimeout={3000}
+      placement='bottom-right'
+    >
       <ProductProvider>
         <Head>
           <link
