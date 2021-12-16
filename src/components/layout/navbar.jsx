@@ -11,7 +11,7 @@ import { Notification } from '../login';
 import { totalCarts } from '../../utils/helper';
 
 function Navbar() {
-  const { state } = useProductContext();
+  const { state, dispatch } = useProductContext();
   console.log(state);
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
@@ -70,7 +70,7 @@ function Navbar() {
           <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
         <Button className='hidden md:block relative' to='checkout'>
-          <Notification total={totalCarts(state.carts)}/>
+          <Notification total={totalCarts(state.carts)} dispatch={dispatch} />
           <GiShoppingCart className='hidden text-4xl text-white md:block' />
         </Button>
         <Button

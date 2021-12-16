@@ -6,3 +6,4 @@ export const TOGGLE_CART = 'TOGGLE_CART';
 export const REMOVE_CART = 'REMOVE_CART';
 export const CALCULATE_CART = 'CALCULATE_CART';
 export const UPDATE_STOCK = 'UPDATE_STOCK';
+export const CHECKOUT = 'CHECKOUT';

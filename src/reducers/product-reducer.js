@@ -4,6 +4,7 @@ export const initialState = {
   products: [],
   carts: [],
   stock: new Array(20).fill(20),
+  price: -1,
   query: '',
   range: { min: -1, max: -1 },
 };
@@ -83,7 +84,9 @@ export const product_reducer = (state, action) => {
       const quantity = action.payload.quantity;
       const totalCarts = state.carts;
       const targettedProduct = totalCarts.find((cart) => productId === cart.id);
-      const filterredProduct = totalCarts.filter((cart) => productId !== cart.id);
+      const filterredProduct = totalCarts.filter(
+        (cart) => productId !== cart.id
+      );
 
       return {
         ...state,
@@ -93,11 +96,37 @@ export const product_reducer = (state, action) => {
         ].sort((a, b) => a.id - b.id),
       };
     }
-
     case TYPE.CALCULATE_CART: {
-      state.stock[item.id - 1] -= quantity;
+      const totalPrice = state.carts.reduce((total, cart) => {
+        const { price, quantity } = cart;
+        const result = parseFloat(price * quantity);
+        return total + result;
+      }, 0);
+
       return {
         ...state,
+        price: totalPrice,
+      };
+    }
+    case TYPE.CHECKOUT: {
+      const getCart = (id) => state.carts.find((cart) => cart.id === id);
+
+      const failedAttempts = [];
+      const currentStock = state.stock;
+
+      state.carts.forEach((cart) => {
+        if (cart.quantity <= currentStock[cart.id - 1]) {
+          currentStock[cart.id - 1] -= cart.quantity;
+        } else {
+          const outOfStock = getCart(cart.id);
+          failedAttempts.push({ ...outOfStock, isFailed: true });
+          console.log(outOfStock);
+        }
+      });
+
+      return {
+        ...state,
+        carts: failedAttempts,
       };
     }
     default:
