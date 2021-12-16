@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Profile from '../login/profile';
 import { useProductContext } from '../../context/product-context';
+import { Notification } from '../login';
+import { totalCarts } from '../../utils/helper';
 
 function Navbar() {
   const { state } = useProductContext();
@@ -68,7 +70,7 @@ function Navbar() {
           <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
         <Button className='hidden md:block relative' to='checkout'>
-          <p className='absolute rounded-full w-2 h-2 bg-white text-white top-1.5 right-0 animate-ping'/>
+          <Notification total={totalCarts(state.carts)}/>
           <GiShoppingCart className='hidden text-4xl text-white md:block' />
         </Button>
         <Button

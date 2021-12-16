@@ -50,7 +50,6 @@ export const product_reducer = (state, action) => {
         return cart;
       });
 
-      state.stock[item.id - 1] -= quantity;
       if (hasSameProduct) {
         return {
           ...state,
@@ -79,11 +78,26 @@ export const product_reducer = (state, action) => {
         stock: [updatedStock],
       };
     }
-    case TYPE.SUBSTRACT_STOCK: {
-      const updatedStock = [];
+    case TYPE.TOGGLE_CART: {
+      const productId = action.payload.id;
+      const quantity = action.payload.quantity;
+      const totalCarts = state.carts;
+      const targettedProduct = totalCarts.find((cart) => productId === cart.id);
+      const filterredProduct = totalCarts.filter((cart) => productId !== cart.id);
+
       return {
         ...state,
-        stock: [updatedStock],
+        carts: [
+          ...filterredProduct,
+          { ...targettedProduct, quantity: quantity },
+        ].sort((a, b) => a.id - b.id),
+      };
+    }
+
+    case TYPE.CALCULATE_CART: {
+      state.stock[item.id - 1] -= quantity;
+      return {
+        ...state,
       };
     }
     default:

@@ -1,7 +1,15 @@
 import { useState } from 'react';
+import { TOGGLE_CART } from '../../reducers/actions';
 import { Button } from '../ui';
 
-function QuantityButton({ className, container, value = 1, dark }) {
+function QuantityButton({
+  id,
+  className,
+  container,
+  dispatch,
+  value = 1,
+  dark,
+}) {
   const theme = dark ? 'text-dark bg-white' : 'text-white bg-dark';
   const border = dark ? 'border-l-2 border-r-2' : 'border-t-2 border-b-2';
 
@@ -10,12 +18,23 @@ function QuantityButton({ className, container, value = 1, dark }) {
   const quantityToggler = (event) => {
     const symbol = event.target.innerText;
 
+    const cartCounter = (fx) => {
+      if (dispatch) {
+        dispatch({
+          type: TOGGLE_CART,
+          payload: { id: id, quantity: fx },
+        });
+      }
+    };
+
     setQuantity((quantity) => {
       if (symbol.includes('+')) {
+        cartCounter(quantity + 1);
         return quantity + 1;
       } else if (quantity <= 1) {
         return quantity;
       } else {
+        cartCounter(quantity - 1);
         return quantity - 1;
       }
     });
@@ -29,7 +48,7 @@ function QuantityButton({ className, container, value = 1, dark }) {
         eventHandler={quantityToggler}
       />
       <input
-        className={`!max-w-[52px] text-xl font-bold text-dark text-center self-stretch border-dark lg:pl-3 ${border}`}
+        className={`!max-w-[55px] text-xl font-bold text-dark text-center self-stretch border-dark lg:pl-3 ${border}`}
         value={quantity}
         type='number'
         min={0}

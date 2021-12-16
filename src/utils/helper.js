@@ -6,6 +6,10 @@ export const trimmingText = (text, margin = 15) => {
   return text.length > margin ? `${text.substr(0, margin)}...` : text;
 };
 
+export const totalCarts = (carts) => {
+  return carts.reduce((acc, cur) => acc + cur.quantity, 0);
+};
+
 export const createRatingStars = (rate) => {
   const rating = parseInt(rate);
   const starIcons = Array(5)

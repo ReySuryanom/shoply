@@ -19,12 +19,13 @@ function DetailProduct({
   const { addToast } = useToasts();
   const { state, dispatch } = useProductContext();
   const inputWrapper = useRef(null);
+  const stock = state.stock[id - 1];
 
   const addToCart = () => {
     const quantity = parseInt(inputWrapper.current.value);
     const product = { id, title, price, image, quantity: quantity };
 
-    if (0 > state.stock[id - 1] - quantity) {
+    if (0 > stock - quantity) {
       addToast('Sorry, out of stock.', { appearance: 'warning' });
     } else {
       dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
@@ -53,9 +54,7 @@ function DetailProduct({
           className='md:w-3/12 lg:w-3/12'
           container={inputWrapper}
         />
-        <p className='font-semibold underline'>
-          Stock: {state.stock[id - 1]} left
-        </p>
+        <p className='font-semibold underline'>Stock: {stock} left</p>
       </div>
       <Button
         className='w-full py-2.5 px-12 mt-3 text-xl hover:text-white rounded-sm hover:bg-dark border-2 border-dark flex items-center md:max-w-xs md:px-20 duration-300 ease-in-out'
