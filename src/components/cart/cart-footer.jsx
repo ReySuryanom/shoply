@@ -1,5 +1,5 @@
 import { useProductContext } from '../../context/product-context';
-import { CHECKOUT } from '../../reducers/actions';
+import { CHECKOUT, SET_ACTIONS } from '../../reducers/actions';
 import { Button } from '../ui';
 import CartInfo from './cart-info';
 
@@ -10,7 +10,11 @@ function CartFooter() {
   } = useProductContext();
   const totalPrice = (price + carts.length).toFixed(2);
 
-  const checkout = () => dispatch({ type: CHECKOUT });
+  const checkout = () =>
+    dispatch({
+      type: SET_ACTIONS,
+      payload: () => dispatch({ type: CHECKOUT }),
+    });
 
   return (
     <section className='p-5 bg-white shadow-md mt-9 md:mx-16 lg:mx-0 lg:w-4/12 lg:ml-auto'>
@@ -20,11 +24,11 @@ function CartFooter() {
       <CartInfo text='Total Order' amount={totalPrice} header />
       <div className='flex justify-end space-x-5 mt-7'>
         <Button
-          className='px-5 border-2 border-dark hover:bg-dark hover:text-white duration-300 ease-in-out'
+          className='px-5 duration-300 ease-in-out border-2 border-dark hover:bg-dark hover:text-white'
           text='Cancel'
         />
         <Button
-          className='px-5 text-white bg-dark hover:shadow-md duration-300 ease-in-out'
+          className='px-5 text-white duration-300 ease-in-out bg-dark hover:shadow-md'
           text='Checkout'
           eventHandler={checkout}
         />

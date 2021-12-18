@@ -5,6 +5,8 @@ export const initialState = {
   carts: [],
   stock: new Array(20).fill(20),
   price: -1,
+  isModalOpen: false,
+  actions: null,
   query: '',
   range: { min: -1, max: -1 },
 };
@@ -35,6 +37,12 @@ export const product_reducer = (state, action) => {
       return {
         ...state,
         query: action.payload,
+      };
+    }
+    case TYPE.TOGGLE_MODAL: {
+      return {
+        ...state,
+        isModalOpen: action.payload,
       };
     }
     case TYPE.ADD_CART: {
@@ -129,6 +137,14 @@ export const product_reducer = (state, action) => {
         carts: failedAttempts,
       };
     }
+    case TYPE.SET_ACTIONS: {
+      return {
+        ...state,
+        isModalOpen:true,
+        actions: action.payload,
+      };
+    }
+
     default:
       throw new Error(`No Matching "${action.type}" - action type`);
   }
