@@ -50,6 +50,10 @@ export const getData = async (query) => {
   }
 };
 
+export const login = async (admin) => {
+  const url = admin ? '' : 'https://fakestoreapi.com/auth/login';
+};
+
 export const hasObjectValue = (value) => {
   for (var i in value) return true;
   return false;

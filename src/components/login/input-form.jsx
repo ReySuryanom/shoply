@@ -1,4 +1,4 @@
-function InputForm({ children, callback, name, value, type = 'text' }) {
+function InputForm({ children, callback, name, value, type = 'email' }) {
   const eventHandler = (event) => {
     const key = event.target.name;
     const value = event.target.value;

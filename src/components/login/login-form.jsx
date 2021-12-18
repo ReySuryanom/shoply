@@ -1,19 +1,19 @@
 import { useToasts } from 'react-toast-notifications';
 import { InputForm } from '.';
-import { AiOutlineUser, AiOutlineLock } from 'react-icons/ai';
+import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 import { Button } from '../ui';
 import { useState } from 'react';
 
 function LoginForm() {
   const { addToast } = useToasts();
-  const [userInput, setUserInput] = useState({ username: '', password: '' });
-  const { username, password } = userInput;
+  const [userInput, setUserInput] = useState({ email: '', password: '' });
+  const { email, password } = userInput;
 
   const submitHandler = () => {
-    if (username && password) {
+    if (email && password) {
       alert('ff');
     } else {
-      const message = 'Login Failed, please enter valid username and password.';
+      const message = 'Login Failed, please enter valid email and password.';
       addToast(message, { appearance: 'warning' });
     }
   };
@@ -24,8 +24,8 @@ function LoginForm() {
         SHOPLY.
       </h1>
       <div className='space-y-12'>
-        <InputForm callback={setUserInput} value={userInput} name='username'>
-          <AiOutlineUser className='relative text-2xl left-3 top-2 lg:top-3' />
+        <InputForm callback={setUserInput} value={userInput} name='email'>
+          <AiOutlineMail className='relative text-2xl left-3 top-2 lg:top-3' />
         </InputForm>
         <InputForm
           callback={setUserInput}
