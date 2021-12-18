@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { RiCloseCircleFill } from 'react-icons/ri';
 import { useToasts } from 'react-toast-notifications';
-import { categoriesList } from '../../utils/constant';
+import { categoriesList, messageNotifications } from '../../utils/constant';
 import { didUserEnterValidOption } from '../../utils/helper';
 import { Button } from '../ui';
 import FilterInput from './filter-input';
@@ -11,6 +11,7 @@ function ProductFilter({ filterSection, filterToggler }) {
   const router = useRouter();
   const { addToast } = useToasts();
   const [filter, setFilter] = useState({ category: '', min: '', max: '' });
+  const { INVALID_FILTER } = messageNotifications;
   const isFilterOpen = filterSection
     ? 'fixed md:sticky'
     : 'hidden md:block md:sticky';
@@ -35,8 +36,7 @@ function ProductFilter({ filterSection, filterToggler }) {
       closeButton();
       router.push(route);
     } else {
-      const message = 'Invalid option, please select filters correctly';
-      addToast(message, { appearance: 'error' });
+      addToast(INVALID_FILTER.message, INVALID_FILTER.status);
     }
   };
 

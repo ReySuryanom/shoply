@@ -12,7 +12,6 @@ function Modal() {
   const closeButton = () => dispatch({ type: TOGGLE_MODAL, payload: false });
 
   const applyButton = () => {
-    console.log(state.actions);
     state.actions();
     closeButton();
   };

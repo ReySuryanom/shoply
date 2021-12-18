@@ -6,6 +6,8 @@ import { QuantityButton } from '../cart';
 import { Button, RatingProduct } from '../ui';
 import { useProductContext } from '../../context/product-context';
 import { useRef } from 'react';
+import { messageNotifications } from '../../utils/constant';
+import { useRouter } from 'next/router';
 
 function DetailProduct({
   id,
@@ -17,19 +19,26 @@ function DetailProduct({
   price,
 }) {
   const { addToast } = useToasts();
+  const router = useRouter();
   const { state, dispatch } = useProductContext();
   const inputWrapper = useRef(null);
+  const { CART_FAILED, CART_SUCCESS, LOGIN_FIRST } = messageNotifications;
   const stock = state.stock[id - 1];
 
   const addToCart = () => {
-    const quantity = parseInt(inputWrapper.current.value);
-    const product = { id, title, price, image, quantity: quantity };
+    if (state?.user?.token) {
+      const quantity = parseInt(inputWrapper.current.value);
+      const product = { id, title, price, image, quantity: quantity };
 
-    if (0 > stock - quantity) {
-      addToast('Sorry, out of stock.', { appearance: 'warning' });
+      if (0 > stock - quantity) {
+        addToast(CART_FAILED.message, CART_FAILED.status);
+      } else {
+        dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
+        addToast(CART_SUCCESS.message, CART_SUCCESS.status);
+      }
     } else {
-      dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
-      addToast('Item has been successfully added.', { appearance: 'success' });
+      addToast(LOGIN_FIRST.message, LOGIN_FIRST.status);
+      router.push('/login');
     }
   };
 

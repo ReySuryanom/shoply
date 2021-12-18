@@ -5,8 +5,9 @@ export const initialState = {
   carts: [],
   stock: new Array(20).fill(20),
   price: -1,
-  isModalOpen: false,
+  user: null,
   actions: null,
+  isModalOpen: false,
   query: '',
   range: { min: -1, max: -1 },
 };
@@ -116,6 +117,12 @@ export const product_reducer = (state, action) => {
         price: totalPrice,
       };
     }
+    case TYPE.POST_LOGIN: {
+      return {
+        ...state,
+        user: action.payload,
+      };
+    }
     case TYPE.CHECKOUT: {
       const getCart = (id) => state.carts.find((cart) => cart.id === id);
 
@@ -140,7 +147,7 @@ export const product_reducer = (state, action) => {
     case TYPE.SET_ACTIONS: {
       return {
         ...state,
-        isModalOpen:true,
+        isModalOpen: true,
         actions: action.payload,
       };
     }

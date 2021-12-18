@@ -80,3 +80,30 @@ export const navbarLinks = [
   { text: 'Products', link: '/products' },
   { text: 'About', link: '/about' },
 ];
+
+export const messageNotifications = {
+  LOGIN_SUCCESS: {
+    message: (level) => `Login successful, ${level} level.`,
+    status: { appearance: 'success' },
+  },
+  LOGIN_FAILED: {
+    message: 'Login Failed. Please input valid username and password',
+    status: { appearance: 'error' },
+  },
+  LOGIN_FIRST: {
+    message: 'Sorry, you should login first before doing that actions.',
+    status: { appearance: 'warning' },
+  },
+  CART_SUCCESS: {
+    message: 'Item has been successfully added.',
+    status: { appearance: 'success' },
+  },
+  CART_FAILED: {
+    message: 'Sorry, out of stock.',
+    status: { appearance: 'warning' },
+  },
+  INVALID_FILTER: {
+    message: 'Invalid option, please select filters correctly.',
+    status: { appearance: 'error' },
+  },
+};

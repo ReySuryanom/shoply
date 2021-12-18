@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { GiRoundStar } from 'react-icons/gi';
 
 const BASE_URL = 'https://fakestoreapi.com/';
@@ -41,8 +42,8 @@ export const didUserEnterValidOption = (filter) => {
 
 export const getData = async (query) => {
   try {
-    const res = await fetch(`${BASE_URL}${query}`);
-    const data = await res.json();
+    const res = await axios(`${BASE_URL}${query}`);
+    const data = await res.data;
     return data;
   } catch (error) {
     console.log(error);
@@ -50,8 +51,19 @@ export const getData = async (query) => {
   }
 };
 
-export const login = async (admin) => {
-  const url = admin ? '' : 'https://fakestoreapi.com/auth/login';
+export const getUser = async (type, method = 'get', data) => {
+  const url = {
+    admin: '/api/admin',
+    user: 'https://fakestoreapi.com/auth/login',
+  };
+
+  try {
+    const res = await axios({ url: url[type], method, data });
+    const user = await res.data;
+    return user;
+  } catch (_) {
+    return null;
+  }
 };
 
 export const hasObjectValue = (value) => {

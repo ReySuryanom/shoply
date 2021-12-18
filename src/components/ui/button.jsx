@@ -6,6 +6,7 @@ function Button({
   text,
   eventHandler,
   to,
+  disabled,
   tabIndex = '1',
 }) {
   const router = useRouter();
@@ -17,6 +18,7 @@ function Button({
       onClick={to ? switchRoute : eventHandler}
       type='button'
       tabIndex={tabIndex}
+      disabled={disabled}
     >
       {children && text && text} {children || text}
     </button>

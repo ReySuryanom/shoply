@@ -4,7 +4,7 @@ import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
 import { Button } from '../ui';
 import { navbarLinks } from '../../utils/constant';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import Profile from '../login/profile';
 import { useProductContext } from '../../context/product-context';
 import { Notification } from '../login';
@@ -69,16 +69,24 @@ function Navbar() {
         <Button className='md:hidden' eventHandler={navbarTogglers}>
           <GiHamburgerMenu className='text-4xl text-white md:hidden' />
         </Button>
-        <Button className='hidden md:block relative' to='checkout'>
-          <Notification total={totalCarts(state.carts)} dispatch={dispatch} />
-          <GiShoppingCart className='hidden text-4xl text-white md:block' />
-        </Button>
-        <Button
-          className='hidden py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] text-lg bg-white lg:py-1 px-6 lg:text-xl'
-          text='Login'
-          to='login'
-        />
-        <Profile />
+        {state?.user?.token ? (
+          <Fragment>
+            <Button className='hidden md:block relative' to='checkout'>
+              <Notification
+                total={totalCarts(state.carts)}
+                dispatch={dispatch}
+              />
+              <GiShoppingCart className='hidden text-4xl text-white md:block' />
+            </Button>
+            <Profile />
+          </Fragment>
+        ) : (
+          <Button
+            className='hidden md:block py-0.5 font-semibold ml-8 text-dark min-h-[15px] min-w-[15px] text-lg bg-white lg:py-1 px-6 lg:text-xl'
+            text='Login'
+            to='login'
+          />
+        )}
       </div>
     </nav>
   );
