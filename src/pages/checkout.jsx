@@ -12,7 +12,7 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (!state?.user?.token) router.push('/login');
-  }, [router, state.user.token]);
+  }, [router, state?.user?.token]);
 
   const cartNotFound = (
     <p className='min-h-screen text-lg text-center'>
