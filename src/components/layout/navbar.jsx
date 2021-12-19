@@ -4,11 +4,11 @@ import { GiHamburgerMenu, GiShoppingCart } from 'react-icons/gi';
 import { Button } from '../ui';
 import { navbarLinks } from '../../utils/constant';
 import { useRouter } from 'next/router';
-import { Fragment, useState } from 'react';
-import Profile from '../login/profile';
+import { Fragment, useEffect, useState } from 'react';
 import { useProductContext } from '../../context/product-context';
-import { Notification } from '../login';
-import { totalCarts } from '../../utils/helper';
+import { Notification, Profile } from '../login';
+import { getUserFromLocalStorage, totalCarts } from '../../utils/helper';
+import { POST_LOGIN } from '../../reducers/actions';
 
 function Navbar() {
   const { state, dispatch } = useProductContext();
@@ -23,6 +23,8 @@ function Navbar() {
   const navbarTogglers = () => {
     setNavbar((navbar) => !navbar);
   };
+
+  useEffect(() => dispatch({ type: POST_LOGIN, payload: getUserFromLocalStorage() }), [dispatch]);
 
   return (
     <nav className='relative flex items-center justify-between px-8 shadow-md bg-dark md:py-0 lg:py-5 lg:px-16'>
@@ -71,14 +73,17 @@ function Navbar() {
         </Button>
         {state?.user?.token ? (
           <Fragment>
-            <Button className='hidden md:block relative' to='checkout'>
+            <Profile username={state?.user?.username} />
+            <Button
+              className='ml-0 md:ml-5 hidden md:block relative'
+              to='checkout'
+            >
               <Notification
-                total={totalCarts(state.carts)}
+                total={totalCarts(state?.carts)}
                 dispatch={dispatch}
               />
               <GiShoppingCart className='hidden text-4xl text-white md:block' />
             </Button>
-            <Profile />
           </Fragment>
         ) : (
           <Button

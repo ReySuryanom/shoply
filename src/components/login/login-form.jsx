@@ -6,7 +6,7 @@ import {
 import { useToasts } from 'react-toast-notifications';
 import { InputForm } from '.';
 import { Button } from '../ui';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getUser } from '../../utils/helper';
 import { useProductContext } from '../../context/product-context';
 import { POST_LOGIN } from '../../reducers/actions';
@@ -16,7 +16,7 @@ import { useRouter } from 'next/router';
 function LoginForm() {
   const router = useRouter();
   const { addToast } = useToasts();
-  const { dispatch } = useProductContext();
+  const { state, dispatch } = useProductContext();
   const [userInput, setUserInput] = useState({ username: '', password: '' });
   const [isLoading, setIsLoading] = useState(false);
   const { LOGIN_FAILED, LOGIN_SUCCESS } = messageNotifications;
@@ -24,6 +24,10 @@ function LoginForm() {
   const buttonStyle = `${
     isLoading && 'cursor-not-allowed'
   } text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5 hover:shadow-md duration-300 ease-in-out`;
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(state.user));
+  }, [state.user]);
 
   const loginHandler = async () => {
     const user = await getUser('admin');
@@ -38,10 +42,10 @@ function LoginForm() {
       });
       addToast(LOGIN_SUCCESS.message('admin'), LOGIN_SUCCESS.status);
       router.replace('/');
+      setIsLoading(false);
     } else {
       userLogin();
     }
-    setIsLoading(false);
   };
 
   const userLogin = async () => {
@@ -59,8 +63,10 @@ function LoginForm() {
       });
       addToast(LOGIN_SUCCESS.message('user'), LOGIN_SUCCESS.status);
       router.replace('/');
+      setIsLoading(false);
     } else {
       addToast(LOGIN_FAILED.message, LOGIN_FAILED.status);
+      setIsLoading(false);
     }
   };
 

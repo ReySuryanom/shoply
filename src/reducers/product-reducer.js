@@ -151,7 +151,14 @@ export const product_reducer = (state, action) => {
         actions: action.payload,
       };
     }
+    case TYPE.LOG_OUT: {
+      localStorage.removeItem('user');
 
+      return {
+        ...state,
+        user: null,
+      };
+    }
     default:
       throw new Error(`No Matching "${action.type}" - action type`);
   }

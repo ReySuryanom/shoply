@@ -9,4 +9,5 @@ export const UPDATE_STOCK = 'UPDATE_STOCK';
 export const TOGGLE_MODAL = 'TOGGLE_MODAL';
 export const SET_ACTIONS = 'SET_ACTIONS';
 export const POST_LOGIN = 'POST_LOGIN';
+export const LOG_OUT = 'LOG_OUT';
 export const CHECKOUT = 'CHECKOUT';

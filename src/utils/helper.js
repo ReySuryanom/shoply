@@ -40,6 +40,16 @@ export const didUserEnterValidOption = (filter) => {
   );
 };
 
+export const getUserFromLocalStorage = () => {
+  if (typeof window !== 'undefined') {
+    const savedData = localStorage.getItem('user');
+    const initialValue = JSON.parse(savedData);
+    return initialValue || null;
+  } else {
+    return null;
+  }
+};
+
 export const getData = async (query) => {
   try {
     const res = await axios(`${BASE_URL}${query}`);
