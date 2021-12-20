@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { GiRoundStar } from 'react-icons/gi';
+import { LOG_OUT } from '../reducers/actions';
 
 const BASE_URL = 'https://fakestoreapi.com/';
 
@@ -74,6 +75,11 @@ export const getUser = async (type, method = 'get', data) => {
   } catch (_) {
     return null;
   }
+};
+
+export const logout = (dispatch, router) => {
+  dispatch({ type: LOG_OUT });
+  router.replace('/login');
 };
 
 export const hasObjectValue = (value) => {

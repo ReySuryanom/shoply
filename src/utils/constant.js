@@ -81,6 +81,11 @@ export const navbarLinks = [
   { text: 'About', link: '/about' },
 ];
 
+export const profileLinks = [
+  { text: 'My Cart', link: '/checkout' },
+  { text: 'Logout', link: '/login' },
+];
+
 export const messageNotifications = {
   LOGIN_SUCCESS: {
     message: (level) => `Login successful, ${level} level.`,

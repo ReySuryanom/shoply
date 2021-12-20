@@ -1,15 +1,10 @@
 import { useRouter } from 'next/router';
 import { useProductContext } from '../../context/product-context';
-import { LOG_OUT } from '../../reducers/actions';
+import { logout } from '../../utils/helper';
 
 function MenuItem() {
   const { dispatch } = useProductContext();
   const router = useRouter();
-
-  const logout = () => {
-    dispatch({ type: LOG_OUT });
-    router.replace('/login');
-  };
 
   return (
     <div
@@ -20,7 +15,7 @@ function MenuItem() {
       <a
         className='block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-200'
         role='menuitem'
-        onClick={logout}
+        onClick={() => logout(dispatch, router)}
         tabIndex='-1'
       >
         Logout
