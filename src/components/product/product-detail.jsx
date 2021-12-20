@@ -25,17 +25,20 @@ function DetailProduct({
   const { CART_FAILED, CART_SUCCESS, LOGIN_FIRST } = messageNotifications;
   const stock = state.stock[id - 1];
 
+  const isStockAvailable = (product, quantity) => {
+    if (0 > stock - quantity) {
+      addToast(CART_FAILED.message, CART_FAILED.status);
+    } else {
+      dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
+      addToast(CART_SUCCESS.message, CART_SUCCESS.status);
+    }
+  };
+
   const addToCart = () => {
     if (state?.user?.token) {
       const quantity = parseInt(inputWrapper.current.value);
-      const product = { id, title, price, image, quantity: quantity };
-
-      if (0 > stock - quantity) {
-        addToast(CART_FAILED.message, CART_FAILED.status);
-      } else {
-        dispatch({ type: ADD_CART, payload: { cart: product, quantity } });
-        addToast(CART_SUCCESS.message, CART_SUCCESS.status);
-      }
+      const product = { id, title, price, image, category, quantity: quantity };
+      isStockAvailable(product);
     } else {
       addToast(LOGIN_FIRST.message, LOGIN_FIRST.status);
       router.push('/login');

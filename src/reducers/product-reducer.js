@@ -9,6 +9,7 @@ export const initialState = {
   actions: null,
   isModalOpen: false,
   query: '',
+  message: null,
   range: { min: -1, max: -1 },
 };
 
@@ -82,10 +83,12 @@ export const product_reducer = (state, action) => {
       };
     }
     case TYPE.UPDATE_STOCK: {
-      const updatedStock = [];
+      const stockId = action.payload.id;
+      const total = action.payload.total;
+      state.stock[stockId] = parseInt(total);
+
       return {
         ...state,
-        stock: [updatedStock],
       };
     }
     case TYPE.TOGGLE_CART: {
@@ -135,7 +138,6 @@ export const product_reducer = (state, action) => {
         } else {
           const outOfStock = getCart(cart.id);
           failedAttempts.push({ ...outOfStock, isFailed: true });
-          console.log(outOfStock);
         }
       });
 
@@ -157,6 +159,12 @@ export const product_reducer = (state, action) => {
       return {
         ...state,
         user: null,
+      };
+    }
+    case TYPE.SET_MESSAGE: {
+      return {
+        ...state,
+        message: action.payload,
       };
     }
     default:

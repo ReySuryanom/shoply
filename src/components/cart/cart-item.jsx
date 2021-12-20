@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { FaTrash } from 'react-icons/fa';
 import { QuantityButton } from '.';
 import { useProductContext } from '../../context/product-context';
-import { REMOVE_CART, SET_ACTIONS } from '../../reducers/actions';
+import { REMOVE_CART, SET_ACTIONS, SET_MESSAGE } from '../../reducers/actions';
 import { trimmingText } from '../../utils/helper';
 import { Button } from '../ui';
 
@@ -11,11 +11,10 @@ function CartItem({ id, title, price, image, quantity, isFailed }) {
   const router = useRouter();
   const { dispatch } = useProductContext();
 
-  const removeItem = () =>
-    dispatch({
-      type: SET_ACTIONS,
-      payload: () => dispatch({ type: REMOVE_CART, payload: id }),
-    });
+  const removeItem = () => {
+    dispatch({ type: SET_MESSAGE, payload: 'Are you sure want to remove this item?' });
+    dispatch({ type: SET_ACTIONS, payload: () => dispatch({ type: REMOVE_CART, payload: id }) });
+  };
 
   const goToProduct = () => router.push(`/products/${id}`);
 

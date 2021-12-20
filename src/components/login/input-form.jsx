@@ -1,4 +1,4 @@
-function InputForm({ children, callback, name, value, type = 'email' }) {
+function InputForm({ children, callback, name, value, actions, type = 'email' }) {
   const eventHandler = (event) => {
     const key = event.target.name;
     const value = event.target.value;
@@ -16,6 +16,7 @@ function InputForm({ children, callback, name, value, type = 'email' }) {
         type={type}
         value={value[name]}
         onChange={eventHandler}
+        onKeyPress={actions}
       />
       {children}
     </div>

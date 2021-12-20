@@ -88,7 +88,7 @@ export const profileLinks = [
 
 export const messageNotifications = {
   LOGIN_SUCCESS: {
-    message: (level) => `Login successful, ${level} level.`,
+    message: (level) => `Login successfully, ${level} level.`,
     status: { appearance: 'success' },
   },
   LOGIN_FAILED: {
@@ -98,6 +98,14 @@ export const messageNotifications = {
   LOGIN_FIRST: {
     message: 'Sorry, you should login first before doing that actions.',
     status: { appearance: 'warning' },
+  },
+  LOGOUT_SUCCESS: {
+    message: 'Logout successfully.',
+    status: { appearance: 'success' },
+  },
+  UPDATE_STOCK_SUCCESS: {
+    message: 'Stock updated successfully.',
+    status: { appearance: 'success' },
   },
   CART_SUCCESS: {
     message: 'Item has been successfully added.',

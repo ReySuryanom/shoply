@@ -70,12 +70,16 @@ function LoginForm() {
     }
   };
 
-  const submitHandler = async () => {
+  const submitHandler = async (event) => {
     setIsLoading(true);
-    if (username && password) {
-      loginHandler();
+    if (event.key === 'Enter' || event['type'] === 'click') {
+      if (username && password) {
+        loginHandler();
+      } else {
+        addToast(LOGIN_FAILED.message, LOGIN_FAILED.status);
+        setIsLoading(false);
+      }
     } else {
-      addToast(LOGIN_FAILED.message, LOGIN_FAILED.status);
       setIsLoading(false);
     }
   };
@@ -94,6 +98,7 @@ function LoginForm() {
           value={userInput}
           name='password'
           type='password'
+          actions={submitHandler}
         >
           <AiOutlineLock className='relative text-2xl left-3 top-2 lg:top-3' />
         </InputForm>

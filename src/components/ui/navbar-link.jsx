@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useToasts } from 'react-toast-notifications';
 import { logout } from '../../utils/helper';
 
 function NavbarLink({ text, link, callback, dispatch, didLogin, isProfile }) {
   const router = useRouter();
-  const actions = text === 'Logout' ? () => logout(dispatch, router) : () => callback(false);
+  const { addToast } = useToasts()
+  const actions = text === 'Logout' ? () => logout(dispatch, router, addToast) : () => callback(false);
   const profileStyle = isProfile ? ' md:hidden' : ' ';
   const specialStyle = (!didLogin && isProfile ? 'hidden' : 'block') + profileStyle;
   const isCurrentPage = link === router.pathname;

@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
+import { useToasts } from 'react-toast-notifications';
 import { useProductContext } from '../../context/product-context';
 import { logout } from '../../utils/helper';
 
 function MenuItem() {
   const { dispatch } = useProductContext();
   const router = useRouter();
+  const { addToast } = useToasts();
 
   return (
     <div
@@ -15,7 +17,7 @@ function MenuItem() {
       <a
         className='block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-200'
         role='menuitem'
-        onClick={() => logout(dispatch, router)}
+        onClick={() => logout(dispatch, router, addToast)}
         tabIndex='-1'
       >
         Logout

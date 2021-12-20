@@ -56,6 +56,6 @@ export async function getServerSideProps(context) {
   }
 
   return {
-    props: { products, context: { query, urlParams } },
+    props: { products },
   };
 }

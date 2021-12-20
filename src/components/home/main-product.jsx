@@ -3,6 +3,10 @@ import { FiArrowRight } from 'react-icons/fi';
 import { Button, CardItem } from '../ui';
 
 function MainProduct({ products }) {
+  const jewelryProducts = products.filter(
+    (product) => product.category === 'jewelery'
+  );
+
   return (
     <Fragment>
       <div className='mx-10'>
@@ -10,7 +14,7 @@ function MainProduct({ products }) {
           Produk
         </h2>
         <section className='grid gap-y-5 md:grid-cols-2 md:gap-x-5 lg:grid-cols-4'>
-          {products.map((item) => (
+          {jewelryProducts.map((item) => (
             <CardItem {...item} key={item.id} />
           ))}
         </section>

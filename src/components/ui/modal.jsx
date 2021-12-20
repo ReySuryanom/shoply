@@ -26,7 +26,7 @@ function Modal() {
           </Button>
         </div>
         <div className='w-full px-1 pt-3 pb-8 text-center border-t-2 border-dark md:text-left'>
-          <p>Are you sure want to remove this item?</p>
+          <p>{state.message}</p>
         </div>
         <div className='flex justify-end w-full pt-3 space-x-2'>
           <Button

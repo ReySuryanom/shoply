@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useProductContext } from '../../context/product-context';
-import { CHECKOUT, SET_ACTIONS } from '../../reducers/actions';
+import { CHECKOUT, SET_ACTIONS, SET_MESSAGE } from '../../reducers/actions';
 import { Button } from '../ui';
 import CartInfo from './cart-info';
 
@@ -12,7 +12,10 @@ function CartFooter() {
   } = useProductContext();
   const totalPrice = (price + carts.length).toFixed(2);
 
-  const checkout = () => dispatch({ type: SET_ACTIONS, payload: actions });
+  const checkout = () => {
+    dispatch({ type: SET_MESSAGE, payload: 'Do you want to continue?' });
+    dispatch({ type: SET_ACTIONS, payload: actions });
+  };
 
   const actions = () => {
     dispatch({ type: CHECKOUT });
