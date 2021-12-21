@@ -11,14 +11,13 @@ import { POST_LOGIN } from '../../reducers/actions';
 
 function Navbar() {
   const { state, dispatch } = useProductContext();
-  console.log(state)
   const [navbar, setNavbar] = useState(false);
 
   const isAdmin = state?.user?.level === 'admin'
   const isNavbarOpen = navbar
     ? 'flex flex-col absolute right-0 space-y-2 py-2 top-14 bg-dark w-full md:w-auto !text-right'
     : 'hidden md:flex';
-
+    
   const navbarTogglers = () => setNavbar((navbar) => !navbar);
   const NavbarLinks = navbarLinks.map((link) => (
     <NavbarLink {...link} key={link.text} callback={setNavbar} />

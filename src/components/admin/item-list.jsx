@@ -1,7 +1,5 @@
-import Image from 'next/image';
 import { Button } from '../ui';
 import { MdSystemUpdateAlt } from 'react-icons/md';
-import { trimmingText } from '../../utils/helper';
 import { useState } from 'react';
 import { useProductContext } from '../../context/product-context';
 import { UPDATE_STOCK } from '../../reducers/actions';
