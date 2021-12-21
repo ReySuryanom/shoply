@@ -37,8 +37,8 @@ function DetailProduct({
   const addToCart = () => {
     if (state?.user?.token) {
       const quantity = parseInt(inputWrapper.current.value);
-      const product = { id, title, price, image, category, quantity: quantity };
-      isStockAvailable(product);
+      const product = { id, title, price, image, category, quantity };
+      isStockAvailable(product, quantity);
     } else {
       addToast(LOGIN_FIRST.message, LOGIN_FIRST.status);
       router.push('/login');

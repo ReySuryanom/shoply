@@ -11,7 +11,8 @@ function NavbarLink({ text, link, callback, dispatch, didLogin, isProfile }) {
   const actions = text === 'Logout' ? () => logout(dispatch, router, addToast) : () => callback(false);
   const loginStyle = text ==='Login' && didLogin ? 'hidden' : text ==='Login' && 'md:hidden'
   const profileStyle = isProfile ? ' md:hidden' : ' ';
-  const specialStyle = (!didLogin && isProfile ? 'hidden' : 'block') + profileStyle;
+  const adminLevel = didLogin && text === 'My Cart'
+  const specialStyle = (!didLogin && isProfile || adminLevel ? 'hidden' : 'block') + profileStyle;
   const isCurrentPage = link === router.pathname;
   const defaultLink = `${loginStyle} ${specialStyle} after:border-0 md:after:border-b-2 md:p-0 text-white text-lg md:text-base lg:text-xl list`;
   const listStyle = `${isCurrentPage && 'bg-[#302E2C] md:bg-transparent'}`;

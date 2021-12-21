@@ -101,6 +101,10 @@ export const messageNotifications = {
     message: 'Sorry, you should login first before doing that actions.',
     status: { appearance: 'warning' },
   },
+  ALREADY_LOGIN: {
+    message: 'Sorry, you have logged in. Log out first if you want to log in with another account.',
+    status: { appearance: 'warning' },
+  },
   LOGOUT_SUCCESS: {
     message: 'Logout successfully.',
     status: { appearance: 'success' },

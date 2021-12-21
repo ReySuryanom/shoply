@@ -11,6 +11,7 @@ import { POST_LOGIN } from '../../reducers/actions';
 
 function Navbar() {
   const { state, dispatch } = useProductContext();
+  console.log(state)
   const [navbar, setNavbar] = useState(false);
 
   const isAdmin = state?.user?.level === 'admin'
@@ -61,7 +62,7 @@ function Navbar() {
           <Fragment>
             <Profile username={state?.user?.username} />
             {!isAdmin && (
-              <Button className='ml-0 md:ml-5 hidden md:block relative' to='checkout' >
+              <Button className='relative hidden ml-0 md:ml-5 md:block' to='checkout' >
                 <Notification total={totalCarts(state?.carts)} dispatch={dispatch} />
                 <GiShoppingCart className='hidden text-4xl text-white md:block' />
               </Button>
