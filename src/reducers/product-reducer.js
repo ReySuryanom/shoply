@@ -53,8 +53,6 @@ export const product_reducer = (state, action) => {
       const quantity = action.payload.quantity;
       const totalCarts = state.carts;
 
-      console.log(item, quantity);
-
       const hasSameProduct = totalCarts.find((cart) => item.id === cart.id);
 
       const addQuantity = totalCarts.map((cart) => {

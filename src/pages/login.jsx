@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useCallback } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import { LoginForm } from '../components/login';
 import { useProductContext } from '../context/product-context';
@@ -13,12 +13,15 @@ export default function LoginPage() {
   const router = useRouter();
   const { addToast } = useToasts();
 
-  useEffect(() => {
+  const hasUserLoggedIn = useCallback(() => {
     if (state?.user?.token) {
       router.push('/');
       addToast(ALREADY_LOGIN.message, ALREADY_LOGIN.status);
     }
-  }, [ALREADY_LOGIN, addToast, router, state?.user?.token]);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => hasUserLoggedIn(), [hasUserLoggedIn]);
 
   return (
     <Fragment>
