@@ -12,7 +12,6 @@ import { POST_LOGIN } from '../../reducers/actions';
 function Navbar() {
   const { state, dispatch } = useProductContext();
   const [navbar, setNavbar] = useState(false);
-  console.log(state);
 
   const isAdmin = state?.user?.level === 'admin'
   const isNavbarOpen = navbar
