@@ -6,19 +6,22 @@ import { logout } from '../../utils/helper';
 function NavbarLink({ text, link, callback, dispatch, didLogin, isProfile }) {
   const router = useRouter();
   const { addToast } = useToasts()
+
+  // Styling purposes
   const actions = text === 'Logout' ? () => logout(dispatch, router, addToast) : () => callback(false);
+  const loginStyle = text ==='Login' && didLogin ? 'hidden' : text ==='Login' && 'md:hidden'
   const profileStyle = isProfile ? ' md:hidden' : ' ';
   const specialStyle = (!didLogin && isProfile ? 'hidden' : 'block') + profileStyle;
   const isCurrentPage = link === router.pathname;
-  const defaultLink = 'after:border-0 md:after:border-b-2 md:p-0 text-white text-lg md:text-base lg:text-xl list';
+  const defaultLink = `${loginStyle} ${specialStyle} after:border-0 md:after:border-b-2 md:p-0 text-white text-lg md:text-base lg:text-xl list`;
   const listStyle = `${isCurrentPage && 'bg-[#302E2C] md:bg-transparent'}`;
-  const defaultList = `${listStyle} ${specialStyle} relative cursor-default pr-3 py-1.5 md:p-0 rounded-lg mx-6 md:mx-0 md:rounded-none`;
+  const defaultList = `${listStyle} ${specialStyle} ${loginStyle} relative cursor-default pr-3 py-1.5 md:p-0 rounded-lg mx-6 md:mx-0 md:rounded-none`;
 
   return (
     <li className={defaultList} key={text}>
       <Link href={link} passHref>
         <a
-          className={`${isCurrentPage && 'list-style'} ${defaultLink} ${specialStyle}`}
+          className={`${isCurrentPage && 'list-style'} ${defaultLink}`}
           onClick={actions}
           role='button'
         >

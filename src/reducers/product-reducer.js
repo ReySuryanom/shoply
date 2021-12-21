@@ -3,6 +3,18 @@ import * as TYPE from './actions';
 export const initialState = {
   products: [],
   carts: [],
+  history: [],
+  // history: [
+  //   {
+  //     category: 'jewelery',
+  //     id: 5,
+  //     image: 'https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg',
+  //     price: 695,
+  //     quantity: 4,
+  //     title:
+  //       "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet",
+  //   },
+  // ],
   stock: new Array(20).fill(20),
   price: -1,
   user: null,
@@ -133,11 +145,22 @@ export const product_reducer = (state, action) => {
       const currentStock = state.stock;
 
       state.carts.forEach((cart) => {
+        const history = state.history;
+        const currentCart = getCart(cart.id);
+
         if (cart.quantity <= currentStock[cart.id - 1]) {
+          const isItemAlreadySold = history.find((item) => item.id === cart.id);
           currentStock[cart.id - 1] -= cart.quantity;
+
+          if (isItemAlreadySold) {
+            const index = history.findIndex((item) => item.id === cart.id);
+            const quantity = cart.quantity + isItemAlreadySold.quantity;
+            history[index] = { ...isItemAlreadySold, quantity };
+          } else {
+            history.push({ ...currentCart });
+          }
         } else {
-          const outOfStock = getCart(cart.id);
-          failedAttempts.push({ ...outOfStock, isFailed: true });
+          failedAttempts.push({ ...currentCart, isFailed: true });
         }
       });
 

@@ -7,12 +7,13 @@ import { useProductContext } from '../../context/product-context';
 import { UPDATE_STOCK } from '../../reducers/actions';
 import { useToasts } from 'react-toast-notifications';
 import { messageNotifications } from '../../utils/constant';
+import { ItemName } from '.';
 
 function ItemList({ id, title, image, category }) {
   const { UPDATE_STOCK_SUCCESS } = messageNotifications;
   const { state, dispatch } = useProductContext();
   const { addToast } = useToasts();
-  const stock = state.stock[id];
+  const stock = state.stock[id - 1];
   const [total, setTotal] = useState(stock);
 
   const updateStock = () => {
@@ -22,20 +23,7 @@ function ItemList({ id, title, image, category }) {
 
   return (
     <tr className='odd:bg-white'>
-      <td className='w-2/6'>
-        <div className='hidden relative w-1/3 h-20 md:inline-block bg-white align-middle scale-[0.8] lg:h-32'>
-          <Image
-            className='scale-90 w-20'
-            src={image}
-            layout='fill'
-            objectFit='contain'
-          />
-        </div>
-        <div className='text-left w-2/3 inline-block align-middle pl-2'>
-          <h3 className='font-semibold'>{trimmingText(title)}</h3>
-          <p className='capitalize'>{category}</p>
-        </div>
-      </td>
+      <ItemName title={title} image={image} category={category} />
       <td className='w-1/6'>
         <input
           className='max-w-[30px] lg:max-w-[45px] text-center border-dark border md:p-1 lg:p-0'

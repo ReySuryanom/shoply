@@ -79,6 +79,8 @@ export const navbarLinks = [
   { text: 'Home', link: '/' },
   { text: 'Products', link: '/products' },
   { text: 'About', link: '/about' },
+  { text: 'History', link: '/history' },
+  { text: 'Login', link: '/login' },
 ];
 
 export const profileLinks = [
