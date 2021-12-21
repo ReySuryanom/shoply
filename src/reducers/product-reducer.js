@@ -86,7 +86,7 @@ export const product_reducer = (state, action) => {
     case TYPE.UPDATE_STOCK: {
       const stockId = action.payload.id;
       const total = action.payload.total;
-      state.stock[stockId] = parseInt(total);
+      state.stock[stockId - 1] = parseInt(total);
 
       return {
         ...state,
