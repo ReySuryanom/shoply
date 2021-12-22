@@ -5,7 +5,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className='p-10 text-center text-white bg-dark lg:justify-between lg:items-center'>
+    <footer className='p-10 flex flex-col text-center text-white bg-dark lg:justify-between lg:items-center lg:flex-row'>
       <div className='lg:flex lg:flex-col lg:text-left'>
         <h2 className='text-lg font-bold'>Shoply.</h2>
         <p>Copyright &copy; {currentYear}. Created by our team.</p>
