@@ -46,13 +46,8 @@ function ProductFilter({ filterSection, filterToggler }) {
   const closeButton = () => filterToggler(false);
 
   return (
-    <aside
-      className={`${isFilterOpen} md:rounded-lg md:w-1/3 space-y-8 flex flex-col top-0 left-0 z-30 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5 shadow-sm`}
-    >
-      <Button
-        className="absolute z-20 text-black top-5 right-5 md:hidden"
-        eventHandler={closeButton}
-      >
+    <aside className={`${isFilterOpen} md:rounded-lg md:w-1/3 space-y-8 flex flex-col top-0 left-0 z-30 w-full h-screen bg-white p-5 text-[#211F1C] lg:w-1/5 shadow-sm`}>
+      <Button className="absolute z-20 text-black top-5 right-5 md:hidden" eventHandler={closeButton}>
         <RiCloseCircleFill className="min-h-[30px] min-w-[30px]" />
       </Button>
       <h2 className="!mt-0 text-3xl font-bold md:text-2xl">Filter</h2>
@@ -81,16 +76,8 @@ function ProductFilter({ filterSection, filterToggler }) {
           Price Range
         </h3>
         <div className="flex items-center w-full space-x-3">
-          <FilterInput
-            eventHandler={eventHandler}
-            value={filter.min}
-            name="min"
-          />
-          <FilterInput
-            eventHandler={eventHandler}
-            value={filter.max}
-            name="max"
-          />
+          <FilterInput eventHandler={eventHandler} value={filter.min} name="min" />
+          <FilterInput eventHandler={eventHandler} value={filter.max} name="max" />
         </div>
         <div className="flex flex-col w-full space-y-4 text-lg font-semibold">
           <Button

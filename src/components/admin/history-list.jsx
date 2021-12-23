@@ -1,7 +1,7 @@
 import ItemName from './item-name';
 
 function HistoryList({ title, image, category, price, quantity }) {
-  const income = parseFloat(price * quantity).toFixed();
+  const income = parseFloat(price * quantity).toFixed(2);
 
   return (
     <tr className="odd:bg-white">

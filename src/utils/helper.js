@@ -1,6 +1,7 @@
-/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-var */
+/* eslint-disable no-unreachable-loop */
 /* eslint-disable guard-for-in */
-/* eslint-disable react/no-array-index-key */
+/* eslint-disable no-restricted-syntax */
 import axios from 'axios';
 import { GiRoundStar } from 'react-icons/gi';
 import { LOG_OUT } from '../reducers/actions';
@@ -17,8 +18,10 @@ export const createRatingStars = (rate) => {
   const starIcons = Array(5)
     .fill(null)
     .map((_, index) => (rating > index ? (
+      // eslint-disable-next-line react/no-array-index-key
       <GiRoundStar key={index} />
     ) : (
+      // eslint-disable-next-line react/no-array-index-key
       <GiRoundStar style={{ color: '#484543' }} key={index} />
     )));
   return starIcons;
@@ -84,8 +87,8 @@ export const logout = (dispatch, router, addToast) => {
 };
 
 export const hasObjectValue = (value) => {
-  // eslint-disable-next-line no-unreachable-loop
-  for (const i in value) return true;
+  // eslint-disable-next-line vars-on-top
+  for (var i in value) return true;
   return false;
 };
 
@@ -99,9 +102,9 @@ export const formatUrl = (query) => {
     const keys = Object.keys(finalQuery);
     const values = Object.values(finalQuery);
 
-    for (let index = 0; index < keys.length; index + 1) {
+    // eslint-disable-next-line no-plusplus
+    for (let index = 0; index < keys.length; index++) {
       const isSpecialCases = keys[index] !== 'category';
-
       // eslint-disable-next-line no-nested-ternary
       const firstSymbol = isSpecialCases
         ? url.includes('?')
@@ -117,14 +120,12 @@ export const formatUrl = (query) => {
 };
 
 const moveCategoryKeyToFront = (object) => {
-  let list = object;
+  let fixedKey = object;
+  if (fixedKey?.category) {
+    const { category } = fixedKey;
+    delete fixedKey.category;
 
-  if (list?.category) {
-    const temp = list.category;
-    delete list.category;
-
-    list = { category: temp, ...list };
+    fixedKey = { category, ...fixedKey };
   }
-
-  return list;
+  return fixedKey;
 };

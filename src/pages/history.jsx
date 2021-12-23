@@ -7,7 +7,7 @@ function History() {
 
   const totalIncome = state.history.reduce((acc, current) => {
     const { quantity, price } = current;
-    const total = parseFloat(quantity * price).toFixed();
+    const total = parseFloat(quantity * price).toFixed(2);
     return acc + parseFloat(total);
   }, 0.0);
 

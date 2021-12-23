@@ -41,6 +41,7 @@ function SearchBar({ totalProduct }) {
       </div>
       <p className="my-2 ml-2 md:pl-2 md:ml-0 md:inline-block md:w-6/12">
         {totalProduct}
+        {' '}
         Products found
       </p>
     </>

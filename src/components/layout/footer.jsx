@@ -3,7 +3,7 @@ import { Button } from '../ui';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  const footerText = `Copyright &copy; ${currentYear}. Created by our team.`;
+  const footerText = `Copyright © ${currentYear}. Created by our team.`;
 
   return (
     <footer className="flex flex-col p-10 text-center text-white bg-dark lg:justify-between lg:items-center lg:flex-row">

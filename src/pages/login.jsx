@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useCallback } from 'react';
+import { useCallback, useLayoutEffect } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import { LoginForm } from '../components/login';
 import { useProductContext } from '../context/product-context';
@@ -21,7 +21,7 @@ export default function LoginPage() {
     // eslint-disable-next-line
   }, []);
 
-  useEffect(() => hasUserLoggedIn(), [hasUserLoggedIn]);
+  useLayoutEffect(() => hasUserLoggedIn(), [hasUserLoggedIn]);
 
   return (
     <>
