@@ -8,7 +8,6 @@
     "next/core-web-vitals"
   ],
   "rules": {
-    "linebreak-style": ["error", "windows"],
     "no-console": "warn",
     "no-unused-vars": "warn",
     "object-curly-newline": "off",
@@ -18,6 +17,9 @@
     "no-use-before-define": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/function-component-definition": [
       2,

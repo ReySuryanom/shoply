@@ -1,3 +1,6 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable guard-for-in */
+/* eslint-disable react/no-array-index-key */
 import axios from 'axios';
 import { GiRoundStar } from 'react-icons/gi';
 import { LOG_OUT } from '../reducers/actions';
@@ -5,25 +8,19 @@ import { messageNotifications } from './constant';
 
 const BASE_URL = 'https://fakestoreapi.com/';
 
-export const trimmingText = (text, margin = 15) => {
-  return text.length > margin ? `${text.substr(0, margin)}...` : text;
-};
+export const trimmingText = (text, margin = 15) => (text.length > margin ? `${text.substr(0, margin)}...` : text);
 
-export const totalCarts = (carts) => {
-  return carts.reduce((acc, cur) => acc + cur.quantity, 0);
-};
+export const totalCarts = (carts) => carts.reduce((acc, cur) => acc + cur.quantity, 0);
 
 export const createRatingStars = (rate) => {
-  const rating = parseInt(rate);
+  const rating = parseInt(rate, 10);
   const starIcons = Array(5)
     .fill(null)
-    .map((_, index) =>
-      rating > index ? (
-        <GiRoundStar key={index} />
-      ) : (
-        <GiRoundStar style={{ color: '#484543' }} key={index} />
-      )
-    );
+    .map((_, index) => (rating > index ? (
+      <GiRoundStar key={index} />
+    ) : (
+      <GiRoundStar style={{ color: '#484543' }} key={index} />
+    )));
   return starIcons;
 };
 
@@ -31,14 +28,14 @@ export const didUserEnterValidOption = (filter) => {
   const { category, min, max } = filter;
   const emptyRange = max === '' && min === '';
   const isThereInput = !(
-    (min === '' && max !== '') ||
-    (min !== '' && max === '')
+    (min === '' && max !== '')
+    || (min !== '' && max === '')
   );
 
   return (
-    (!emptyRange && isThereInput) ||
-    (category && !(emptyRange || !emptyRange)) ||
-    (category && emptyRange)
+    (!emptyRange && isThereInput)
+    || (category && !(emptyRange || !emptyRange))
+    || (category && emptyRange)
   );
 };
 
@@ -62,7 +59,7 @@ export const getData = async (query) => {
   }
 };
 
-export const getUser = async (type, method = 'get', data) => {
+export const getUser = async (type, method = 'get', data = []) => {
   const url = {
     admin: '/api/admin',
     user: 'https://fakestoreapi.com/auth/login',
@@ -82,12 +79,13 @@ export const logout = (dispatch, router, addToast) => {
   router.replace('/login');
   addToast(
     messageNotifications.LOGOUT_SUCCESS.message,
-    messageNotifications.LOGOUT_SUCCESS.status
+    messageNotifications.LOGOUT_SUCCESS.status,
   );
 };
 
 export const hasObjectValue = (value) => {
-  for (let i in value) return true;
+  // eslint-disable-next-line no-unreachable-loop
+  for (const i in value) return true;
   return false;
 };
 
@@ -103,6 +101,8 @@ export const formatUrl = (query) => {
 
     for (let index = 0; index < keys.length; index + 1) {
       const isSpecialCases = keys[index] !== 'category';
+
+      // eslint-disable-next-line no-nested-ternary
       const firstSymbol = isSpecialCases
         ? url.includes('?')
           ? '&'
