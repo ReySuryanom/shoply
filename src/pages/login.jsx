@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Fragment, useEffect, useCallback } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useToasts } from 'react-toast-notifications';
 import { LoginForm } from '../components/login';
 import { useProductContext } from '../context/product-context';
@@ -24,23 +24,23 @@ export default function LoginPage() {
   useEffect(() => hasUserLoggedIn(), [hasUserLoggedIn]);
 
   return (
-    <Fragment>
+    <>
       <Head>
         <title>Login | Shoply.</title>
       </Head>
-      <main className='items-center max-h-screen px-10 py-20 bg-white lg:flex lg:px-32'>
-        <div className='relative hidden w-1/2 h-96 lg:block'>
+      <main className="items-center max-h-screen px-10 py-20 bg-white lg:flex lg:px-32">
+        <div className="relative hidden w-1/2 h-96 lg:block">
           <Image
-            src='/images/login.png'
-            alt='Login'
-            layout='fill'
-            objectFit='contain'
-            blurDataURL='https://via.placeholder.com/653x879.webp'
+            src="/images/login.png"
+            alt="Login"
+            layout="fill"
+            objectFit="contain"
+            blurDataURL="https://via.placeholder.com/653x879.webp"
             priority
           />
         </div>
         <LoginForm />
       </main>
-    </Fragment>
+    </>
   );
 }

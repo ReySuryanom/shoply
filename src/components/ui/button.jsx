@@ -7,7 +7,7 @@ function Button({
   eventHandler,
   to,
   disabled,
-  tabIndex = '1',
+  tabIndex = '0',
 }) {
   const router = useRouter();
   const switchRoute = () => router.push(`/${to}`);
@@ -16,11 +16,12 @@ function Button({
     <button
       className={className}
       onClick={to ? switchRoute : eventHandler}
-      type='button'
+      type="button"
       tabIndex={tabIndex}
       disabled={disabled}
     >
-      {children && text && text} {children || text}
+      {children && text && text}
+      {children || text}
     </button>
   );
 }

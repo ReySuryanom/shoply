@@ -6,13 +6,13 @@ function SortProduct() {
   const [sort] = useState(router.query?.sort || 'asc');
 
   const isAlreadySort = (url) => {
-    const regex = new RegExp('[?|&]sort=(asc|desc)', 'g');
+    const regex = /[?|&]sort=(asc|desc)/gi;
 
     return url.match('sort') ? url.replace(regex, '') : url;
   };
 
   const eventHandler = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     const currentUrl = isAlreadySort(router.asPath);
     const symbol = currentUrl.includes('?') ? '&' : '?';
 
@@ -20,15 +20,15 @@ function SortProduct() {
   };
 
   return (
-    <div className='flex items-center justify-end'>
+    <div className="flex items-center justify-end">
       <small>Sort by Id</small>
       <select
-        className='px-1.5 py-1 rounded-full border-dark border ml-2 text-center'
+        className="px-1.5 py-1 rounded-full border-dark border ml-2 text-center"
         onChange={eventHandler}
         defaultValue={sort}
       >
-        <option value='asc'>ASC</option>
-        <option value='desc'>DESC</option>
+        <option value="asc">ASC</option>
+        <option value="desc">DESC</option>
       </select>
     </div>
   );

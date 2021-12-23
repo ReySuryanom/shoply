@@ -47,9 +47,9 @@ export const getUserFromLocalStorage = () => {
     const savedData = localStorage.getItem('user');
     const initialValue = JSON.parse(savedData);
     return initialValue || null;
-  } else {
-    return null;
   }
+
+  return null;
 };
 
 export const getData = async (query) => {
@@ -58,7 +58,6 @@ export const getData = async (query) => {
     const data = await res.data;
     return data;
   } catch (error) {
-    console.log(error);
     throw new Error(error);
   }
 };
@@ -88,20 +87,21 @@ export const logout = (dispatch, router, addToast) => {
 };
 
 export const hasObjectValue = (value) => {
-  for (var i in value) return true;
+  for (let i in value) return true;
   return false;
 };
 
 export const formatUrl = (query) => {
-  let url = 'products',
-    finalQuery = query;
+  let url = 'products';
+  let finalQuery = query;
+
   if (hasObjectValue(finalQuery)) {
     finalQuery = moveCategoryKeyToFront(finalQuery);
 
     const keys = Object.keys(finalQuery);
     const values = Object.values(finalQuery);
 
-    for (let index = 0; index < keys.length; index++) {
+    for (let index = 0; index < keys.length; index + 1) {
       const isSpecialCases = keys[index] !== 'category';
       const firstSymbol = isSpecialCases
         ? url.includes('?')
@@ -117,11 +117,14 @@ export const formatUrl = (query) => {
 };
 
 const moveCategoryKeyToFront = (object) => {
-  if (!!object['category']) {
-    const temp = object['category'];
-    delete object['category'];
+  let list = object;
 
-    object = { category: temp, ...object };
+  if (list?.category) {
+    const temp = list.category;
+    delete list.category;
+
+    list = { category: temp, ...list };
   }
-  return object;
+
+  return list;
 };

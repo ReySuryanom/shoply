@@ -14,6 +14,7 @@ export const initialState = {
   range: { min: -1, max: -1 },
 };
 
+// eslint-disable-next-line camelcase
 export const product_reducer = (state, action) => {
   switch (action.type) {
     case TYPE.GET_PRODUCTS: {
@@ -28,8 +29,7 @@ export const product_reducer = (state, action) => {
         return item.title.match(regex);
       });
 
-      const isEmptyProducts =
-        filterredProducts.length === 0 ? '' : filterredProducts;
+      const isEmptyProducts = filterredProducts.length === 0 ? '' : filterredProducts;
 
       return {
         ...state,
@@ -49,8 +49,8 @@ export const product_reducer = (state, action) => {
       };
     }
     case TYPE.ADD_CART: {
-      let item = action.payload.cart;
-      const quantity = action.payload.quantity;
+      const item = action.payload.cart;
+      const { quantity } = action.payload;
       const totalCarts = state.carts;
 
       const hasSameProduct = totalCarts.find((cart) => item.id === cart.id);
@@ -67,12 +67,11 @@ export const product_reducer = (state, action) => {
           ...state,
           carts: [...addQuantity],
         };
-      } else {
-        return {
-          ...state,
-          carts: [...addQuantity, item],
-        };
       }
+      return {
+        ...state,
+        carts: [...addQuantity, item],
+      };
     }
     case TYPE.REMOVE_CART: {
       const totalCarts = state.carts;
@@ -85,8 +84,9 @@ export const product_reducer = (state, action) => {
     }
     case TYPE.UPDATE_STOCK: {
       const stockId = action.payload.id;
-      const total = action.payload.total;
-      state.stock[stockId - 1] = parseInt(total);
+      const { total } = action.payload;
+      // eslint-disable-next-line no-param-reassign
+      state.stock[stockId - 1] = parseInt(total, 10);
 
       return {
         ...state,
@@ -94,19 +94,14 @@ export const product_reducer = (state, action) => {
     }
     case TYPE.TOGGLE_CART: {
       const productId = action.payload.id;
-      const quantity = action.payload.quantity;
+      const { quantity } = action.payload;
       const totalCarts = state.carts;
       const targettedProduct = totalCarts.find((cart) => productId === cart.id);
-      const filterredProduct = totalCarts.filter(
-        (cart) => productId !== cart.id
-      );
+      const filterredProduct = totalCarts.filter((cart) => productId !== cart.id);
 
       return {
         ...state,
-        carts: [
-          ...filterredProduct,
-          { ...targettedProduct, quantity: quantity },
-        ].sort((a, b) => a.id - b.id),
+        carts: [...filterredProduct, { ...targettedProduct, quantity }].sort((a, b) => a.id - b.id),
       };
     }
     case TYPE.CALCULATE_CART: {
@@ -134,7 +129,7 @@ export const product_reducer = (state, action) => {
       const currentStock = state.stock;
 
       state.carts.forEach((cart) => {
-        const history = state.history;
+        const { history } = state;
         const currentCart = getCart(cart.id);
 
         if (cart.quantity <= currentStock[cart.id - 1]) {

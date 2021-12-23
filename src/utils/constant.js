@@ -12,16 +12,16 @@ import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 export const servicesList = [
   {
     text: 'Best Quality',
-    Icon: <GiAlliedStar className='block w-full m-auto text-6xl md:text-7xl' />,
+    Icon: <GiAlliedStar className="block w-full m-auto text-6xl md:text-7xl" />,
   },
   {
     text: 'Free Shipping',
-    Icon: <GiTruck className='block w-full m-auto text-6xl md:text-7xl' />,
+    Icon: <GiTruck className="block w-full m-auto text-6xl md:text-7xl" />,
   },
   {
     text: 'Warranty',
     Icon: (
-      <GiRibbonMedal className='block w-full m-auto text-6xl md:text-7xl' />
+      <GiRibbonMedal className="block w-full m-auto text-6xl md:text-7xl" />
     ),
   },
 ];
@@ -102,7 +102,8 @@ export const messageNotifications = {
     status: { appearance: 'warning' },
   },
   ALREADY_LOGIN: {
-    message: 'Sorry, you have logged in. Log out first if you want to log in with another account.',
+    message:
+      'Sorry, you have logged in. Log out first if you want to log in with another account.',
     status: { appearance: 'warning' },
   },
   LOGOUT_SUCCESS: {

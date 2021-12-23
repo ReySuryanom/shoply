@@ -5,13 +5,13 @@ function ProductImage({ className, image, title, priority = false }) {
     <div className={className}>
       <Image
         src={image}
-        className='w-full scale-75 rounded-md'
+        className="w-full scale-75 rounded-md"
         alt={title}
-        layout='fill'
-        objectFit='contain'
+        layout="fill"
+        objectFit="contain"
         priority={priority}
-        placeholder='blur'
-        blurDataURL='https://via.placeholder.com/653x879.webp'
+        placeholder="blur"
+        blurDataURL="https://via.placeholder.com/653x879.webp"
       />
     </div>
   );

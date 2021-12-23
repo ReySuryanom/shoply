@@ -1,7 +1,29 @@
 {
-  "extends": ["next", "next/core-web-vitals"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "next",
+    "next/core-web-vitals"
+  ],
   "rules": {
+    "linebreak-style": ["error", "windows"],
     "no-console": "warn",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
+    "object-curly-newline": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-octal-escape": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-use-before-define": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "function-declaration"
+      }
+    ]
   }
 }

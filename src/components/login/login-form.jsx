@@ -3,15 +3,15 @@ import {
   AiOutlineLock,
   AiOutlineUser,
 } from 'react-icons/ai';
+import { useRouter } from 'next/router';
 import { useToasts } from 'react-toast-notifications';
-import { InputForm } from '.';
-import { Button } from '../ui';
 import { useEffect, useState } from 'react';
+import { Button } from '../ui';
 import { getUser } from '../../utils/helper';
 import { useProductContext } from '../../context/product-context';
 import { POST_LOGIN } from '../../reducers/actions';
 import { messageNotifications } from '../../utils/constant';
-import { useRouter } from 'next/router';
+import InputForm from './input-form';
 
 function LoginForm() {
   const router = useRouter();
@@ -72,7 +72,7 @@ function LoginForm() {
 
   const submitHandler = async (event) => {
     setIsLoading(true);
-    if (event.key === 'Enter' || event['type'] === 'click') {
+    if (event.key === 'Enter' || event?.type === 'click') {
       if (username && password) {
         loginHandler();
       } else {
@@ -85,27 +85,27 @@ function LoginForm() {
   };
 
   return (
-    <form className='flex flex-col w-full text-dark md:px-28 lg:w-1/2 lg:px-10'>
-      <h1 className='mb-5 text-4xl font-bold text-center md:text-5xl lg:text-6xl'>
+    <form className="flex flex-col w-full text-dark md:px-28 lg:w-1/2 lg:px-10">
+      <h1 className="mb-5 text-4xl font-bold text-center md:text-5xl lg:text-6xl">
         SHOPLY.
       </h1>
-      <div className='space-y-12'>
-        <InputForm callback={setUserInput} value={userInput} name='username'>
-          <AiOutlineUser className='relative text-2xl left-3 top-2 lg:top-3' />
+      <div className="space-y-12">
+        <InputForm callback={setUserInput} value={userInput} name="username">
+          <AiOutlineUser className="relative text-2xl left-3 top-2 lg:top-3" />
         </InputForm>
         <InputForm
           callback={setUserInput}
           value={userInput}
-          name='password'
-          type='password'
+          name="password"
+          type="password"
           actions={submitHandler}
         >
-          <AiOutlineLock className='relative text-2xl left-3 top-2 lg:top-3' />
+          <AiOutlineLock className="relative text-2xl left-3 top-2 lg:top-3" />
         </InputForm>
       </div>
       <Button
         className={buttonStyle}
-        text='Login'
+        text="Login"
         eventHandler={submitHandler}
         disabled={isLoading}
       >
@@ -113,9 +113,9 @@ function LoginForm() {
           className={isLoading ? 'inline-block animate-spin' : 'hidden'}
         />
       </Button>
-      <small className='text-center font-bold'>DEMO</small>
-      <small className='text-center'>username: johnd</small>
-      <small className='text-center'>password: m38rmF$</small>
+      <small className="font-bold text-center">DEMO</small>
+      <small className="text-center">username: johnd</small>
+      <small className="text-center">password: m38rmF$</small>
     </form>
   );
 }

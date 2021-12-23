@@ -6,9 +6,9 @@ function Breadcrumb({ routes = [] }) {
 
   const previousPage = (route, index) => (
     <Fragment key={index}>
-      <li className='capitalize hover:underline'>
+      <li className="capitalize hover:underline">
         <Link href={`/${route === 'home' ? '' : route}`} passHref>
-          <a role='button'>{route}</a>
+          <a role="button">{route}</a>
         </Link>
       </li>
       {format}
@@ -18,7 +18,7 @@ function Breadcrumb({ routes = [] }) {
   const routelinks = routes.map((route, index) => {
     if (routes.length - 1 === index) {
       return (
-        <li className='font-bold capitalize' key={index}>
+        <li className="font-bold capitalize" key={route}>
           {route}
         </li>
       );
@@ -27,8 +27,8 @@ function Breadcrumb({ routes = [] }) {
   });
 
   return (
-    <div className='px-2.5 py-3.5 bg-white mb-7 shadow-sm rounded-md'>
-      <ul className='flex items-center text-base md:text-lg'>
+    <div className="px-2.5 py-3.5 bg-white mb-7 shadow-sm rounded-md">
+      <ul className="flex items-center text-base md:text-lg">
         {previousPage('home', -1)}
         {routelinks}
       </ul>

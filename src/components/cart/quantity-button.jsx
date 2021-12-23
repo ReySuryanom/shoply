@@ -22,21 +22,21 @@ function QuantityButton({
       if (dispatch) {
         dispatch({
           type: TOGGLE_CART,
-          payload: { id: id, quantity: fx },
+          payload: { id, quantity: fx },
         });
       }
     };
 
-    setQuantity((quantity) => {
+    setQuantity((qty) => {
       if (symbol.includes('+')) {
-        cartCounter(quantity + 1);
-        return quantity + 1;
-      } else if (quantity <= 1) {
-        return quantity;
-      } else {
-        cartCounter(quantity - 1);
-        return quantity - 1;
+        cartCounter(qty + 1);
+        return qty + 1;
       }
+      if (qty <= 1) {
+        return qty;
+      }
+      cartCounter(qty - 1);
+      return qty - 1;
     });
   };
 
@@ -44,20 +44,20 @@ function QuantityButton({
     <div className={`flex w-1/2 ${className}`}>
       <Button
         className={`!max-w-[52px] text-3xl ${theme}`}
-        text='-'
+        text="-"
         eventHandler={quantityToggler}
       />
       <input
         className={`!max-w-[55px] text-xl font-bold text-dark text-center self-stretch border-dark lg:pl-3 ${border}`}
         value={quantity}
-        type='number'
+        type="number"
         min={0}
         ref={container}
         readOnly
       />
       <Button
         className={`!max-w-[52px] text-3xl ${theme}`}
-        text='+'
+        text="+"
         eventHandler={quantityToggler}
       />
     </div>
