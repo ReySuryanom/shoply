@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { CartBody, CartFooter, CartHeader } from '../components/cart';
 import { Breadcrumb, Modal } from '../components/ui';
 import { useProductContext } from '../context/product-context';
@@ -10,7 +10,7 @@ export default function CheckoutPage() {
   const { state } = useProductContext();
   const router = useRouter();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!state?.user?.token) router.push('/login');
   }, [router, state?.user?.token]);
 
