@@ -7,6 +7,7 @@ import { ToastProvider } from 'react-toast-notifications';
 import { useEffect } from 'react';
 import { Footer, Navbar } from '../components/layout';
 import { ProductProvider } from '../context/product-context';
+import { storePathValues } from '../utils/helper';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -26,6 +27,8 @@ function MyApp({ Component, pageProps }) {
       router.events.off('routeChangeError', handleStop);
     };
   }, [router]);
+
+  useEffect(() => storePathValues, [router.asPath]);
 
   return (
     <ToastProvider

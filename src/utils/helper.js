@@ -1,3 +1,5 @@
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable no-undef */
 /* eslint-disable no-var */
 /* eslint-disable no-unreachable-loop */
 /* eslint-disable guard-for-in */
@@ -84,6 +86,26 @@ export const logout = (dispatch, router, addToast) => {
     messageNotifications.LOGOUT_SUCCESS.message,
     messageNotifications.LOGOUT_SUCCESS.status,
   );
+};
+
+export const storePathValues = () => {
+  const storage = globalThis?.sessionStorage;
+  if (!storage) return;
+
+  // Set the previous path as the value of the current path.
+  const prevPath = storage.getItem('currentPath');
+  storage.setItem('prevPath', prevPath);
+
+  // Set the current path value by looking at the browser's location object.
+  storage.setItem('currentPath', globalThis.location.pathname);
+};
+
+export const getPreviousPath = () => {
+  const previousPath = globalThis?.sessionStorage.prevPath.toString();
+  const detailPathRegex = /products\/([0-9])+/g;
+  const isFromProductPath = previousPath.match(detailPathRegex);
+
+  return { isFromProductPath, previousPath };
 };
 
 export const hasObjectValue = (value) => {

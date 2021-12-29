@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useToasts } from 'react-toast-notifications';
 import { useEffect, useState } from 'react';
 import { Button } from '../ui';
-import { getUser } from '../../utils/helper';
+import { getPreviousPath, getUser } from '../../utils/helper';
 import { useProductContext } from '../../context/product-context';
 import { POST_LOGIN } from '../../reducers/actions';
 import { messageNotifications } from '../../utils/constant';
@@ -21,28 +21,16 @@ function LoginForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { LOGIN_FAILED, LOGIN_SUCCESS } = messageNotifications;
   const { username, password } = userInput;
-  const buttonStyle = `${
-    isLoading && 'cursor-not-allowed'
-  } text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5 hover:shadow-md duration-300 ease-in-out`;
+  const buttonStyle = `${isLoading && 'cursor-not-allowed'} text-xl w-full mt-12 mb-0.5 text-white rounded-full bg-dark lg:py-3.5 hover:shadow-md duration-300 ease-in-out`;
 
   useEffect(() => {
     localStorage.setItem('user', JSON.stringify(state.user));
   }, [state.user]);
 
-  const loginHandler = async () => {
+  const adminLogin = async () => {
     const user = await getUser('admin');
     if (user.email === username && user.password === password) {
-      dispatch({
-        type: POST_LOGIN,
-        payload: {
-          username: 'Admin',
-          level: 'admin',
-          token: user.token,
-        },
-      });
-      addToast(LOGIN_SUCCESS.message('admin'), LOGIN_SUCCESS.status);
-      router.replace('/');
-      setIsLoading(false);
+      setLoginInfo('Admin', 'admin', user.token);
     } else {
       userLogin();
     }
@@ -53,17 +41,7 @@ function LoginForm() {
     const user = await getUser('user', 'post', data);
 
     if (user) {
-      dispatch({
-        type: POST_LOGIN,
-        payload: {
-          username,
-          level: 'user',
-          token: user.token,
-        },
-      });
-      addToast(LOGIN_SUCCESS.message('user'), LOGIN_SUCCESS.status);
-      router.replace('/');
-      setIsLoading(false);
+      setLoginInfo(username, 'user', user.token);
     } else {
       addToast(LOGIN_FAILED.message, LOGIN_FAILED.status);
       setIsLoading(false);
@@ -74,7 +52,7 @@ function LoginForm() {
     setIsLoading(true);
     if (event.key === 'Enter' || event?.type === 'click') {
       if (username && password) {
-        loginHandler();
+        adminLogin();
       } else {
         addToast(LOGIN_FAILED.message, LOGIN_FAILED.status);
         setIsLoading(false);
@@ -82,6 +60,18 @@ function LoginForm() {
     } else {
       setIsLoading(false);
     }
+  };
+
+  // eslint-disable-next-line no-shadow
+  const setLoginInfo = (username, level, token) => {
+    dispatch({ type: POST_LOGIN, payload: { username, level, token } });
+    addToast(LOGIN_SUCCESS.message(level), LOGIN_SUCCESS.status);
+
+    const { isFromProductPath, previousPath } = getPreviousPath();
+    const redirect = isFromProductPath ? previousPath : '/';
+
+    router.replace(redirect);
+    setIsLoading(false);
   };
 
   return (

@@ -1,18 +1,27 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useLayoutEffect } from 'react';
+import { useCallback, useEffect } from 'react';
+import { useToasts } from 'react-toast-notifications';
 import { CartBody, CartFooter, CartHeader } from '../components/cart';
 import { Breadcrumb, Modal } from '../components/ui';
 import { useProductContext } from '../context/product-context';
+import { messageNotifications } from '../utils/constant';
 
 export default function CheckoutPage() {
   const { state } = useProductContext();
   const router = useRouter();
+  const { addToast } = useToasts();
+  const { LOGIN_FIRST } = messageNotifications;
 
-  useLayoutEffect(() => {
-    if (!state?.user?.token) router.push('/login');
-  }, [router, state?.user?.token]);
+  const hasUserLoggedIn = useCallback(() => {
+    if (!state?.user?.token) {
+      router.push('/login');
+      addToast(LOGIN_FIRST.message, LOGIN_FIRST.status);
+    }
+  }, [LOGIN_FIRST.message, LOGIN_FIRST.status, addToast, router, state?.user?.token]);
+
+  useEffect(() => hasUserLoggedIn, [hasUserLoggedIn]);
 
   const cartNotFound = (
     <p className="min-h-screen text-lg text-center">
