@@ -28,6 +28,7 @@ function LoginForm() {
   }, [state.user]);
 
   const adminLogin = async () => {
+    // console.log({users});
     const user = await getUser('admin');
     if (user.email === username && user.password === password) {
       setLoginInfo('Admin', 'admin', user.token);
@@ -68,7 +69,8 @@ function LoginForm() {
     addToast(LOGIN_SUCCESS.message(level), LOGIN_SUCCESS.status);
 
     const { isFromProductPath, previousPath } = getPreviousPath();
-    const redirect = isFromProductPath ? previousPath : '/';
+    const isUser = level === 'user';
+    const redirect = isFromProductPath && isUser ? previousPath : '/';
 
     router.replace(redirect);
     setIsLoading(false);
