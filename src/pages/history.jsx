@@ -1,15 +1,31 @@
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useCallback, useEffect } from 'react';
+import { useToasts } from 'react-toast-notifications';
 import { HistoryList } from '../components/admin';
 import { useProductContext } from '../context/product-context';
+import { messageNotifications } from '../utils/constant';
 
 function History() {
+  const router = useRouter();
+  const { addToast } = useToasts();
   const { state } = useProductContext();
+  const { LOGIN_FIRST } = messageNotifications;
 
   const totalIncome = state.history.reduce((acc, current) => {
     const { quantity, price } = current;
     const total = parseFloat(quantity * price).toFixed(2);
     return acc + parseFloat(total);
   }, 0.0);
+
+  const isAdmin = useCallback(() => {
+    if (!state?.user?.level !== 'admin') {
+      router.push('/');
+      addToast(LOGIN_FIRST.message, LOGIN_FIRST.status);
+    }
+  }, [LOGIN_FIRST.message, LOGIN_FIRST.status, addToast, router, state?.user?.level]);
+
+  useEffect(() => isAdmin, [isAdmin]);
 
   const EmptyHistory = (
     <tr>
@@ -46,7 +62,9 @@ function History() {
           <tbody>
             {state?.history.length === 0
               ? EmptyHistory
-              : state?.history.map((product) => (<HistoryList {...product} key={product.id} />))}
+              : state?.history.map((product) => (
+                <HistoryList {...product} key={product.id} />
+              ))}
           </tbody>
 
           {state?.history.length !== 0 && (

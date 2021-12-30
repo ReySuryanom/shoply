@@ -28,7 +28,6 @@ function LoginForm() {
   }, [state.user]);
 
   const adminLogin = async () => {
-    // console.log({users});
     const user = await getUser('admin');
     if (user.email === username && user.password === password) {
       setLoginInfo('Admin', 'admin', user.token);

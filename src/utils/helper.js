@@ -81,7 +81,7 @@ export const getUser = async (type, method = 'get', data = []) => {
 
 export const logout = (dispatch, router, addToast) => {
   dispatch({ type: LOG_OUT });
-  router.replace('/login');
+  router.replace('/');
   addToast(
     messageNotifications.LOGOUT_SUCCESS.message,
     messageNotifications.LOGOUT_SUCCESS.status,
